@@ -1,7 +1,10 @@
 ﻿namespace WindowsFormsApp1
 {
     partial class admin_tools
-    {
+    {//eshta yaba eshta.. eshta ya 3amy eshta..
+        //kolo keda eshta
+        //wana keda
+        //eshta
         /// <summary>
         /// Required designer variable.
         /// </summary>
