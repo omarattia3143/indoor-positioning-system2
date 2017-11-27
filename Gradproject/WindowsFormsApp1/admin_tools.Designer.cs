@@ -39,8 +39,6 @@
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupsBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.usersBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.adminBtn1 = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -155,8 +153,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.groupsBtn);
             this.panel2.Controls.Add(this.usersBtn);
             this.panel2.Controls.Add(this.adminBtn1);
@@ -165,24 +161,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(639, 520);
             this.panel2.TabIndex = 7;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(511, 241);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "label2";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(492, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "label1";
             // 
             // groupsBtn
             // 
@@ -323,7 +301,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -342,8 +319,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton groupsBtn;
         private Bunifu.Framework.UI.BunifuFlatButton usersBtn;
         private Bunifu.Framework.UI.BunifuFlatButton adminBtn1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
     }
 }
 

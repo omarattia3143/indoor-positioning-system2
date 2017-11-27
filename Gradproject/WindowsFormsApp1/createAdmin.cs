@@ -54,6 +54,7 @@ namespace WindowsFormsApp1
 
         private void createAdmin_Load(object sender, EventArgs e)
         {
+            // 7amatak bet7ebak
             display_data();
         }
     }
