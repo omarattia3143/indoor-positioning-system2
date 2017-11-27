@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
 
         private void loginBtn_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\omarb\source\repos\WindowsFormsApp1\WindowsFormsApp1\Database.mdf;Integrated Security=True");
+            SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\omarb\source\repos\indoor-positioning-system2\Gradproject\WindowsFormsApp1\Database.mdf;Integrated Security=True");
             string query = "Select * from Admin Where username = '"+ username.Text.Trim() +"' and password = '" + password.Text.Trim() + "'";
             SqlDataAdapter sda = new SqlDataAdapter(query, connection);
             DataTable dt = new DataTable();

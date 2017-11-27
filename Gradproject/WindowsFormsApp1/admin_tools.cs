@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
 
         private void adminBtn_Click(object sender, EventArgs e)
         {
-            createAdmin.BringToFront();
+           // createAdmin.BringToFront();
         }
 
         
@@ -72,6 +72,18 @@ namespace WindowsFormsApp1
         private void minimize_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void createAdmin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+       
+        private void adminBtn_Click_2(object sender, EventArgs e)
+        {
+            createAdmin.BringToFront();
+            panel2.SendToBack();
         }
     }
 }

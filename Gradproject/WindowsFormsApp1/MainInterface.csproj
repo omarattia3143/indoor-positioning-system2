@@ -54,11 +54,13 @@
     <Reference Include="C1.C1Report.4, Version=4.6.20133.54655, Culture=neutral, PublicKeyToken=594a0605db190bb9" />
     <Reference Include="C1.Data.Entity.4, Version=4.0.20133.81, Culture=neutral, PublicKeyToken=291e60b76f98fb2b" />
     <Reference Include="C1.LiveLinq.4, Version=4.0.20133.81, Culture=neutral, PublicKeyToken=28cd8b3517c57673" />
+    <Reference Include="C1.Win.C1FlexGrid.4, Version=4.6.20133.796, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Input.4, Version=4.0.20133.33326, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Report.4, Version=4.6.20133.54655, Culture=neutral, PublicKeyToken=41780e2fc605e636, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Sizer.4, Version=4.1.20133.79, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1SuperTooltip.4, Version=4.0.20133.132, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1TouchToolKit.4, Version=4.0.20133.2, Culture=neutral, PublicKeyToken=5e531fc0479701e7, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1TrueDBGrid.4, Version=4.0.20133.61334, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.Data.Entity.4, Version=4.0.20133.81, Culture=neutral, PublicKeyToken=8ddca3e370f720ec, processorArchitecture=MSIL" />
     <Reference Include="Carbon.Data.Protection, Version=0.16.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Documents\packages\Carbon.Data.Protection.0.16.0\lib\netstandard2.0\Carbon.Data.Protection.dll</HintPath>
@@ -108,6 +110,11 @@
     <Compile Include="admin_tools.Designer.cs">
       <DependentUpon>admin_tools.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="mapForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +158,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="DatabaseDataSet.xsc">
+      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatabaseDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DatabaseDataSet.xss">
+      <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
