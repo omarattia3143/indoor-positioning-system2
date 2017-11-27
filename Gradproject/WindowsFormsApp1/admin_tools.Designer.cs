@@ -44,6 +44,7 @@
             this.adminBtn1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.createAdmin = new WindowsFormsApp1.createAdmin();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.image1)).BeginInit();
@@ -154,6 +155,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.groupsBtn);
             this.panel2.Controls.Add(this.usersBtn);
@@ -293,6 +295,15 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "label1";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(346, 478);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "label2";
+            // 
             // admin_tools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -332,6 +343,7 @@
         private Bunifu.Framework.UI.BunifuFlatButton usersBtn;
         private Bunifu.Framework.UI.BunifuFlatButton adminBtn1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
