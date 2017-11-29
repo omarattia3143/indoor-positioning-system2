@@ -82,8 +82,35 @@ namespace WindowsFormsApp1
        
         private void adminBtn_Click_2(object sender, EventArgs e)
         {
-            createAdmin.BringToFront();
-            panel2.SendToBack();
+            createAdmin ss = new createAdmin();
+            Form fc = Application.OpenForms["createAdmin"];
+            if (fc != null)
+                fc.Close();
+            ss.Show();
+        }
+
+        private void tile1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void createAdmin_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void usersBtn_Click(object sender, EventArgs e)
+        {
+            createUser ss = new createUser();
+            Form fc = Application.OpenForms["createUser"];
+            if (fc != null)
+                fc.Close();
+            ss.Show();
         }
     }
 }

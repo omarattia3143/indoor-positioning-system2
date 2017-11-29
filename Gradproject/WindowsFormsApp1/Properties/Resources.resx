@@ -130,4 +130,7 @@
   <data name="Akoakoa_Plan_Main" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Akoakoa_Plan_Main.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="facebook-avatar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\facebook-avatar.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
