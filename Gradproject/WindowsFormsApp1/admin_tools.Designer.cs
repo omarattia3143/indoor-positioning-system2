@@ -45,7 +45,7 @@
             this.groupsBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.usersBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.adminBtn1 = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.createAdmin = new WindowsFormsApp1.createAdmin();
+            this.bunifuDragControl2 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.image1)).BeginInit();
@@ -73,7 +73,7 @@
             this.header.Dock = System.Windows.Forms.DockStyle.Top;
             this.header.Location = new System.Drawing.Point(0, 0);
             this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(639, 41);
+            this.header.Size = new System.Drawing.Size(767, 41);
             this.header.TabIndex = 1;
             // 
             // minimize
@@ -83,7 +83,7 @@
             this.minimize.Image = ((System.Drawing.Image)(resources.GetObject("minimize.Image")));
             this.minimize.ImageActive = null;
             this.minimize.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.minimize.Location = new System.Drawing.Point(544, 12);
+            this.minimize.Location = new System.Drawing.Point(672, 12);
             this.minimize.Name = "minimize";
             this.minimize.Size = new System.Drawing.Size(23, 23);
             this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -98,7 +98,7 @@
             this.image1.BackColor = System.Drawing.Color.Orange;
             this.image1.Image = ((System.Drawing.Image)(resources.GetObject("image1.Image")));
             this.image1.ImageActive = null;
-            this.image1.Location = new System.Drawing.Point(602, 10);
+            this.image1.Location = new System.Drawing.Point(730, 10);
             this.image1.Name = "image1";
             this.image1.Size = new System.Drawing.Size(25, 25);
             this.image1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -114,7 +114,7 @@
             this.bunifuImageButton3.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton3.Image")));
             this.bunifuImageButton3.ImageActive = null;
             this.bunifuImageButton3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.bunifuImageButton3.Location = new System.Drawing.Point(573, 12);
+            this.bunifuImageButton3.Location = new System.Drawing.Point(701, 12);
             this.bunifuImageButton3.Name = "bunifuImageButton3";
             this.bunifuImageButton3.Size = new System.Drawing.Size(23, 23);
             this.bunifuImageButton3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -147,11 +147,10 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.createAdmin);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 41);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(639, 520);
+            this.panel1.Size = new System.Drawing.Size(767, 716);
             this.panel1.TabIndex = 2;
             // 
             // panel2
@@ -162,8 +161,9 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(639, 520);
+            this.panel2.Size = new System.Drawing.Size(767, 716);
             this.panel2.TabIndex = 7;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // groupsBtn
             // 
@@ -187,7 +187,7 @@
             this.groupsBtn.IconVisible = true;
             this.groupsBtn.IconZoom = 90D;
             this.groupsBtn.IsTab = false;
-            this.groupsBtn.Location = new System.Drawing.Point(182, 282);
+            this.groupsBtn.Location = new System.Drawing.Point(239, 361);
             this.groupsBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupsBtn.Name = "groupsBtn";
             this.groupsBtn.Normalcolor = System.Drawing.Color.Transparent;
@@ -223,7 +223,7 @@
             this.usersBtn.IconVisible = true;
             this.usersBtn.IconZoom = 90D;
             this.usersBtn.IsTab = false;
-            this.usersBtn.Location = new System.Drawing.Point(182, 185);
+            this.usersBtn.Location = new System.Drawing.Point(239, 237);
             this.usersBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.usersBtn.Name = "usersBtn";
             this.usersBtn.Normalcolor = System.Drawing.Color.Transparent;
@@ -236,6 +236,7 @@
             this.usersBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.usersBtn.Textcolor = System.Drawing.Color.White;
             this.usersBtn.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usersBtn.Click += new System.EventHandler(this.usersBtn_Click);
             // 
             // adminBtn1
             // 
@@ -259,7 +260,7 @@
             this.adminBtn1.IconVisible = true;
             this.adminBtn1.IconZoom = 90D;
             this.adminBtn1.IsTab = false;
-            this.adminBtn1.Location = new System.Drawing.Point(182, 88);
+            this.adminBtn1.Location = new System.Drawing.Point(239, 107);
             this.adminBtn1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.adminBtn1.Name = "adminBtn1";
             this.adminBtn1.Normalcolor = System.Drawing.Color.Transparent;
@@ -274,23 +275,19 @@
             this.adminBtn1.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.adminBtn1.Click += new System.EventHandler(this.adminBtn_Click_2);
             // 
-            // createAdmin
+            // bunifuDragControl2
             // 
-            this.createAdmin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.createAdmin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.createAdmin.Location = new System.Drawing.Point(0, 0);
-            this.createAdmin.Name = "createAdmin";
-            this.createAdmin.Size = new System.Drawing.Size(639, 520);
-            this.createAdmin.TabIndex = 6;
+            this.bunifuDragControl2.Fixed = true;
+            this.bunifuDragControl2.Horizontal = true;
+            this.bunifuDragControl2.TargetControl = null;
+            this.bunifuDragControl2.Vertical = true;
             // 
             // admin_tools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(639, 561);
+            this.ClientSize = new System.Drawing.Size(767, 757);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.header);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -317,11 +314,11 @@
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton3;
         private Bunifu.Framework.UI.BunifuImageButton minimize;
         private System.Windows.Forms.Panel panel1;
-        private createAdmin createAdmin;
         private System.Windows.Forms.Panel panel2;
         private Bunifu.Framework.UI.BunifuFlatButton groupsBtn;
         private Bunifu.Framework.UI.BunifuFlatButton usersBtn;
         private Bunifu.Framework.UI.BunifuFlatButton adminBtn1;
+        private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl2;
     }
 }
 

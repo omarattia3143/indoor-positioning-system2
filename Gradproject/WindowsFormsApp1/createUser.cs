@@ -11,11 +11,11 @@ using System.Data.SqlClient;
 
 namespace WindowsFormsApp1
 {
-    public partial class createAdmin : Form
+    public partial class createUser : Form
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\omarb\source\repos\indoor-positioning-system2\Gradproject\WindowsFormsApp1\Database.mdf;Integrated Security=True");    
+        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\omarb\source\repos\indoor-positioning-system2\Gradproject\WindowsFormsApp1\Database.mdf;Integrated Security=True");
 
-        public createAdmin()
+        public createUser()
         {
             InitializeComponent();
         }
@@ -43,16 +43,16 @@ namespace WindowsFormsApp1
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "Select * from Admin";
+            cmd.CommandText = "Select * from Device";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
             sda.Fill(dt);
-            bunifuCustomDataGrid1.DataSource = dt;
+            datagrid.DataSource = dt;
             connection.Close();
         }
 
-        private void createAdmin_Load(object sender, EventArgs e)
+        private void createUser_Load(object sender, EventArgs e)
         {
             display_data();
         }
@@ -63,15 +63,15 @@ namespace WindowsFormsApp1
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
 
-            if (password.Text == password2.Text)
-            {
-                
-                cmd.CommandText = "insert into Admin values('" + username.Text + "','" + password.Text + "')";
-                cmd.ExecuteNonQuery();
-            }
-            else { MessageBox.Show("Passwords don't match!"); }
-            connection.Close();
-            display_data();
+            //if (password.Text == password2.Text)
+            //{
+
+            //    cmd.CommandText = "insert into Admin values('" + username.Text + "','" + password.Text + "')";
+            //    cmd.ExecuteNonQuery();
+            //}
+            //else { MessageBox.Show("Passwords don't match!"); }
+            //connection.Close();
+            //display_data();
 
         }
 
@@ -80,7 +80,7 @@ namespace WindowsFormsApp1
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "delete from Admin where username='"+username.Text+"'";
+            cmd.CommandText = "delete from Admin where username='" + username.Text + "'";
             cmd.ExecuteNonQuery();
             connection.Close();
             display_data();
@@ -91,7 +91,7 @@ namespace WindowsFormsApp1
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "Select * from Admin where username='"+username.Text+"'";
+            cmd.CommandText = "Select * from Admin where username='" + username.Text + "'";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -100,14 +100,13 @@ namespace WindowsFormsApp1
             connection.Close();
         }
 
-        private void image1_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
-            this.Close();
+
         }
 
-        private void minimize_Click(object sender, EventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            WindowState = FormWindowState.Minimized;
 
         }
 
@@ -123,17 +122,18 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private void minimize_Click(object sender, EventArgs e)
         {
+            WindowState = FormWindowState.Minimized;
 
         }
 
-        private void header_Paint(object sender, PaintEventArgs e)
+        private void image1_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
-        private void bunifuCustomLabel1_Click(object sender, EventArgs e)
+        private void bunifuCustomDataGrid2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
