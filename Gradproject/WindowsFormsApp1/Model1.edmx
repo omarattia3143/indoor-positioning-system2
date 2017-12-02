@@ -1,0 +1,573 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DatabaseModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="admin_username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="admin_password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Beacon">
+          <Key>
+            <PropertyRef Name="beacon_id" />
+          </Key>
+          <Property Name="beacon_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="floor_id" Type="int" />
+          <Property Name="beacon_x" Type="float" />
+          <Property Name="beacon_y" Type="float" />
+          <Property Name="beacon_bluetooth_address" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Boundary">
+          <Key>
+            <PropertyRef Name="boundary_id" />
+          </Key>
+          <Property Name="boundary_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="boundary_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="boundary_area_on_map" Type="nvarchar" MaxLength="50" />
+          <Property Name="boundary_from" Type="time" Precision="7" />
+          <Property Name="boundary_to" Type="time" Precision="7" />
+          <Property Name="boundary_enabled" Type="bit" />
+        </EntityType>
+        <EntityType Name="Device">
+          <Key>
+            <PropertyRef Name="device_id" />
+          </Key>
+          <Property Name="device_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="device_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="device_bluetooth_address" Type="nvarchar" MaxLength="50" />
+          <Property Name="device_icon" Type="varbinary(max)" />
+          <Property Name="group_id" Type="int" />
+          <Property Name="device_info" Type="nvarchar" MaxLength="150" />
+          <Property Name="device_picture" Type="varbinary(max)" />
+          <Property Name="device_override_group_icon" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\OMAR\SOURCE\REPOS\INDOOR-POSITIONING-SYSTEM2\GRADPROJECT\WINDOWSFORMSAPP1\DATABASE.MDF.dbo.Device-Boundary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Device-Boundary">
+          <Key>
+            <PropertyRef Name="device_id" />
+            <PropertyRef Name="boundary_id" />
+          </Key>
+          <Property Name="device_id" Type="int" Nullable="false" />
+          <Property Name="boundary_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Floor">
+          <Key>
+            <PropertyRef Name="floor_id" />
+          </Key>
+          <Property Name="floor_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="floor_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="floor_image" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="group_id" />
+          </Key>
+          <Property Name="group_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="group_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="group_info" Type="nvarchar" MaxLength="150" />
+          <Property Name="group_icon" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="notification_id" />
+          </Key>
+          <Property Name="notification_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="notification_time" Type="smalldatetime" />
+          <Property Name="notification_text" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Record">
+          <Key>
+            <PropertyRef Name="record_id" />
+          </Key>
+          <Property Name="record_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="record_time" Type="smalldatetime" />
+          <Property Name="device_id" Type="int" />
+          <Property Name="record_x" Type="float" />
+          <Property Name="record_y" Type="float" />
+          <Property Name="floor_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Sector">
+          <Key>
+            <PropertyRef Name="sector_id" />
+          </Key>
+          <Property Name="sector_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="beacon_id" Type="int" />
+          <Property Name="sector_min_RSSI" Type="float" />
+          <Property Name="sector_max_RSSI" Type="float" />
+          <Property Name="sector_area_on_map" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_beacon">
+          <End Role="Beacon" Type="Self.Beacon" Multiplicity="0..1" />
+          <End Role="Sector" Type="Self.Sector" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Beacon">
+              <PropertyRef Name="beacon_id" />
+            </Principal>
+            <Dependent Role="Sector">
+              <PropertyRef Name="beacon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_boundary">
+          <End Role="Boundary" Type="Self.Boundary" Multiplicity="1" />
+          <End Role="Device-Boundary" Type="Self.Device-Boundary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Boundary">
+              <PropertyRef Name="boundary_id" />
+            </Principal>
+            <Dependent Role="Device-Boundary">
+              <PropertyRef Name="boundary_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_device">
+          <End Role="Device" Type="Self.Device" Multiplicity="1" />
+          <End Role="Device-Boundary" Type="Self.Device-Boundary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="device_id" />
+            </Principal>
+            <Dependent Role="Device-Boundary">
+              <PropertyRef Name="device_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_device2">
+          <End Role="Device" Type="Self.Device" Multiplicity="0..1" />
+          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="device_id" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="device_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_floor">
+          <End Role="Floor" Type="Self.Floor" Multiplicity="0..1" />
+          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Floor">
+              <PropertyRef Name="floor_id" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="floor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_floor2">
+          <End Role="Floor" Type="Self.Floor" Multiplicity="0..1" />
+          <End Role="Beacon" Type="Self.Beacon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Floor">
+              <PropertyRef Name="floor_id" />
+            </Principal>
+            <Dependent Role="Beacon">
+              <PropertyRef Name="floor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_group">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="0..1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="group_id" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseModel1StoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Beacon" EntityType="Self.Beacon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Boundary" EntityType="Self.Boundary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Device" EntityType="Self.Device" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Floor" EntityType="Self.Floor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Record" EntityType="Self.Record" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sector" EntityType="Self.Sector" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Device-Boundary" EntityType="Self.Device-Boundary" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Device-Boundary].[device_id] AS [device_id], 
+[Device-Boundary].[boundary_id] AS [boundary_id]
+FROM [dbo].[Device-Boundary] AS [Device-Boundary]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_beacon" Association="Self.FK_beacon">
+            <End Role="Beacon" EntitySet="Beacon" />
+            <End Role="Sector" EntitySet="Sector" />
+          </AssociationSet>
+          <AssociationSet Name="FK_boundary" Association="Self.FK_boundary">
+            <End Role="Boundary" EntitySet="Boundary" />
+            <End Role="Device-Boundary" EntitySet="Device-Boundary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_device" Association="Self.FK_device">
+            <End Role="Device" EntitySet="Device" />
+            <End Role="Device-Boundary" EntitySet="Device-Boundary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_device2" Association="Self.FK_device2">
+            <End Role="Device" EntitySet="Device" />
+            <End Role="Record" EntitySet="Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_floor" Association="Self.FK_floor">
+            <End Role="Floor" EntitySet="Floor" />
+            <End Role="Record" EntitySet="Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_floor2" Association="Self.FK_floor2">
+            <End Role="Floor" EntitySet="Floor" />
+            <End Role="Beacon" EntitySet="Beacon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_group" Association="Self.FK_group">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Device" EntitySet="Device" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="admin_id" />
+          </Key>
+          <Property Name="admin_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="admin_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="admin_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Beacon">
+          <Key>
+            <PropertyRef Name="beacon_id" />
+          </Key>
+          <Property Name="beacon_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="floor_id" Type="Int32" />
+          <Property Name="beacon_x" Type="Double" />
+          <Property Name="beacon_y" Type="Double" />
+          <Property Name="beacon_bluetooth_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sectors" Relationship="Self.FK_beacon" FromRole="Beacon" ToRole="Sector" />
+          <NavigationProperty Name="Floor" Relationship="Self.FK_floor2" FromRole="Beacon" ToRole="Floor" />
+        </EntityType>
+        <EntityType Name="Boundary">
+          <Key>
+            <PropertyRef Name="boundary_id" />
+          </Key>
+          <Property Name="boundary_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="boundary_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="boundary_area_on_map" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="boundary_from" Type="Time" Precision="7" />
+          <Property Name="boundary_to" Type="Time" Precision="7" />
+          <Property Name="boundary_enabled" Type="Boolean" />
+          <NavigationProperty Name="Devices" Relationship="Self.Device_Boundary" FromRole="Boundary" ToRole="Device" />
+        </EntityType>
+        <EntityType Name="Device">
+          <Key>
+            <PropertyRef Name="device_id" />
+          </Key>
+          <Property Name="device_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="device_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="device_bluetooth_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="device_icon" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="group_id" Type="Int32" />
+          <Property Name="device_info" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="device_picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="device_override_group_icon" Type="Boolean" />
+          <NavigationProperty Name="Records" Relationship="Self.FK_device2" FromRole="Device" ToRole="Record" />
+          <NavigationProperty Name="Group" Relationship="Self.FK_group" FromRole="Device" ToRole="Groups" />
+          <NavigationProperty Name="Boundaries" Relationship="Self.Device_Boundary" FromRole="Device" ToRole="Boundary" />
+        </EntityType>
+        <EntityType Name="Floor">
+          <Key>
+            <PropertyRef Name="floor_id" />
+          </Key>
+          <Property Name="floor_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="floor_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="floor_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Beacons" Relationship="Self.FK_floor2" FromRole="Floor" ToRole="Beacon" />
+          <NavigationProperty Name="Records" Relationship="Self.FK_floor" FromRole="Floor" ToRole="Record" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="group_id" />
+          </Key>
+          <Property Name="group_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="group_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="group_info" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="group_icon" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Devices" Relationship="Self.FK_group" FromRole="Groups" ToRole="Device" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="notification_id" />
+          </Key>
+          <Property Name="notification_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="notification_time" Type="DateTime" Precision="0" />
+          <Property Name="notification_text" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Record">
+          <Key>
+            <PropertyRef Name="record_id" />
+          </Key>
+          <Property Name="record_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="record_time" Type="DateTime" Precision="0" />
+          <Property Name="device_id" Type="Int32" />
+          <Property Name="record_x" Type="Double" />
+          <Property Name="record_y" Type="Double" />
+          <Property Name="floor_id" Type="Int32" />
+          <NavigationProperty Name="Device" Relationship="Self.FK_device2" FromRole="Record" ToRole="Device" />
+          <NavigationProperty Name="Floor" Relationship="Self.FK_floor" FromRole="Record" ToRole="Floor" />
+        </EntityType>
+        <EntityType Name="Sector">
+          <Key>
+            <PropertyRef Name="sector_id" />
+          </Key>
+          <Property Name="sector_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="beacon_id" Type="Int32" />
+          <Property Name="sector_min_RSSI" Type="Double" />
+          <Property Name="sector_max_RSSI" Type="Double" />
+          <Property Name="sector_area_on_map" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Beacon" Relationship="Self.FK_beacon" FromRole="Sector" ToRole="Beacon" />
+        </EntityType>
+        <Association Name="FK_beacon">
+          <End Role="Beacon" Type="Self.Beacon" Multiplicity="0..1" />
+          <End Role="Sector" Type="Self.Sector" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Beacon">
+              <PropertyRef Name="beacon_id" />
+            </Principal>
+            <Dependent Role="Sector">
+              <PropertyRef Name="beacon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_floor2">
+          <End Role="Floor" Type="Self.Floor" Multiplicity="0..1" />
+          <End Role="Beacon" Type="Self.Beacon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Floor">
+              <PropertyRef Name="floor_id" />
+            </Principal>
+            <Dependent Role="Beacon">
+              <PropertyRef Name="floor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_device2">
+          <End Role="Device" Type="Self.Device" Multiplicity="0..1" />
+          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Device">
+              <PropertyRef Name="device_id" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="device_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_group">
+          <End Role="Groups" Type="Self.Group" Multiplicity="0..1" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="group_id" />
+            </Principal>
+            <Dependent Role="Device">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_floor">
+          <End Role="Floor" Type="Self.Floor" Multiplicity="0..1" />
+          <End Role="Record" Type="Self.Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Floor">
+              <PropertyRef Name="floor_id" />
+            </Principal>
+            <Dependent Role="Record">
+              <PropertyRef Name="floor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Device_Boundary">
+          <End Role="Boundary" Type="Self.Boundary" Multiplicity="*" />
+          <End Role="Device" Type="Self.Device" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DatabaseEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Beacons" EntityType="Self.Beacon" />
+          <EntitySet Name="Boundaries" EntityType="Self.Boundary" />
+          <EntitySet Name="Devices" EntityType="Self.Device" />
+          <EntitySet Name="Floors" EntityType="Self.Floor" />
+          <EntitySet Name="Groups" EntityType="Self.Group" />
+          <EntitySet Name="Notifications" EntityType="Self.Notification" />
+          <EntitySet Name="Records" EntityType="Self.Record" />
+          <EntitySet Name="Sectors" EntityType="Self.Sector" />
+          <AssociationSet Name="FK_beacon" Association="Self.FK_beacon">
+            <End Role="Beacon" EntitySet="Beacons" />
+            <End Role="Sector" EntitySet="Sectors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_floor2" Association="Self.FK_floor2">
+            <End Role="Floor" EntitySet="Floors" />
+            <End Role="Beacon" EntitySet="Beacons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_device2" Association="Self.FK_device2">
+            <End Role="Device" EntitySet="Devices" />
+            <End Role="Record" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="FK_group" Association="Self.FK_group">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Device" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_floor" Association="Self.FK_floor">
+            <End Role="Floor" EntitySet="Floors" />
+            <End Role="Record" EntitySet="Records" />
+          </AssociationSet>
+          <AssociationSet Name="Device_Boundary" Association="Self.Device_Boundary">
+            <End Role="Boundary" EntitySet="Boundaries" />
+            <End Role="Device" EntitySet="Devices" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseModel1StoreContainer" CdmEntityContainer="DatabaseEntities1">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="DatabaseModel1.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="admin_username" ColumnName="admin_username" />
+                <ScalarProperty Name="admin_password" ColumnName="admin_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Beacons">
+            <EntityTypeMapping TypeName="DatabaseModel1.Beacon">
+              <MappingFragment StoreEntitySet="Beacon">
+                <ScalarProperty Name="beacon_id" ColumnName="beacon_id" />
+                <ScalarProperty Name="floor_id" ColumnName="floor_id" />
+                <ScalarProperty Name="beacon_x" ColumnName="beacon_x" />
+                <ScalarProperty Name="beacon_y" ColumnName="beacon_y" />
+                <ScalarProperty Name="beacon_bluetooth_address" ColumnName="beacon_bluetooth_address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Boundaries">
+            <EntityTypeMapping TypeName="DatabaseModel1.Boundary">
+              <MappingFragment StoreEntitySet="Boundary">
+                <ScalarProperty Name="boundary_id" ColumnName="boundary_id" />
+                <ScalarProperty Name="boundary_name" ColumnName="boundary_name" />
+                <ScalarProperty Name="boundary_area_on_map" ColumnName="boundary_area_on_map" />
+                <ScalarProperty Name="boundary_from" ColumnName="boundary_from" />
+                <ScalarProperty Name="boundary_to" ColumnName="boundary_to" />
+                <ScalarProperty Name="boundary_enabled" ColumnName="boundary_enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Devices">
+            <EntityTypeMapping TypeName="DatabaseModel1.Device">
+              <MappingFragment StoreEntitySet="Device">
+                <ScalarProperty Name="device_id" ColumnName="device_id" />
+                <ScalarProperty Name="device_name" ColumnName="device_name" />
+                <ScalarProperty Name="device_bluetooth_address" ColumnName="device_bluetooth_address" />
+                <ScalarProperty Name="device_icon" ColumnName="device_icon" />
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="device_info" ColumnName="device_info" />
+                <ScalarProperty Name="device_picture" ColumnName="device_picture" />
+                <ScalarProperty Name="device_override_group_icon" ColumnName="device_override_group_icon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Floors">
+            <EntityTypeMapping TypeName="DatabaseModel1.Floor">
+              <MappingFragment StoreEntitySet="Floor">
+                <ScalarProperty Name="floor_id" ColumnName="floor_id" />
+                <ScalarProperty Name="floor_name" ColumnName="floor_name" />
+                <ScalarProperty Name="floor_image" ColumnName="floor_image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="DatabaseModel1.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="group_id" ColumnName="group_id" />
+                <ScalarProperty Name="group_name" ColumnName="group_name" />
+                <ScalarProperty Name="group_info" ColumnName="group_info" />
+                <ScalarProperty Name="group_icon" ColumnName="group_icon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="DatabaseModel1.Notification">
+              <MappingFragment StoreEntitySet="Notification">
+                <ScalarProperty Name="notification_id" ColumnName="notification_id" />
+                <ScalarProperty Name="notification_time" ColumnName="notification_time" />
+                <ScalarProperty Name="notification_text" ColumnName="notification_text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Records">
+            <EntityTypeMapping TypeName="DatabaseModel1.Record">
+              <MappingFragment StoreEntitySet="Record">
+                <ScalarProperty Name="record_id" ColumnName="record_id" />
+                <ScalarProperty Name="record_time" ColumnName="record_time" />
+                <ScalarProperty Name="device_id" ColumnName="device_id" />
+                <ScalarProperty Name="record_x" ColumnName="record_x" />
+                <ScalarProperty Name="record_y" ColumnName="record_y" />
+                <ScalarProperty Name="floor_id" ColumnName="floor_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sectors">
+            <EntityTypeMapping TypeName="DatabaseModel1.Sector">
+              <MappingFragment StoreEntitySet="Sector">
+                <ScalarProperty Name="sector_id" ColumnName="sector_id" />
+                <ScalarProperty Name="beacon_id" ColumnName="beacon_id" />
+                <ScalarProperty Name="sector_min_RSSI" ColumnName="sector_min_RSSI" />
+                <ScalarProperty Name="sector_max_RSSI" ColumnName="sector_max_RSSI" />
+                <ScalarProperty Name="sector_area_on_map" ColumnName="sector_area_on_map" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Device_Boundary" TypeName="DatabaseModel1.Device_Boundary" StoreEntitySet="Device-Boundary">
+            <EndProperty Name="Boundary">
+              <ScalarProperty Name="boundary_id" ColumnName="boundary_id" />
+            </EndProperty>
+            <EndProperty Name="Device">
+              <ScalarProperty Name="device_id" ColumnName="device_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
