@@ -1,0 +1,1 @@
+﻿select * from Device inner join [Group] on Device.device_id = [Group].group_id

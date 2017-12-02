@@ -112,8 +112,14 @@
     <Compile Include="admin_tools.Designer.cs">
       <DependentUpon>admin_tools.cs</DependentUpon>
     </Compile>
-    <Compile Include="createUser.cs">
+    <Compile Include="viewDevices.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewDevices.Designer.cs">
+      <DependentUpon>viewDevices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="createUser.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="createUser.Designer.cs">
       <DependentUpon>createUser.cs</DependentUpon>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="createAdmin.resx">
       <DependentUpon>createAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="viewDevices.resx">
+      <DependentUpon>viewDevices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="createUser.resx">
       <DependentUpon>createUser.cs</DependentUpon>
