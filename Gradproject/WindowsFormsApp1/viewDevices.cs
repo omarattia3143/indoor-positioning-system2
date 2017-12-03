@@ -118,8 +118,10 @@ namespace WindowsFormsApp1
 
         private void viewDevices_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseDataSet2.Device' table. You can move, or remove it, as needed.
+            this.deviceTableAdapter1.Fill(this.databaseDataSet2.Device);
             // TODO: This line of code loads data into the 'databaseDataSet1.Device' table. You can move, or remove it, as needed.
-            this.deviceTableAdapter.Fill(this.databaseDataSet1.Device);
+          //  this.deviceTableAdapter.Fill(this.databaseDataSet1.Device);
 
         }
 
@@ -133,7 +135,7 @@ namespace WindowsFormsApp1
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "delete from Device where name='" + name.Text + "'";
+            cmd.CommandText = "delete from Device where device_name='" + name.Text + "'";
             cmd.ExecuteNonQuery();
             connection.Close();
             display_data();
@@ -150,7 +152,7 @@ namespace WindowsFormsApp1
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "Select * from Device where name='" + name.Text + "'";
+            cmd.CommandText = "Select * from Device where device_name='" + name.Text + "'";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
