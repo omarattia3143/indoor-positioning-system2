@@ -170,5 +170,33 @@ namespace WindowsFormsApp1
         {
             display_data();
         }
+
+        private void createBtn_Click(object sender, EventArgs e)
+        {
+            panel3.SendToBack();
+            createUser1.BringToFront();
+        }
+
+        private void name_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                connection.Open();
+                SqlCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "Select * from Device where device_name='" + name.Text + "'";
+                cmd.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                sda.Fill(dt);
+                datagrid.DataSource = dt;
+                connection.Close();
+            }
+        }
+
+        private void createUser1_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

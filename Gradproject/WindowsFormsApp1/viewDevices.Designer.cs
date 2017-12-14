@@ -33,8 +33,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(viewDevices));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.header = new System.Windows.Forms.Panel();
             this.minimize = new Bunifu.Framework.UI.BunifuImageButton();
@@ -45,21 +45,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.createBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.label3 = new System.Windows.Forms.Label();
             this.name = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.searchBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.deleteBtn = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.addEditBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.deviceBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseDataSet1 = new WindowsFormsApp1.DatabaseDataSet1();
-            this.deviceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.deviceTableAdapter = new WindowsFormsApp1.DatabaseDataSet1TableAdapters.DeviceTableAdapter();
-            this.databaseDataSet2 = new WindowsFormsApp1.DatabaseDataSet2();
-            this.databaseDataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.deviceBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.deviceTableAdapter1 = new WindowsFormsApp1.DatabaseDataSet2TableAdapters.DeviceTableAdapter();
             this.deviceidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.devicenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.devicebluetoothaddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +60,15 @@
             this.deviceinfoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.devicepictureDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.deviceoverridegroupiconDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.deviceBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseDataSet2 = new WindowsFormsApp1.DatabaseDataSet2();
+            this.addEditBtn = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.deviceBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseDataSet1 = new WindowsFormsApp1.DatabaseDataSet1();
+            this.deviceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.deviceTableAdapter = new WindowsFormsApp1.DatabaseDataSet1TableAdapters.DeviceTableAdapter();
+            this.databaseDataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.deviceTableAdapter1 = new WindowsFormsApp1.DatabaseDataSet2TableAdapters.DeviceTableAdapter();
             this.createUser1 = new WindowsFormsApp1.createUser();
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
@@ -78,12 +79,12 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet2BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuDragControl1
@@ -186,8 +187,8 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.createUser1);
+            this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -197,22 +198,62 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.createBtn);
             this.panel3.Controls.Add(this.bunifuFlatButton1);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.name);
             this.panel3.Controls.Add(this.searchBtn);
             this.panel3.Controls.Add(this.deleteBtn);
-            this.panel3.Controls.Add(this.addEditBtn);
             this.panel3.Controls.Add(this.datagrid);
+            this.panel3.Controls.Add(this.addEditBtn);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(767, 716);
             this.panel3.TabIndex = 29;
             // 
+            // createBtn
+            // 
+            this.createBtn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.createBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.createBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.createBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.createBtn.BorderRadius = 0;
+            this.createBtn.ButtonText = "Create";
+            this.createBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.createBtn.DisabledColor = System.Drawing.Color.Gray;
+            this.createBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createBtn.Iconcolor = System.Drawing.Color.Transparent;
+            this.createBtn.Iconimage = ((System.Drawing.Image)(resources.GetObject("createBtn.Iconimage")));
+            this.createBtn.Iconimage_right = null;
+            this.createBtn.Iconimage_right_Selected = null;
+            this.createBtn.Iconimage_Selected = null;
+            this.createBtn.IconMarginLeft = 0;
+            this.createBtn.IconMarginRight = 0;
+            this.createBtn.IconRightVisible = true;
+            this.createBtn.IconRightZoom = 0D;
+            this.createBtn.IconVisible = true;
+            this.createBtn.IconZoom = 90D;
+            this.createBtn.IsTab = false;
+            this.createBtn.Location = new System.Drawing.Point(144, 437);
+            this.createBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.createBtn.Name = "createBtn";
+            this.createBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.createBtn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.createBtn.OnHoverTextColor = System.Drawing.Color.White;
+            this.createBtn.selected = false;
+            this.createBtn.Size = new System.Drawing.Size(152, 45);
+            this.createBtn.TabIndex = 35;
+            this.createBtn.Text = "Create";
+            this.createBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.createBtn.Textcolor = System.Drawing.Color.White;
+            this.createBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createBtn.Click += new System.EventHandler(this.createBtn_Click);
+            // 
             // bunifuFlatButton1
             // 
             this.bunifuFlatButton1.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.bunifuFlatButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.bunifuFlatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.bunifuFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuFlatButton1.BorderRadius = 0;
@@ -232,7 +273,7 @@
             this.bunifuFlatButton1.IconVisible = true;
             this.bunifuFlatButton1.IconZoom = 90D;
             this.bunifuFlatButton1.IsTab = false;
-            this.bunifuFlatButton1.Location = new System.Drawing.Point(489, 22);
+            this.bunifuFlatButton1.Location = new System.Drawing.Point(593, 8);
             this.bunifuFlatButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bunifuFlatButton1.Name = "bunifuFlatButton1";
             this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -278,10 +319,12 @@
             this.name.Size = new System.Drawing.Size(228, 33);
             this.name.TabIndex = 32;
             this.name.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.name.KeyDown += new System.Windows.Forms.KeyEventHandler(this.name_KeyDown);
             // 
             // searchBtn
             // 
             this.searchBtn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.searchBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.searchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.searchBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.searchBtn.BorderRadius = 0;
@@ -301,7 +344,7 @@
             this.searchBtn.IconVisible = true;
             this.searchBtn.IconZoom = 90D;
             this.searchBtn.IsTab = false;
-            this.searchBtn.Location = new System.Drawing.Point(446, 447);
+            this.searchBtn.Location = new System.Drawing.Point(435, 8);
             this.searchBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.searchBtn.Name = "searchBtn";
             this.searchBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -319,6 +362,7 @@
             // deleteBtn
             // 
             this.deleteBtn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.deleteBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.deleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.deleteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.deleteBtn.BorderRadius = 0;
@@ -338,7 +382,7 @@
             this.deleteBtn.IconVisible = true;
             this.deleteBtn.IconZoom = 90D;
             this.deleteBtn.IsTab = false;
-            this.deleteBtn.Location = new System.Drawing.Point(288, 447);
+            this.deleteBtn.Location = new System.Drawing.Point(460, 437);
             this.deleteBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -353,59 +397,23 @@
             this.deleteBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click_1);
             // 
-            // addEditBtn
-            // 
-            this.addEditBtn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.addEditBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.addEditBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.addEditBtn.BorderRadius = 0;
-            this.addEditBtn.ButtonText = "Add/Edit";
-            this.addEditBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addEditBtn.DisabledColor = System.Drawing.Color.Gray;
-            this.addEditBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addEditBtn.Iconcolor = System.Drawing.Color.Transparent;
-            this.addEditBtn.Iconimage = ((System.Drawing.Image)(resources.GetObject("addEditBtn.Iconimage")));
-            this.addEditBtn.Iconimage_right = null;
-            this.addEditBtn.Iconimage_right_Selected = null;
-            this.addEditBtn.Iconimage_Selected = null;
-            this.addEditBtn.IconMarginLeft = 0;
-            this.addEditBtn.IconMarginRight = 0;
-            this.addEditBtn.IconRightVisible = true;
-            this.addEditBtn.IconRightZoom = 0D;
-            this.addEditBtn.IconVisible = true;
-            this.addEditBtn.IconZoom = 90D;
-            this.addEditBtn.IsTab = false;
-            this.addEditBtn.Location = new System.Drawing.Point(130, 447);
-            this.addEditBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.addEditBtn.Name = "addEditBtn";
-            this.addEditBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.addEditBtn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.addEditBtn.OnHoverTextColor = System.Drawing.Color.White;
-            this.addEditBtn.selected = false;
-            this.addEditBtn.Size = new System.Drawing.Size(152, 45);
-            this.addEditBtn.TabIndex = 29;
-            this.addEditBtn.Text = "Add/Edit";
-            this.addEditBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.addEditBtn.Textcolor = System.Drawing.Color.White;
-            this.addEditBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addEditBtn.Click += new System.EventHandler(this.insertBtn_Click);
-            // 
             // datagrid
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.datagrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.datagrid.AutoGenerateColumns = false;
             this.datagrid.BackgroundColor = System.Drawing.Color.White;
             this.datagrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.datagrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.deviceidDataGridViewTextBoxColumn,
@@ -428,44 +436,6 @@
             this.datagrid.Size = new System.Drawing.Size(743, 343);
             this.datagrid.TabIndex = 28;
             this.datagrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_CellContentClick);
-            // 
-            // deviceBindingSource1
-            // 
-            this.deviceBindingSource1.DataMember = "Device";
-            this.deviceBindingSource1.DataSource = this.databaseDataSet1;
-            // 
-            // databaseDataSet1
-            // 
-            this.databaseDataSet1.DataSetName = "DatabaseDataSet1";
-            this.databaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // deviceBindingSource
-            // 
-            this.deviceBindingSource.DataMember = "Device";
-            this.deviceBindingSource.DataSource = this.databaseDataSet1;
-            // 
-            // deviceTableAdapter
-            // 
-            this.deviceTableAdapter.ClearBeforeFill = true;
-            // 
-            // databaseDataSet2
-            // 
-            this.databaseDataSet2.DataSetName = "DatabaseDataSet2";
-            this.databaseDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // databaseDataSet2BindingSource
-            // 
-            this.databaseDataSet2BindingSource.DataSource = this.databaseDataSet2;
-            this.databaseDataSet2BindingSource.Position = 0;
-            // 
-            // deviceBindingSource2
-            // 
-            this.deviceBindingSource2.DataMember = "Device";
-            this.deviceBindingSource2.DataSource = this.databaseDataSet2;
-            // 
-            // deviceTableAdapter1
-            // 
-            this.deviceTableAdapter1.ClearBeforeFill = true;
             // 
             // deviceidDataGridViewTextBoxColumn
             // 
@@ -516,6 +486,82 @@
             this.deviceoverridegroupiconDataGridViewCheckBoxColumn.HeaderText = "device_override_group_icon";
             this.deviceoverridegroupiconDataGridViewCheckBoxColumn.Name = "deviceoverridegroupiconDataGridViewCheckBoxColumn";
             // 
+            // deviceBindingSource2
+            // 
+            this.deviceBindingSource2.DataMember = "Device";
+            this.deviceBindingSource2.DataSource = this.databaseDataSet2;
+            // 
+            // databaseDataSet2
+            // 
+            this.databaseDataSet2.DataSetName = "DatabaseDataSet2";
+            this.databaseDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // addEditBtn
+            // 
+            this.addEditBtn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.addEditBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.addEditBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.addEditBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.addEditBtn.BorderRadius = 0;
+            this.addEditBtn.ButtonText = "Edit";
+            this.addEditBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addEditBtn.DisabledColor = System.Drawing.Color.Gray;
+            this.addEditBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addEditBtn.Iconcolor = System.Drawing.Color.Transparent;
+            this.addEditBtn.Iconimage = ((System.Drawing.Image)(resources.GetObject("addEditBtn.Iconimage")));
+            this.addEditBtn.Iconimage_right = null;
+            this.addEditBtn.Iconimage_right_Selected = null;
+            this.addEditBtn.Iconimage_Selected = null;
+            this.addEditBtn.IconMarginLeft = 0;
+            this.addEditBtn.IconMarginRight = 0;
+            this.addEditBtn.IconRightVisible = true;
+            this.addEditBtn.IconRightZoom = 0D;
+            this.addEditBtn.IconVisible = true;
+            this.addEditBtn.IconZoom = 90D;
+            this.addEditBtn.IsTab = false;
+            this.addEditBtn.Location = new System.Drawing.Point(302, 437);
+            this.addEditBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.addEditBtn.Name = "addEditBtn";
+            this.addEditBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.addEditBtn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.addEditBtn.OnHoverTextColor = System.Drawing.Color.White;
+            this.addEditBtn.selected = false;
+            this.addEditBtn.Size = new System.Drawing.Size(152, 45);
+            this.addEditBtn.TabIndex = 29;
+            this.addEditBtn.Text = "Edit";
+            this.addEditBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.addEditBtn.Textcolor = System.Drawing.Color.White;
+            this.addEditBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addEditBtn.Click += new System.EventHandler(this.insertBtn_Click);
+            // 
+            // deviceBindingSource1
+            // 
+            this.deviceBindingSource1.DataMember = "Device";
+            this.deviceBindingSource1.DataSource = this.databaseDataSet1;
+            // 
+            // databaseDataSet1
+            // 
+            this.databaseDataSet1.DataSetName = "DatabaseDataSet1";
+            this.databaseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // deviceBindingSource
+            // 
+            this.deviceBindingSource.DataMember = "Device";
+            this.deviceBindingSource.DataSource = this.databaseDataSet1;
+            // 
+            // deviceTableAdapter
+            // 
+            this.deviceTableAdapter.ClearBeforeFill = true;
+            // 
+            // databaseDataSet2BindingSource
+            // 
+            this.databaseDataSet2BindingSource.DataSource = this.databaseDataSet2;
+            this.databaseDataSet2BindingSource.Position = 0;
+            // 
+            // deviceTableAdapter1
+            // 
+            this.deviceTableAdapter1.ClearBeforeFill = true;
+            // 
             // createUser1
             // 
             this.createUser1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
@@ -524,6 +570,7 @@
             this.createUser1.Name = "createUser1";
             this.createUser1.Size = new System.Drawing.Size(767, 716);
             this.createUser1.TabIndex = 28;
+            this.createUser1.Load += new System.EventHandler(this.createUser1_Load);
             // 
             // viewDevices
             // 
@@ -548,12 +595,12 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet2BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -593,6 +640,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn deviceinfoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn devicepictureDataGridViewImageColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn deviceoverridegroupiconDataGridViewCheckBoxColumn;
+        private Bunifu.Framework.UI.BunifuFlatButton createBtn;
     }
 }
 

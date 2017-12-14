@@ -167,7 +167,7 @@
             // 
             // groupsBtn
             // 
-            this.groupsBtn.Activecolor = System.Drawing.Color.DarkOrchid;
+            this.groupsBtn.Activecolor = System.Drawing.Color.Orange;
             this.groupsBtn.BackColor = System.Drawing.Color.Transparent;
             this.groupsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupsBtn.BorderRadius = 0;
@@ -191,7 +191,7 @@
             this.groupsBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupsBtn.Name = "groupsBtn";
             this.groupsBtn.Normalcolor = System.Drawing.Color.Transparent;
-            this.groupsBtn.OnHovercolor = System.Drawing.Color.DarkOrchid;
+            this.groupsBtn.OnHovercolor = System.Drawing.Color.Orange;
             this.groupsBtn.OnHoverTextColor = System.Drawing.Color.White;
             this.groupsBtn.selected = false;
             this.groupsBtn.Size = new System.Drawing.Size(281, 48);
@@ -203,7 +203,7 @@
             // 
             // usersBtn
             // 
-            this.usersBtn.Activecolor = System.Drawing.Color.DarkOrchid;
+            this.usersBtn.Activecolor = System.Drawing.Color.Orange;
             this.usersBtn.BackColor = System.Drawing.Color.Transparent;
             this.usersBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.usersBtn.BorderRadius = 0;
@@ -227,7 +227,7 @@
             this.usersBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.usersBtn.Name = "usersBtn";
             this.usersBtn.Normalcolor = System.Drawing.Color.Transparent;
-            this.usersBtn.OnHovercolor = System.Drawing.Color.DarkOrchid;
+            this.usersBtn.OnHovercolor = System.Drawing.Color.Orange;
             this.usersBtn.OnHoverTextColor = System.Drawing.Color.White;
             this.usersBtn.selected = false;
             this.usersBtn.Size = new System.Drawing.Size(281, 48);
@@ -240,7 +240,7 @@
             // 
             // adminBtn1
             // 
-            this.adminBtn1.Activecolor = System.Drawing.Color.DarkOrchid;
+            this.adminBtn1.Activecolor = System.Drawing.Color.Orange;
             this.adminBtn1.BackColor = System.Drawing.Color.Transparent;
             this.adminBtn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.adminBtn1.BorderRadius = 0;
@@ -264,7 +264,7 @@
             this.adminBtn1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.adminBtn1.Name = "adminBtn1";
             this.adminBtn1.Normalcolor = System.Drawing.Color.Transparent;
-            this.adminBtn1.OnHovercolor = System.Drawing.Color.DarkOrchid;
+            this.adminBtn1.OnHovercolor = System.Drawing.Color.Orange;
             this.adminBtn1.OnHoverTextColor = System.Drawing.Color.White;
             this.adminBtn1.selected = false;
             this.adminBtn1.Size = new System.Drawing.Size(281, 48);

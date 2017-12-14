@@ -13,6 +13,8 @@ namespace WindowsFormsApp1
 {
     public partial class createUser : UserControl
     {
+        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\omarb\source\repos\indoor-positioning-system2\Gradproject\WindowsFormsApp1\Database.mdf;Integrated Security=True");
+
 
         public createUser()
         {
@@ -47,6 +49,20 @@ namespace WindowsFormsApp1
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void createBtn2_Click(object sender, EventArgs e)
+        {
+            connection.Open();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "insert into Device(device_name,device_bluetooth_address) values('" + name1.Text + "','" + mac.Text + "')";
+            cmd.ExecuteNonQuery();
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.SendToBack();
         }
     }
 }

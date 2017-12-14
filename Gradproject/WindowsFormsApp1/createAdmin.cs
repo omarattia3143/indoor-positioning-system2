@@ -54,6 +54,8 @@ namespace WindowsFormsApp1
 
         private void createAdmin_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseDataSet2.Admin' table. You can move, or remove it, as needed.
+            this.adminTableAdapter1.Fill(this.databaseDataSet2.Admin);
             display_data();
         }
 
