@@ -433,8 +433,10 @@
             this.datagrid.Location = new System.Drawing.Point(12, 74);
             this.datagrid.Name = "datagrid";
             this.datagrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.datagrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagrid.Size = new System.Drawing.Size(743, 343);
             this.datagrid.TabIndex = 28;
+            this.datagrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_CellContentClick);
             this.datagrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_CellContentClick);
             // 
             // deviceidDataGridViewTextBoxColumn

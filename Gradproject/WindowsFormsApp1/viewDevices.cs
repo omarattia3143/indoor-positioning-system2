@@ -161,9 +161,18 @@ namespace WindowsFormsApp1
             connection.Close();
         }
 
-        private void datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public void datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex >= 0)
+            {
+                //gets a collection that contains all the rows
+                DataGridViewRow row = this.datagrid.Rows[e.RowIndex];
+                //populate the textbox from specific value of the coordinates of column and row.
+                createUser1.nameTextbox.Text = row.Cells[1].Value.ToString();
+                createUser1.macTextbox.Text = row.Cells[2].Value.ToString();
+                createUser1.groupDropList.Text = row.Cells[4].Value.ToString();
+                createUser1.descriptionBox.Text = row.Cells[5].Value.ToString();
+            }
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
@@ -173,6 +182,9 @@ namespace WindowsFormsApp1
 
         private void createBtn_Click(object sender, EventArgs e)
         {
+            createUser1.nameTextbox.Text = "";
+            createUser1.macTextbox.Text = "";
+            createUser1.descriptionBox.Text = "";
             panel3.SendToBack();
             createUser1.BringToFront();
         }

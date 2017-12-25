@@ -56,13 +56,18 @@ namespace WindowsFormsApp1
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into Device(device_name,device_bluetooth_address) values('" + name1.Text + "','" + mac.Text + "')";
+            cmd.CommandText = "insert into Device(device_name,device_bluetooth_address) values('" + nameTextbox.Text + "','" + macTextbox.Text + "')";
             cmd.ExecuteNonQuery();
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.SendToBack();
+        }
+
+        private void nameTextbox_OnValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -34,18 +34,18 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.mac = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.name1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.macTextbox = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.nameTextbox = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupDropList = new Bunifu.Framework.UI.BunifuDropdown();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.descriptionBox = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.avatar = new System.Windows.Forms.PictureBox();
+            this.cancelBtn = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.insertBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.insertBtn = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.cancelBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
@@ -64,8 +64,8 @@
             // 
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.mac);
-            this.panel2.Controls.Add(this.name1);
+            this.panel2.Controls.Add(this.macTextbox);
+            this.panel2.Controls.Add(this.nameTextbox);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.groupDropList);
             this.panel2.Controls.Add(this.label5);
@@ -103,47 +103,48 @@
             this.label4.TabIndex = 26;
             this.label4.Text = "Bluetooth MAC";
             // 
-            // mac
+            // macTextbox
             // 
-            this.mac.AccessibleDescription = "";
-            this.mac.AccessibleName = "";
-            this.mac.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.mac.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.mac.ForeColor = System.Drawing.Color.White;
-            this.mac.HintForeColor = System.Drawing.Color.White;
-            this.mac.HintText = "";
-            this.mac.isPassword = false;
-            this.mac.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.mac.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.mac.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.mac.LineThickness = 3;
-            this.mac.Location = new System.Drawing.Point(228, 253);
-            this.mac.Margin = new System.Windows.Forms.Padding(4);
-            this.mac.Name = "mac";
-            this.mac.Size = new System.Drawing.Size(199, 33);
-            this.mac.TabIndex = 25;
-            this.mac.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.macTextbox.AccessibleDescription = "";
+            this.macTextbox.AccessibleName = "";
+            this.macTextbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.macTextbox.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.macTextbox.ForeColor = System.Drawing.Color.White;
+            this.macTextbox.HintForeColor = System.Drawing.Color.White;
+            this.macTextbox.HintText = "";
+            this.macTextbox.isPassword = false;
+            this.macTextbox.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.macTextbox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.macTextbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.macTextbox.LineThickness = 3;
+            this.macTextbox.Location = new System.Drawing.Point(228, 253);
+            this.macTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.macTextbox.Name = "macTextbox";
+            this.macTextbox.Size = new System.Drawing.Size(199, 33);
+            this.macTextbox.TabIndex = 25;
+            this.macTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // name1
+            // nameTextbox
             // 
-            this.name1.AccessibleDescription = "";
-            this.name1.AccessibleName = "";
-            this.name1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.name1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.name1.ForeColor = System.Drawing.Color.White;
-            this.name1.HintForeColor = System.Drawing.Color.White;
-            this.name1.HintText = "";
-            this.name1.isPassword = false;
-            this.name1.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.name1.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.name1.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.name1.LineThickness = 3;
-            this.name1.Location = new System.Drawing.Point(228, 183);
-            this.name1.Margin = new System.Windows.Forms.Padding(4);
-            this.name1.Name = "name1";
-            this.name1.Size = new System.Drawing.Size(199, 33);
-            this.name1.TabIndex = 21;
-            this.name1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.nameTextbox.AccessibleDescription = "";
+            this.nameTextbox.AccessibleName = "";
+            this.nameTextbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nameTextbox.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.nameTextbox.ForeColor = System.Drawing.Color.White;
+            this.nameTextbox.HintForeColor = System.Drawing.Color.White;
+            this.nameTextbox.HintText = "";
+            this.nameTextbox.isPassword = false;
+            this.nameTextbox.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.nameTextbox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.nameTextbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.nameTextbox.LineThickness = 3;
+            this.nameTextbox.Location = new System.Drawing.Point(228, 183);
+            this.nameTextbox.Margin = new System.Windows.Forms.Padding(4);
+            this.nameTextbox.Name = "nameTextbox";
+            this.nameTextbox.Size = new System.Drawing.Size(199, 33);
+            this.nameTextbox.TabIndex = 21;
+            this.nameTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.nameTextbox.OnValueChanged += new System.EventHandler(this.nameTextbox_OnValueChanged);
             // 
             // label2
             // 
@@ -230,17 +231,43 @@
             this.avatar.TabIndex = 31;
             this.avatar.TabStop = false;
             // 
-            // bunifuElipse1
+            // cancelBtn
             // 
-            this.bunifuElipse1.ElipseRadius = 5;
-            this.bunifuElipse1.TargetControl = this;
-            // 
-            // bunifuDragControl1
-            // 
-            this.bunifuDragControl1.Fixed = true;
-            this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = null;
-            this.bunifuDragControl1.Vertical = true;
+            this.cancelBtn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.cancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.cancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cancelBtn.BorderRadius = 0;
+            this.cancelBtn.ButtonText = "Cancel";
+            this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancelBtn.DisabledColor = System.Drawing.Color.Gray;
+            this.cancelBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelBtn.Iconcolor = System.Drawing.Color.Transparent;
+            this.cancelBtn.Iconimage = ((System.Drawing.Image)(resources.GetObject("cancelBtn.Iconimage")));
+            this.cancelBtn.Iconimage_right = null;
+            this.cancelBtn.Iconimage_right_Selected = null;
+            this.cancelBtn.Iconimage_Selected = null;
+            this.cancelBtn.IconMarginLeft = 0;
+            this.cancelBtn.IconMarginRight = 0;
+            this.cancelBtn.IconRightVisible = true;
+            this.cancelBtn.IconRightZoom = 0D;
+            this.cancelBtn.IconVisible = true;
+            this.cancelBtn.IconZoom = 90D;
+            this.cancelBtn.IsTab = false;
+            this.cancelBtn.Location = new System.Drawing.Point(191, 507);
+            this.cancelBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.cancelBtn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.cancelBtn.OnHoverTextColor = System.Drawing.Color.White;
+            this.cancelBtn.selected = false;
+            this.cancelBtn.Size = new System.Drawing.Size(152, 45);
+            this.cancelBtn.TabIndex = 29;
+            this.cancelBtn.Text = "Cancel";
+            this.cancelBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cancelBtn.Textcolor = System.Drawing.Color.White;
+            this.cancelBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // insertBtn
             // 
@@ -280,43 +307,17 @@
             this.insertBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.insertBtn.Click += new System.EventHandler(this.createBtn2_Click);
             // 
-            // cancelBtn
+            // bunifuElipse1
             // 
-            this.cancelBtn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.cancelBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.cancelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.cancelBtn.BorderRadius = 0;
-            this.cancelBtn.ButtonText = "Cancel";
-            this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cancelBtn.DisabledColor = System.Drawing.Color.Gray;
-            this.cancelBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelBtn.Iconcolor = System.Drawing.Color.Transparent;
-            this.cancelBtn.Iconimage = ((System.Drawing.Image)(resources.GetObject("cancelBtn.Iconimage")));
-            this.cancelBtn.Iconimage_right = null;
-            this.cancelBtn.Iconimage_right_Selected = null;
-            this.cancelBtn.Iconimage_Selected = null;
-            this.cancelBtn.IconMarginLeft = 0;
-            this.cancelBtn.IconMarginRight = 0;
-            this.cancelBtn.IconRightVisible = true;
-            this.cancelBtn.IconRightZoom = 0D;
-            this.cancelBtn.IconVisible = true;
-            this.cancelBtn.IconZoom = 90D;
-            this.cancelBtn.IsTab = false;
-            this.cancelBtn.Location = new System.Drawing.Point(191, 507);
-            this.cancelBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.cancelBtn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.cancelBtn.OnHoverTextColor = System.Drawing.Color.White;
-            this.cancelBtn.selected = false;
-            this.cancelBtn.Size = new System.Drawing.Size(152, 45);
-            this.cancelBtn.TabIndex = 29;
-            this.cancelBtn.Text = "Cancel";
-            this.cancelBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cancelBtn.Textcolor = System.Drawing.Color.White;
-            this.cancelBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            this.bunifuElipse1.ElipseRadius = 5;
+            this.bunifuElipse1.TargetControl = this;
+            // 
+            // bunifuDragControl1
+            // 
+            this.bunifuDragControl1.Fixed = true;
+            this.bunifuDragControl1.Horizontal = true;
+            this.bunifuDragControl1.TargetControl = null;
+            this.bunifuDragControl1.Vertical = true;
             // 
             // createUser
             // 
@@ -338,18 +339,18 @@
         private System.Windows.Forms.Panel panel1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox mac;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox name1;
         private System.Windows.Forms.Label label2;
-        private Bunifu.Framework.UI.BunifuDropdown groupDropList;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private Bunifu.Framework.UI.BunifuMetroTextbox descriptionBox;
-        private System.Windows.Forms.PictureBox avatar;
         private Bunifu.Framework.UI.BunifuFlatButton cancelBtn;
         private Bunifu.Framework.UI.BunifuFlatButton insertBtn;
+        public System.Windows.Forms.Panel panel2;
+        public Bunifu.Framework.UI.BunifuMaterialTextbox macTextbox;
+        public Bunifu.Framework.UI.BunifuMaterialTextbox nameTextbox;
+        public Bunifu.Framework.UI.BunifuDropdown groupDropList;
+        public Bunifu.Framework.UI.BunifuMetroTextbox descriptionBox;
+        public System.Windows.Forms.PictureBox avatar;
     }
 }
