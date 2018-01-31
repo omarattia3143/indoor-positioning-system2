@@ -48,7 +48,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>..\..\..\..\Downloads\Bunifu_UI_v1.5.3.dll</HintPath>
+      <HintPath>..\..\..\..\..\Downloads\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="C1.C1Flash.4, Version=4.0.20113.87, Culture=neutral, PublicKeyToken=45fc79e7d82d90d7, processorArchitecture=MSIL" />
     <Reference Include="C1.C1Report.4, Version=4.6.20133.54655, Culture=neutral, PublicKeyToken=594a0605db190bb9" />
@@ -81,6 +81,12 @@
     </Reference>
     <Reference Include="Carbon.Versioning, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Documents\packages\Carbon.Versioning.1.4.0\lib\netstandard2.0\Carbon.Versioning.dll</HintPath>
+    </Reference>
+    <Reference Include="EGIS.Controls">
+      <HintPath>..\..\..\..\..\Desktop\Semester 9\Grad I\egis_dt_4_5_7\EGIS.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="EGIS.ShapeFileLib">
+      <HintPath>..\..\..\..\..\Desktop\Semester 9\Grad I\egis_dt_4_5_7\EGIS.ShapeFileLib.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
@@ -135,6 +141,7 @@
     <Compile Include="Device.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DeviceBuddy.cs" />
     <Compile Include="Floor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -307,11 +314,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Database_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

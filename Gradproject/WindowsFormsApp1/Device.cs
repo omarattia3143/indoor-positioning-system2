@@ -11,7 +11,7 @@ namespace WindowsFormsApp1
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Device
     {
         public Device()
