@@ -13,8 +13,6 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1 {
     public partial class mapForm : Form {
-        public static double MaxZoomLevel = 10000;
-        public static double MinZoomLevel = 0.01;
         public static int IconSize = 16;
         public static double xTrial = 356, yTrial = -308;
         string Rooms = "C:\\Users\\Omar\\Desktop\\Semester 9\\Grad I\\egis_dt_4_5_7\\try shape\\QGIS\\Indoor Shape Files\\Rooms.shp";
@@ -92,11 +90,10 @@ namespace WindowsFormsApp1 {
         }
 
         private void SfMap1_ZoomLevelChanged(object sender, EventArgs e) {
-            if (sfMap1.ZoomLevel < MinZoomLevel) {
-                sfMap1.ZoomLevel = MinZoomLevel;
-            }
-            if (sfMap1.ZoomLevel > MaxZoomLevel) {
-                sfMap1.ZoomLevel = MaxZoomLevel;
+            if (sfMap1.ZoomLevel < 0.8) {
+                //sfMap1.ZoomLevel = 0.8;
+                sfMap1.ZoomToFullExtent();
+                //sfMap1.
             }
             //throw new NotImplementedException();
         }
@@ -291,25 +288,12 @@ namespace WindowsFormsApp1 {
 
         public void makeLayerVisible(int layerIndex) {
             sfMap1[layerIndex].RenderSettings.MinZoomLevel = 0f;
-            double temp = sfMap1.ZoomLevel;
             sfMap1.ZoomToFullExtent();
-            sfMap1.ZoomLevel = temp;
-            
         }
 
         public void makeLayerInvisible(int layerIndex) {
             sfMap1[layerIndex].RenderSettings.MinZoomLevel = float.MaxValue;
-            double temp = sfMap1.ZoomLevel;
             sfMap1.ZoomToFullExtent();
-            sfMap1.ZoomLevel = temp;
-        }
-
-        public bool isLayerVisible(int layerIndex) {
-            if (sfMap1[layerIndex].RenderSettings.MinZoomLevel == float.MaxValue) {
-                return false;
-            } else {
-                return true;
-            }
         }
 
         private void bunifuSlider1_ValueChanged(object sender, EventArgs e) {
@@ -422,8 +406,7 @@ namespace WindowsFormsApp1 {
         }
 
         private void RefreshButton_Click(object sender, EventArgs e) {
-            if(!isLayerVisible(2))
-                makeLayerVisible(2);
+            makeLayerVisible(2);
             myPoints.Add(getRandomPoint(sfMap1[2],2));
             sfMap1.Refresh();
         }
