@@ -13,14 +13,12 @@ namespace WindowsFormsApp1
 {
     public partial class createUser : UserControl
     {
-
         SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True");
 
 
         public createUser()
         {
             InitializeComponent();
-
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -60,7 +58,6 @@ namespace WindowsFormsApp1
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "insert into Device(device_name,device_bluetooth_address) values('" + nameTextbox.Text + "','" + macTextbox.Text + "')";
             cmd.ExecuteNonQuery();
-            connection.Close();
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -72,6 +69,5 @@ namespace WindowsFormsApp1
         {
 
         }
-
     }
 }

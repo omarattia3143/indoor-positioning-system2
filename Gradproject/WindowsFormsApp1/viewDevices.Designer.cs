@@ -52,24 +52,23 @@
             this.searchBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.deleteBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.viewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.deviceidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.devicenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.devicebluetoothaddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deviceiconDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.groupidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deviceinfoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.devicepictureDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.deviceoverridegroupiconDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.deviceBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.databaseDataSet2 = new WindowsFormsApp1.DatabaseDataSet2();
             this.addEditBtn = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.recordTableAdapter = new WindowsFormsApp1.DatabaseDataSet2TableAdapters.RecordTableAdapter();
-            this.fKdeviceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.device_BoundaryTableAdapter = new WindowsFormsApp1.DatabaseDataSet2TableAdapters.Device_BoundaryTableAdapter();
-            this.fKdevice2BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.deviceBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.databaseDataSet1 = new WindowsFormsApp1.DatabaseDataSet1();
             this.deviceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.deviceTableAdapter = new WindowsFormsApp1.DatabaseDataSet1TableAdapters.DeviceTableAdapter();
-            this.deviceBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.databaseDataSet2 = new WindowsFormsApp1.DatabaseDataSet2();
             this.databaseDataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.deviceBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.deviceTableAdapter1 = new WindowsFormsApp1.DatabaseDataSet2TableAdapters.DeviceTableAdapter();
-            this.adminTableAdapter = new WindowsFormsApp1.DatabaseDataSet2TableAdapters.AdminTableAdapter();
-            this.adminBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fKdeviceBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.deviceBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.createUser1 = new WindowsFormsApp1.createUser();
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
@@ -80,18 +79,12 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKdeviceBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKdevice2BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet2BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adminBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKdeviceBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource3)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuDragControl1
@@ -218,7 +211,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(767, 716);
             this.panel3.TabIndex = 29;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // createBtn
             // 
@@ -407,11 +399,10 @@
             // 
             // datagrid
             // 
-            this.datagrid.AllowUserToAddRows = false;
-            this.datagrid.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.datagrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.datagrid.AutoGenerateColumns = false;
             this.datagrid.BackgroundColor = System.Drawing.Color.White;
             this.datagrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.datagrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -424,6 +415,16 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.deviceidDataGridViewTextBoxColumn,
+            this.devicenameDataGridViewTextBoxColumn,
+            this.devicebluetoothaddressDataGridViewTextBoxColumn,
+            this.deviceiconDataGridViewImageColumn,
+            this.groupidDataGridViewTextBoxColumn,
+            this.deviceinfoDataGridViewTextBoxColumn,
+            this.devicepictureDataGridViewImageColumn,
+            this.deviceoverridegroupiconDataGridViewCheckBoxColumn});
+            this.datagrid.DataSource = this.deviceBindingSource2;
             this.datagrid.DoubleBuffered = true;
             this.datagrid.EnableHeadersVisualStyles = false;
             this.datagrid.GridColor = System.Drawing.Color.Black;
@@ -431,13 +432,71 @@
             this.datagrid.HeaderForeColor = System.Drawing.Color.White;
             this.datagrid.Location = new System.Drawing.Point(12, 74);
             this.datagrid.Name = "datagrid";
-            this.datagrid.ReadOnly = true;
             this.datagrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.datagrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagrid.Size = new System.Drawing.Size(743, 343);
             this.datagrid.TabIndex = 28;
             this.datagrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_CellContentClick);
             this.datagrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagrid_CellContentClick);
+            // 
+            // deviceidDataGridViewTextBoxColumn
+            // 
+            this.deviceidDataGridViewTextBoxColumn.DataPropertyName = "device_id";
+            this.deviceidDataGridViewTextBoxColumn.HeaderText = "device_id";
+            this.deviceidDataGridViewTextBoxColumn.Name = "deviceidDataGridViewTextBoxColumn";
+            this.deviceidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // devicenameDataGridViewTextBoxColumn
+            // 
+            this.devicenameDataGridViewTextBoxColumn.DataPropertyName = "device_name";
+            this.devicenameDataGridViewTextBoxColumn.HeaderText = "device_name";
+            this.devicenameDataGridViewTextBoxColumn.Name = "devicenameDataGridViewTextBoxColumn";
+            // 
+            // devicebluetoothaddressDataGridViewTextBoxColumn
+            // 
+            this.devicebluetoothaddressDataGridViewTextBoxColumn.DataPropertyName = "device_bluetooth_address";
+            this.devicebluetoothaddressDataGridViewTextBoxColumn.HeaderText = "device_bluetooth_address";
+            this.devicebluetoothaddressDataGridViewTextBoxColumn.Name = "devicebluetoothaddressDataGridViewTextBoxColumn";
+            // 
+            // deviceiconDataGridViewImageColumn
+            // 
+            this.deviceiconDataGridViewImageColumn.DataPropertyName = "device_icon";
+            this.deviceiconDataGridViewImageColumn.HeaderText = "device_icon";
+            this.deviceiconDataGridViewImageColumn.Name = "deviceiconDataGridViewImageColumn";
+            // 
+            // groupidDataGridViewTextBoxColumn
+            // 
+            this.groupidDataGridViewTextBoxColumn.DataPropertyName = "group_id";
+            this.groupidDataGridViewTextBoxColumn.HeaderText = "group_id";
+            this.groupidDataGridViewTextBoxColumn.Name = "groupidDataGridViewTextBoxColumn";
+            // 
+            // deviceinfoDataGridViewTextBoxColumn
+            // 
+            this.deviceinfoDataGridViewTextBoxColumn.DataPropertyName = "device_info";
+            this.deviceinfoDataGridViewTextBoxColumn.HeaderText = "device_info";
+            this.deviceinfoDataGridViewTextBoxColumn.Name = "deviceinfoDataGridViewTextBoxColumn";
+            // 
+            // devicepictureDataGridViewImageColumn
+            // 
+            this.devicepictureDataGridViewImageColumn.DataPropertyName = "device_picture";
+            this.devicepictureDataGridViewImageColumn.HeaderText = "device_picture";
+            this.devicepictureDataGridViewImageColumn.Name = "devicepictureDataGridViewImageColumn";
+            // 
+            // deviceoverridegroupiconDataGridViewCheckBoxColumn
+            // 
+            this.deviceoverridegroupiconDataGridViewCheckBoxColumn.DataPropertyName = "device_override_group_icon";
+            this.deviceoverridegroupiconDataGridViewCheckBoxColumn.HeaderText = "device_override_group_icon";
+            this.deviceoverridegroupiconDataGridViewCheckBoxColumn.Name = "deviceoverridegroupiconDataGridViewCheckBoxColumn";
+            // 
+            // deviceBindingSource2
+            // 
+            this.deviceBindingSource2.DataMember = "Device";
+            this.deviceBindingSource2.DataSource = this.databaseDataSet2;
+            // 
+            // databaseDataSet2
+            // 
+            this.databaseDataSet2.DataSetName = "DatabaseDataSet2";
+            this.databaseDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // addEditBtn
             // 
@@ -477,21 +536,10 @@
             this.addEditBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addEditBtn.Click += new System.EventHandler(this.insertBtn_Click);
             // 
-            // recordTableAdapter
+            // deviceBindingSource1
             // 
-            this.recordTableAdapter.ClearBeforeFill = true;
-            // 
-            // fKdeviceBindingSource
-            // 
-            this.fKdeviceBindingSource.DataMember = "FK_device";
-            // 
-            // device_BoundaryTableAdapter
-            // 
-            this.device_BoundaryTableAdapter.ClearBeforeFill = true;
-            // 
-            // fKdevice2BindingSource
-            // 
-            this.fKdevice2BindingSource.DataMember = "FK_device2";
+            this.deviceBindingSource1.DataMember = "Device";
+            this.deviceBindingSource1.DataSource = this.databaseDataSet1;
             // 
             // databaseDataSet1
             // 
@@ -507,48 +555,14 @@
             // 
             this.deviceTableAdapter.ClearBeforeFill = true;
             // 
-            // deviceBindingSource1
-            // 
-            this.deviceBindingSource1.DataMember = "Device";
-            this.deviceBindingSource1.DataSource = this.databaseDataSet1;
-            // 
-            // databaseDataSet2
-            // 
-            this.databaseDataSet2.DataSetName = "DatabaseDataSet2";
-            this.databaseDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // databaseDataSet2BindingSource
             // 
             this.databaseDataSet2BindingSource.DataSource = this.databaseDataSet2;
             this.databaseDataSet2BindingSource.Position = 0;
             // 
-            // deviceBindingSource2
-            // 
-            this.deviceBindingSource2.DataMember = "Device";
-            this.deviceBindingSource2.DataSource = this.databaseDataSet2;
-            // 
             // deviceTableAdapter1
             // 
             this.deviceTableAdapter1.ClearBeforeFill = true;
-            // 
-            // adminTableAdapter
-            // 
-            this.adminTableAdapter.ClearBeforeFill = true;
-            // 
-            // adminBindingSource
-            // 
-            this.adminBindingSource.DataMember = "Admin";
-            this.adminBindingSource.DataSource = this.databaseDataSet2BindingSource;
-            // 
-            // fKdeviceBindingSource1
-            // 
-            this.fKdeviceBindingSource1.DataMember = "FK_device";
-            this.fKdeviceBindingSource1.DataSource = this.deviceBindingSource2;
-            // 
-            // deviceBindingSource3
-            // 
-            this.deviceBindingSource3.DataMember = "Device";
-            this.deviceBindingSource3.DataSource = this.databaseDataSet2BindingSource;
             // 
             // createUser1
             // 
@@ -583,18 +597,12 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.viewBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKdeviceBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKdevice2BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet2BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.adminBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fKdeviceBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -609,6 +617,9 @@
         private Bunifu.Framework.UI.BunifuImageButton minimize;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private DatabaseDataSet1 databaseDataSet1;
+        private System.Windows.Forms.BindingSource deviceBindingSource;
+        private DatabaseDataSet1TableAdapters.DeviceTableAdapter deviceTableAdapter;
         private createUser createUser1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
@@ -618,24 +629,20 @@
         private Bunifu.Framework.UI.BunifuFlatButton addEditBtn;
         private Bunifu.Framework.UI.BunifuCustomDataGrid datagrid;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
-        private Bunifu.Framework.UI.BunifuFlatButton createBtn;
-        private System.Windows.Forms.BindingSource viewBindingSource;
-        private DatabaseDataSet2TableAdapters.RecordTableAdapter recordTableAdapter;
-        private System.Windows.Forms.BindingSource fKdeviceBindingSource;
-        private DatabaseDataSet2TableAdapters.Device_BoundaryTableAdapter device_BoundaryTableAdapter;
-        private System.Windows.Forms.BindingSource fKdevice2BindingSource;
-        private DatabaseDataSet1 databaseDataSet1;
-        private System.Windows.Forms.BindingSource deviceBindingSource;
-        private DatabaseDataSet1TableAdapters.DeviceTableAdapter deviceTableAdapter;
         private System.Windows.Forms.BindingSource deviceBindingSource1;
-        private DatabaseDataSet2 databaseDataSet2;
         private System.Windows.Forms.BindingSource databaseDataSet2BindingSource;
+        private DatabaseDataSet2 databaseDataSet2;
         private System.Windows.Forms.BindingSource deviceBindingSource2;
         private DatabaseDataSet2TableAdapters.DeviceTableAdapter deviceTableAdapter1;
-        private DatabaseDataSet2TableAdapters.AdminTableAdapter adminTableAdapter;
-        private System.Windows.Forms.BindingSource adminBindingSource;
-        private System.Windows.Forms.BindingSource fKdeviceBindingSource1;
-        private System.Windows.Forms.BindingSource deviceBindingSource3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deviceidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn devicenameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn devicebluetoothaddressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn deviceiconDataGridViewImageColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn groupidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deviceinfoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn devicepictureDataGridViewImageColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn deviceoverridegroupiconDataGridViewCheckBoxColumn;
+        private Bunifu.Framework.UI.BunifuFlatButton createBtn;
     }
 }
 
