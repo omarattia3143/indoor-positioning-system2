@@ -37,6 +37,7 @@
             this.macTextbox = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.nameTextbox = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label2 = new System.Windows.Forms.Label();
+            this.groupDropList = new Bunifu.Framework.UI.BunifuDropdown();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.descriptionBox = new Bunifu.Framework.UI.BunifuMetroTextbox();
@@ -45,7 +46,6 @@
             this.insertBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
@@ -62,12 +62,12 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.macTextbox);
             this.panel2.Controls.Add(this.nameTextbox);
             this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.groupDropList);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.descriptionBox);
@@ -157,6 +157,26 @@
             this.label2.Size = new System.Drawing.Size(236, 39);
             this.label2.TabIndex = 22;
             this.label2.Text = "Create a new";
+            // 
+            // groupDropList
+            // 
+            this.groupDropList.BackColor = System.Drawing.Color.Transparent;
+            this.groupDropList.BorderRadius = 3;
+            this.groupDropList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.groupDropList.DisabledColor = System.Drawing.Color.Gray;
+            this.groupDropList.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupDropList.ForeColor = System.Drawing.Color.White;
+            this.groupDropList.Items = new string[] {
+        "Security",
+        "man"};
+            this.groupDropList.Location = new System.Drawing.Point(228, 333);
+            this.groupDropList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupDropList.Name = "groupDropList";
+            this.groupDropList.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.groupDropList.onHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.groupDropList.selectedIndex = -1;
+            this.groupDropList.Size = new System.Drawing.Size(199, 43);
+            this.groupDropList.TabIndex = 33;
             // 
             // label5
             // 
@@ -299,16 +319,6 @@
             this.bunifuDragControl1.TargetControl = null;
             this.bunifuDragControl1.Vertical = true;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.comboBox1.ForeColor = System.Drawing.SystemColors.Info;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(228, 343);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(192, 21);
-            this.comboBox1.TabIndex = 33;
-            // 
             // createUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,8 +349,8 @@
         public System.Windows.Forms.Panel panel2;
         public Bunifu.Framework.UI.BunifuMaterialTextbox macTextbox;
         public Bunifu.Framework.UI.BunifuMaterialTextbox nameTextbox;
+        public Bunifu.Framework.UI.BunifuDropdown groupDropList;
         public Bunifu.Framework.UI.BunifuMetroTextbox descriptionBox;
         public System.Windows.Forms.PictureBox avatar;
-        public System.Windows.Forms.ComboBox comboBox1;
     }
 }

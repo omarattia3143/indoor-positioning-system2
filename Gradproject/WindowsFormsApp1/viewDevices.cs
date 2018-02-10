@@ -17,7 +17,6 @@ namespace WindowsFormsApp1
         public viewDevices()
         {
             InitializeComponent();
-            display_data();
         }
 
         public void display_data()
@@ -25,7 +24,7 @@ namespace WindowsFormsApp1
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select Device.device_name,Device.device_bluetooth_address,Device.device_icon,Device.device_info,Device.device_picture,Groups.group_name from Device inner join Groups on Device.group_id = Groups.group_id";
+            cmd.CommandText = "Select * from Device";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -119,30 +118,11 @@ namespace WindowsFormsApp1
 
         private void viewDevices_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'databaseDataSet3.View' table. You can move, or remove it, as needed.
-            // TODO: This line of code loads data into the 'databaseDataSet2.Admin' table. You can move, or remove it, as needed.
-            this.adminTableAdapter.Fill(this.databaseDataSet2.Admin);
-            // TODO: This line of code loads data into the 'databaseDataSet2._Device_Boundary' table. You can move, or remove it, as needed.
-            this.device_BoundaryTableAdapter.Fill(this.databaseDataSet2._Device_Boundary);
-            // TODO: This line of code loads data into the 'databaseDataSet2.Record' table. You can move, or remove it, as needed.
-            this.recordTableAdapter.Fill(this.databaseDataSet2.Record);
             // TODO: This line of code loads data into the 'databaseDataSet2.Device' table. You can move, or remove it, as needed.
             this.deviceTableAdapter1.Fill(this.databaseDataSet2.Device);
             // TODO: This line of code loads data into the 'databaseDataSet1.Device' table. You can move, or remove it, as needed.
-            //  this.deviceTableAdapter.Fill(this.databaseDataSet1.Device);
+          //  this.deviceTableAdapter.Fill(this.databaseDataSet1.Device);
 
-            /////////////////////////////////DROP LIST CODE
-
-            connection.Open();
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Device inner join Groups on Device.group_id = Groups.group_id";
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                createUser1.comboBox1.Items.Add(reader["group_name"].ToString());
-            }
-            connection.Close();
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
@@ -172,7 +152,7 @@ namespace WindowsFormsApp1
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Device inner join Groups on Device.device_id = Groups.group_id and Device.device_name ='" + name.Text + "'";
+            cmd.CommandText = "Select * from Device where device_name='" + name.Text + "'";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -188,11 +168,10 @@ namespace WindowsFormsApp1
                 //gets a collection that contains all the rows
                 DataGridViewRow row = this.datagrid.Rows[e.RowIndex];
                 //populate the textbox from specific value of the coordinates of column and row.
-                createUser1.nameTextbox.Text = row.Cells[0].Value.ToString();
-                createUser1.macTextbox.Text = row.Cells[1].Value.ToString();
-                createUser1.descriptionBox.Text = row.Cells[3].Value.ToString();
-                createUser1.comboBox1.Text =  row.Cells[5].Value.ToString();
-
+                createUser1.nameTextbox.Text = row.Cells[1].Value.ToString();
+                createUser1.macTextbox.Text = row.Cells[2].Value.ToString();
+                createUser1.groupDropList.Text = row.Cells[4].Value.ToString();
+                createUser1.descriptionBox.Text = row.Cells[5].Value.ToString();
             }
         }
 
@@ -230,11 +209,6 @@ namespace WindowsFormsApp1
         private void createUser1_Load(object sender, EventArgs e)
         {
             
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
