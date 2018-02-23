@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>WindowsFormsApp1</RootNamespace>
     <AssemblyName>WindowsFormsApp1</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <PublishUrl>publish\</PublishUrl>
@@ -26,6 +26,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,24 +47,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>WindowsFormsApp1.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
       <HintPath>..\..\..\..\Downloads\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
-    <Reference Include="C1.C1Flash.4, Version=4.0.20113.87, Culture=neutral, PublicKeyToken=45fc79e7d82d90d7, processorArchitecture=MSIL" />
-    <Reference Include="C1.C1Report.4, Version=4.6.20133.54655, Culture=neutral, PublicKeyToken=594a0605db190bb9" />
-    <Reference Include="C1.Data.Entity.4, Version=4.0.20133.81, Culture=neutral, PublicKeyToken=291e60b76f98fb2b" />
-    <Reference Include="C1.LiveLinq.4, Version=4.0.20133.81, Culture=neutral, PublicKeyToken=28cd8b3517c57673" />
-    <Reference Include="C1.Win.C1FlexGrid.4, Version=4.6.20133.796, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Input.4, Version=4.0.20133.33326, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1List.4, Version=4.1.20133.240, Culture=neutral, PublicKeyToken=6b24f8f981dbd7bc, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Report.4, Version=4.6.20133.54655, Culture=neutral, PublicKeyToken=41780e2fc605e636, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1Sizer.4, Version=4.1.20133.79, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1SuperTooltip.4, Version=4.0.20133.132, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1TileControl.4, Version=4.0.20133.77, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1TouchToolKit.4, Version=4.0.20133.2, Culture=neutral, PublicKeyToken=5e531fc0479701e7, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.C1TrueDBGrid.4, Version=4.0.20133.61334, Culture=neutral, PublicKeyToken=75ae3fb0e2b1e0da, processorArchitecture=MSIL" />
-    <Reference Include="C1.Win.Data.Entity.4, Version=4.0.20133.81, Culture=neutral, PublicKeyToken=8ddca3e370f720ec, processorArchitecture=MSIL" />
     <Reference Include="Carbon.Data.Protection, Version=0.16.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Documents\packages\Carbon.Data.Protection.0.16.0\lib\netstandard2.0\Carbon.Data.Protection.dll</HintPath>
     </Reference>
@@ -90,6 +80,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Design" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
@@ -100,6 +91,7 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Documents\packages\System.Threading.Tasks.Extensions.4.4.0\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -127,6 +119,12 @@
     <Compile Include="Boundary.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="createUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="createUser.Designer.cs">
+      <DependentUpon>createUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseDataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -134,6 +132,12 @@
     </Compile>
     <Compile Include="Device.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EditUser1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditUser1.Designer.cs">
+      <DependentUpon>EditUser1.cs</DependentUpon>
     </Compile>
     <Compile Include="Floor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -161,12 +165,6 @@
     </Compile>
     <Compile Include="viewDevices.Designer.cs">
       <DependentUpon>viewDevices.cs</DependentUpon>
-    </Compile>
-    <Compile Include="createUser.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="createUser.Designer.cs">
-      <DependentUpon>createUser.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -214,11 +212,14 @@
     <EmbeddedResource Include="createAdmin.resx">
       <DependentUpon>createAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="viewDevices.resx">
-      <DependentUpon>viewDevices.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="createUser.resx">
       <DependentUpon>createUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditUser1.resx">
+      <DependentUpon>EditUser1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="viewDevices.resx">
+      <DependentUpon>viewDevices.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mapForm.resx">
       <DependentUpon>mapForm.cs</DependentUpon>

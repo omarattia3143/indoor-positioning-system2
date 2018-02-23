@@ -106,7 +106,7 @@ namespace WindowsFormsApp1
 
         private void usersBtn_Click(object sender, EventArgs e)
         {
-            createUser ss = new createUser();
+            viewDevices ss = new viewDevices();
             Form fc = Application.OpenForms["createUser"];
             if (fc != null)
                 fc.Close();

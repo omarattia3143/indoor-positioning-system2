@@ -13,7 +13,8 @@ namespace WindowsFormsApp1
 {
     public partial class viewDevices : Form
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True");
+        public static string editName;
+        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\omarb\source\repos\indoor-positioning-system2\Gradproject\WindowsFormsApp1\Database.mdf;Integrated Security=True");
         public viewDevices()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace WindowsFormsApp1
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select Device.device_name,Device.device_bluetooth_address,Device.device_icon,Device.device_info,Device.device_picture,Groups.group_name from Device inner join Groups on Device.group_id = Groups.group_id";
+            cmd.CommandText = "select * from Device";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -132,7 +133,7 @@ namespace WindowsFormsApp1
             //  this.deviceTableAdapter.Fill(this.databaseDataSet1.Device);
 
             /////////////////////////////////DROP LIST CODE
-
+            editName = name.Text;
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
@@ -140,7 +141,7 @@ namespace WindowsFormsApp1
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                createUser1.comboBox1.Items.Add(reader["group_name"].ToString());
+                //CreateUser1.comboBox1.Items.Add(reader["group_name"].ToString());
             }
             connection.Close();
         }
@@ -164,7 +165,7 @@ namespace WindowsFormsApp1
         private void insertBtn_Click(object sender, EventArgs e)
         {
             panel3.SendToBack();
-            createUser1.BringToFront();
+            createUser11.BringToFront();
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
@@ -172,7 +173,7 @@ namespace WindowsFormsApp1
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Device inner join Groups on Device.device_id = Groups.group_id and Device.device_name ='" + name.Text + "'";
+            cmd.CommandText = "select * from Device where device_name = '" + name.Text + "'";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -188,10 +189,11 @@ namespace WindowsFormsApp1
                 //gets a collection that contains all the rows
                 DataGridViewRow row = this.datagrid.Rows[e.RowIndex];
                 //populate the textbox from specific value of the coordinates of column and row.
-                createUser1.nameTextbox.Text = row.Cells[0].Value.ToString();
-                createUser1.macTextbox.Text = row.Cells[1].Value.ToString();
-                createUser1.descriptionBox.Text = row.Cells[3].Value.ToString();
-                createUser1.comboBox1.Text =  row.Cells[5].Value.ToString();
+                createUser11.nameTextbox.Text = row.Cells[0].Value.ToString();
+                name.Text = row.Cells[1].Value.ToString();
+                createUser11.macTextbox.Text = row.Cells[1].Value.ToString();
+                createUser11.descriptionBox.Text = row.Cells[3].Value.ToString();
+                createUser11.comboBox1.Text = row.Cells[5].Value.ToString();
 
             }
         }
@@ -203,11 +205,11 @@ namespace WindowsFormsApp1
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            createUser1.nameTextbox.Text = "";
-            createUser1.macTextbox.Text = "";
-            createUser1.descriptionBox.Text = "";
+            createUser11.nameTextbox.Text = "";
+            createUser11.macTextbox.Text = "";
+            createUser11.descriptionBox.Text = "";
             panel3.SendToBack();
-            createUser1.BringToFront();
+            createUser11.BringToFront();
         }
 
         private void name_KeyDown(object sender, KeyEventArgs e)
@@ -233,6 +235,11 @@ namespace WindowsFormsApp1
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void name_OnValueChanged(object sender, EventArgs e)
         {
 
         }
