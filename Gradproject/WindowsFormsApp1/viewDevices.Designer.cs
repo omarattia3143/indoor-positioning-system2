@@ -33,8 +33,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(viewDevices));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.header = new System.Windows.Forms.Panel();
             this.minimize = new Bunifu.Framework.UI.BunifuImageButton();
@@ -45,6 +45,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.editUser11 = new WindowsFormsApp1.EditUser1();
             this.datagrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.deviceidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.devicenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +65,7 @@
             this.searchBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.deleteBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.addEditBtn = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.createUser11 = new WindowsFormsApp1.CreateUser1();
             this.recordTableAdapter = new WindowsFormsApp1.DatabaseDataSet2TableAdapters.RecordTableAdapter();
             this.fKdeviceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.device_BoundaryTableAdapter = new WindowsFormsApp1.DatabaseDataSet2TableAdapters.Device_BoundaryTableAdapter();
@@ -79,7 +81,6 @@
             this.adminBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.fKdeviceBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.deviceBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.createUser11 = new WindowsFormsApp1.CreateUser1();
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.image1)).BeginInit();
@@ -223,6 +224,7 @@
             this.panel3.Controls.Add(this.deleteBtn);
             this.panel3.Controls.Add(this.addEditBtn);
             this.panel3.Controls.Add(this.createUser11);
+            this.panel3.Controls.Add(this.editUser11);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
@@ -230,26 +232,35 @@
             this.panel3.TabIndex = 29;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
+            // editUser11
+            // 
+            this.editUser11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.editUser11.Location = new System.Drawing.Point(3, 0);
+            this.editUser11.Name = "editUser11";
+            this.editUser11.Size = new System.Drawing.Size(767, 716);
+            this.editUser11.TabIndex = 37;
+            this.editUser11.Load += new System.EventHandler(this.editUser11_Load);
+            // 
             // datagrid
             // 
             this.datagrid.AllowUserToAddRows = false;
             this.datagrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.datagrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.datagrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.datagrid.AutoGenerateColumns = false;
             this.datagrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.datagrid.BackgroundColor = System.Drawing.Color.White;
             this.datagrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.datagrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datagrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.deviceidDataGridViewTextBoxColumn,
@@ -584,6 +595,14 @@
             this.addEditBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addEditBtn.Click += new System.EventHandler(this.insertBtn_Click);
             // 
+            // createUser11
+            // 
+            this.createUser11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.createUser11.Location = new System.Drawing.Point(3, 0);
+            this.createUser11.Name = "createUser11";
+            this.createUser11.Size = new System.Drawing.Size(767, 716);
+            this.createUser11.TabIndex = 36;
+            // 
             // recordTableAdapter
             // 
             this.recordTableAdapter.ClearBeforeFill = true;
@@ -646,14 +665,6 @@
             // 
             this.deviceBindingSource3.DataMember = "Device";
             this.deviceBindingSource3.DataSource = this.databaseDataSet2BindingSource;
-            // 
-            // createUser11
-            // 
-            this.createUser11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.createUser11.Location = new System.Drawing.Point(3, 0);
-            this.createUser11.Name = "createUser11";
-            this.createUser11.Size = new System.Drawing.Size(767, 716);
-            this.createUser11.TabIndex = 36;
             // 
             // viewDevices
             // 
@@ -742,6 +753,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn deviceoverridegroupiconDataGridViewCheckBoxColumn;
         public Bunifu.Framework.UI.BunifuMaterialTextbox name;
         private CreateUser1 createUser11;
+        private EditUser1 editUser11;
     }
 }
 

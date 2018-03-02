@@ -43,7 +43,7 @@
             this.descriptionBox = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.avatar = new System.Windows.Forms.PictureBox();
             this.cancelBtn = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.insertBtn = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.updateBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.panel1.SuspendLayout();
@@ -73,7 +73,7 @@
             this.panel2.Controls.Add(this.descriptionBox);
             this.panel2.Controls.Add(this.avatar);
             this.panel2.Controls.Add(this.cancelBtn);
-            this.panel2.Controls.Add(this.insertBtn);
+            this.panel2.Controls.Add(this.updateBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -261,43 +261,43 @@
             this.cancelBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
-            // insertBtn
+            // updateBtn
             // 
-            this.insertBtn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
-            this.insertBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.insertBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.insertBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.insertBtn.BorderRadius = 0;
-            this.insertBtn.ButtonText = "Insert";
-            this.insertBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.insertBtn.DisabledColor = System.Drawing.Color.Gray;
-            this.insertBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.insertBtn.Iconcolor = System.Drawing.Color.Transparent;
-            this.insertBtn.Iconimage = ((System.Drawing.Image)(resources.GetObject("insertBtn.Iconimage")));
-            this.insertBtn.Iconimage_right = null;
-            this.insertBtn.Iconimage_right_Selected = null;
-            this.insertBtn.Iconimage_Selected = null;
-            this.insertBtn.IconMarginLeft = 0;
-            this.insertBtn.IconMarginRight = 0;
-            this.insertBtn.IconRightVisible = true;
-            this.insertBtn.IconRightZoom = 0D;
-            this.insertBtn.IconVisible = true;
-            this.insertBtn.IconZoom = 90D;
-            this.insertBtn.IsTab = false;
-            this.insertBtn.Location = new System.Drawing.Point(33, 507);
-            this.insertBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.insertBtn.Name = "insertBtn";
-            this.insertBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.insertBtn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
-            this.insertBtn.OnHoverTextColor = System.Drawing.Color.White;
-            this.insertBtn.selected = false;
-            this.insertBtn.Size = new System.Drawing.Size(152, 45);
-            this.insertBtn.TabIndex = 28;
-            this.insertBtn.Text = "Insert";
-            this.insertBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.insertBtn.Textcolor = System.Drawing.Color.White;
-            this.insertBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.insertBtn.Click += new System.EventHandler(this.createBtn2_Click);
+            this.updateBtn.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(139)))), ((int)(((byte)(87)))));
+            this.updateBtn.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.updateBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.updateBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.updateBtn.BorderRadius = 0;
+            this.updateBtn.ButtonText = "Update";
+            this.updateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.updateBtn.DisabledColor = System.Drawing.Color.Gray;
+            this.updateBtn.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateBtn.Iconcolor = System.Drawing.Color.Transparent;
+            this.updateBtn.Iconimage = ((System.Drawing.Image)(resources.GetObject("updateBtn.Iconimage")));
+            this.updateBtn.Iconimage_right = null;
+            this.updateBtn.Iconimage_right_Selected = null;
+            this.updateBtn.Iconimage_Selected = null;
+            this.updateBtn.IconMarginLeft = 0;
+            this.updateBtn.IconMarginRight = 0;
+            this.updateBtn.IconRightVisible = true;
+            this.updateBtn.IconRightZoom = 0D;
+            this.updateBtn.IconVisible = true;
+            this.updateBtn.IconZoom = 90D;
+            this.updateBtn.IsTab = false;
+            this.updateBtn.Location = new System.Drawing.Point(33, 507);
+            this.updateBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.updateBtn.Name = "updateBtn";
+            this.updateBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.updateBtn.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(129)))), ((int)(((byte)(77)))));
+            this.updateBtn.OnHoverTextColor = System.Drawing.Color.White;
+            this.updateBtn.selected = false;
+            this.updateBtn.Size = new System.Drawing.Size(152, 45);
+            this.updateBtn.TabIndex = 28;
+            this.updateBtn.Text = "Update";
+            this.updateBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.updateBtn.Textcolor = System.Drawing.Color.White;
+            this.updateBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.updateBtn.Click += new System.EventHandler(this.createBtn2_Click);
             // 
             // bunifuElipse1
             // 
@@ -337,7 +337,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private Bunifu.Framework.UI.BunifuFlatButton cancelBtn;
-        private Bunifu.Framework.UI.BunifuFlatButton insertBtn;
+        private Bunifu.Framework.UI.BunifuFlatButton updateBtn;
         public System.Windows.Forms.Panel panel2;
         public Bunifu.Framework.UI.BunifuMaterialTextbox macTextbox;
         public Bunifu.Framework.UI.BunifuMaterialTextbox nameTextbox;

@@ -19,13 +19,12 @@ namespace WindowsFormsApp1
         private string fileName;
         private List<Device> list;
 
-         string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\omarb\source\repos\indoor-positioning-system2\Gradproject\WindowsFormsApp1\Database.mdf;Integrated Security=True";
+        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\omarb\source\repos\indoor-positioning-system2\Gradproject\WindowsFormsApp1\Database.mdf;Integrated Security=True");
 
 
         public EditUser1()
         {
             InitializeComponent();
-
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -60,22 +59,19 @@ namespace WindowsFormsApp1
 
         private void createBtn2_Click(object sender, EventArgs e)
         {
-
-            string commandString = "select * from Device where device_name = '" + viewDevices.editName + "'";
-
-            using (var connection = new SqlConnection(connectionString))
-            {
-                using (var command = new SqlCommand(commandString, connection))
-                {
-                    using (var reader = command.ExecuteReader())
-                    {
-                        // Use the reader
-                    }
-                }
-            }
+            byte[] imageBt = null;
+            FileStream fstream = new FileStream(this.fileName, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fstream);
+            imageBt = br.ReadBytes((int)fstream.Length);
 
 
-
+            connection.Open();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.Parameters.Add(new SqlParameter("@IMG", imageBt));
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "update Device set device_name='"+nameTextbox.Text+"',device_bluetooth_address='"+macTextbox.Text+"',device_picture=@IMG where device_name='"+nameTextbox.Text+"'";
+            cmd.ExecuteNonQuery();
+            connection.Close();
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)

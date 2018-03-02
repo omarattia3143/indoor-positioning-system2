@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -165,7 +166,13 @@ namespace WindowsFormsApp1
         private void insertBtn_Click(object sender, EventArgs e)
         {
             panel3.SendToBack();
-            createUser11.BringToFront();
+            editUser11.BringToFront();
+
+            //EditUser1 ss = new EditUser1();
+            //Form fc = Application.OpenForms["EditUser1"];
+            //if (fc != null)
+            //    fc.Close();
+            //ss.Show();
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
@@ -189,11 +196,25 @@ namespace WindowsFormsApp1
                 //gets a collection that contains all the rows
                 DataGridViewRow row = this.datagrid.Rows[e.RowIndex];
                 //populate the textbox from specific value of the coordinates of column and row.
-                createUser11.nameTextbox.Text = row.Cells[0].Value.ToString();
+                editUser11.nameTextbox.Text = row.Cells[1].Value.ToString();
                 name.Text = row.Cells[1].Value.ToString();
-                createUser11.macTextbox.Text = row.Cells[1].Value.ToString();
-                createUser11.descriptionBox.Text = row.Cells[3].Value.ToString();
-                createUser11.comboBox1.Text = row.Cells[5].Value.ToString();
+                editUser11.macTextbox.Text = row.Cells[2].Value.ToString();
+                editUser11.descriptionBox.Text = row.Cells[3].Value.ToString();
+                editUser11.comboBox1.Text = row.Cells[5].Value.ToString();
+                try
+                {
+                    byte[] image = (byte[])(row.Cells[6].Value);
+                    MemoryStream ms = new MemoryStream(image);
+                    editUser11.avatar.Image = Image.FromStream(ms);
+                }
+                catch
+                {
+                    editUser11.avatar.Image = null;
+
+                }
+
+              
+                    
 
             }
         }
@@ -240,6 +261,11 @@ namespace WindowsFormsApp1
         }
 
         private void name_OnValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editUser11_Load(object sender, EventArgs e)
         {
 
         }
