@@ -44,11 +44,17 @@
             this.avatar = new System.Windows.Forms.PictureBox();
             this.cancelBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.insertBtn = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.databaseDataSet2 = new WindowsFormsApp1.DatabaseDataSet2();
+            this.deviceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.deviceTableAdapter = new WindowsFormsApp1.DatabaseDataSet2TableAdapters.DeviceTableAdapter();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -74,6 +80,7 @@
             this.panel2.Controls.Add(this.avatar);
             this.panel2.Controls.Add(this.cancelBtn);
             this.panel2.Controls.Add(this.insertBtn);
+            this.panel2.Controls.Add(this.listView1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -245,7 +252,7 @@
             this.cancelBtn.IconVisible = true;
             this.cancelBtn.IconZoom = 90D;
             this.cancelBtn.IsTab = false;
-            this.cancelBtn.Location = new System.Drawing.Point(191, 507);
+            this.cancelBtn.Location = new System.Drawing.Point(390, 667);
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -283,7 +290,7 @@
             this.insertBtn.IconVisible = true;
             this.insertBtn.IconZoom = 90D;
             this.insertBtn.IsTab = false;
-            this.insertBtn.Location = new System.Drawing.Point(33, 507);
+            this.insertBtn.Location = new System.Drawing.Point(186, 667);
             this.insertBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.insertBtn.Name = "insertBtn";
             this.insertBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -298,6 +305,15 @@
             this.insertBtn.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.insertBtn.Click += new System.EventHandler(this.createBtn2_Click);
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(33, 426);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(333, 198);
+            this.listView1.TabIndex = 34;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
             // bunifuElipse1
             // 
             this.bunifuElipse1.ElipseRadius = 5;
@@ -309,6 +325,20 @@
             this.bunifuDragControl1.Horizontal = true;
             this.bunifuDragControl1.TargetControl = null;
             this.bunifuDragControl1.Vertical = true;
+            // 
+            // databaseDataSet2
+            // 
+            this.databaseDataSet2.DataSetName = "DatabaseDataSet2";
+            this.databaseDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // deviceBindingSource
+            // 
+            this.deviceBindingSource.DataMember = "Device";
+            this.deviceBindingSource.DataSource = this.databaseDataSet2;
+            // 
+            // deviceTableAdapter
+            // 
+            this.deviceTableAdapter.ClearBeforeFill = true;
             // 
             // CreateUser1
             // 
@@ -322,6 +352,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -330,18 +362,22 @@
         private System.Windows.Forms.Panel panel1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
+        public System.Windows.Forms.Panel panel2;
+        public System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
+        public Bunifu.Framework.UI.BunifuMaterialTextbox macTextbox;
+        public Bunifu.Framework.UI.BunifuMaterialTextbox nameTextbox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
-        private Bunifu.Framework.UI.BunifuFlatButton cancelBtn;
-        private Bunifu.Framework.UI.BunifuFlatButton insertBtn;
-        public System.Windows.Forms.Panel panel2;
-        public Bunifu.Framework.UI.BunifuMaterialTextbox macTextbox;
-        public Bunifu.Framework.UI.BunifuMaterialTextbox nameTextbox;
         public Bunifu.Framework.UI.BunifuMetroTextbox descriptionBox;
         public System.Windows.Forms.PictureBox avatar;
-        public System.Windows.Forms.ComboBox comboBox1;
+        private Bunifu.Framework.UI.BunifuFlatButton cancelBtn;
+        private Bunifu.Framework.UI.BunifuFlatButton insertBtn;
+        private DatabaseDataSet2 databaseDataSet2;
+        private System.Windows.Forms.BindingSource deviceBindingSource;
+        private DatabaseDataSet2TableAdapters.DeviceTableAdapter deviceTableAdapter;
+        private System.Windows.Forms.ListView listView1;
     }
 }

@@ -17,7 +17,8 @@ namespace WindowsFormsApp1
     public partial class CreateUser1 : UserControl
     {
         private string fileName;
-        private List<Device> list;
+        private string[] paths = { };
+
 
         SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\omarb\source\repos\indoor-positioning-system2\Gradproject\WindowsFormsApp1\Database.mdf;Integrated Security=True");
 
@@ -25,6 +26,44 @@ namespace WindowsFormsApp1
         public CreateUser1()
         {
             InitializeComponent();
+            CreateUser1_Load();
+            populate();
+
+        }
+
+        private void CreateUser1_Load()
+        {
+            listView1.View = View.Details;
+
+            listView1.Columns.Add("Icon Name", 250);
+
+
+        }
+
+        private void populate()
+        {
+            ImageList images = new ImageList();
+            images.ImageSize = new Size(50,50);
+
+            paths = Directory.GetFiles("C:/Users/omarb/Desktop/asd");
+
+            try
+            {
+                foreach (string path in paths)
+                {
+                    images.Images.Add(Image.FromFile(path));
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+            listView1.SmallImageList = images;
+            listView1.Items.Add("1",0);
+            listView1.Items.Add("2", 1);
+            listView1.Items.Add("3", 2);
+            listView1.Items.Add("4", 3);
 
         }
 
@@ -114,5 +153,9 @@ namespace WindowsFormsApp1
 
         }
 
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
