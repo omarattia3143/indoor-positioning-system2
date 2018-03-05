@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
-            BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation5 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mapForm));
+            BunifuAnimatorNS.Animation animation6 = new BunifuAnimatorNS.Animation();
             this.bunifuColorTransition1 = new Bunifu.Framework.UI.BunifuColorTransition(this.components);
             this.header = new System.Windows.Forms.Panel();
             this.bunifuImageButton4 = new Bunifu.Framework.UI.BunifuImageButton();
@@ -41,12 +41,10 @@
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.mapPanel = new System.Windows.Forms.Panel();
-            this.map = new System.Windows.Forms.PictureBox();
+            this.sfMap1 = new EGIS.Controls.SFMap();
             this.loginForm1 = new WindowsFormsApp1.loginForm();
-            this.history_Map1 = new WindowsFormsApp1.History_Map();
             this.logoAnimator = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.sideMenu = new System.Windows.Forms.Panel();
-            this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.setBoundaries = new Bunifu.Framework.UI.BunifuFlatButton();
             this.adminTools = new Bunifu.Framework.UI.BunifuFlatButton();
             this.customize_view = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -59,13 +57,13 @@
             this.logo = new System.Windows.Forms.PictureBox();
             this.panelAnimator = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.RefreshButton = new System.Windows.Forms.Button();
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.mapPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.map)).BeginInit();
             this.sideMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.search_image)).BeginInit();
@@ -186,9 +184,8 @@
             // 
             // mapPanel
             // 
-            this.mapPanel.Controls.Add(this.map);
+            this.mapPanel.Controls.Add(this.sfMap1);
             this.mapPanel.Controls.Add(this.loginForm1);
-            this.mapPanel.Controls.Add(this.history_Map1);
             this.panelAnimator.SetDecoration(this.mapPanel, BunifuAnimatorNS.DecorationType.None);
             this.logoAnimator.SetDecoration(this.mapPanel, BunifuAnimatorNS.DecorationType.None);
             this.mapPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -197,20 +194,25 @@
             this.mapPanel.Size = new System.Drawing.Size(680, 520);
             this.mapPanel.TabIndex = 2;
             // 
-            // map
+            // sfMap1
             // 
-            this.map.BackColor = System.Drawing.Color.White;
-            this.logoAnimator.SetDecoration(this.map, BunifuAnimatorNS.DecorationType.None);
-            this.panelAnimator.SetDecoration(this.map, BunifuAnimatorNS.DecorationType.None);
-            this.map.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.map.Image = global::WindowsFormsApp1.Properties.Resources.Akoakoa_Plan_Main;
-            this.map.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.map.Location = new System.Drawing.Point(0, 0);
-            this.map.Name = "map";
-            this.map.Size = new System.Drawing.Size(680, 520);
-            this.map.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.map.TabIndex = 0;
-            this.map.TabStop = false;
+            this.sfMap1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.sfMap1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sfMap1.CentrePoint2D = ((EGIS.ShapeFileLib.PointD)(resources.GetObject("sfMap1.CentrePoint2D")));
+            this.panelAnimator.SetDecoration(this.sfMap1, BunifuAnimatorNS.DecorationType.None);
+            this.logoAnimator.SetDecoration(this.sfMap1, BunifuAnimatorNS.DecorationType.None);
+            this.sfMap1.Location = new System.Drawing.Point(0, 0);
+            this.sfMap1.MapBackColor = System.Drawing.SystemColors.Control;
+            this.sfMap1.Name = "sfMap1";
+            this.sfMap1.PanSelectMode = EGIS.Controls.PanSelectMode.Pan;
+            this.sfMap1.RenderQuality = EGIS.ShapeFileLib.RenderQuality.Auto;
+            this.sfMap1.Size = new System.Drawing.Size(677, 517);
+            this.sfMap1.TabIndex = 2;
+            this.sfMap1.UseMercatorProjection = false;
+            this.sfMap1.ZoomLevel = 1D;
+            this.sfMap1.ZoomToSelectedExtentWhenCtrlKeydown = false;
             // 
             // loginForm1
             // 
@@ -224,41 +226,31 @@
             this.loginForm1.TabIndex = 1;
             this.loginForm1.Load += new System.EventHandler(this.loginForm1_Load);
             // 
-            // history_Map1
-            // 
-            this.history_Map1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.logoAnimator.SetDecoration(this.history_Map1, BunifuAnimatorNS.DecorationType.None);
-            this.panelAnimator.SetDecoration(this.history_Map1, BunifuAnimatorNS.DecorationType.None);
-            this.history_Map1.Location = new System.Drawing.Point(0, -2);
-            this.history_Map1.Name = "history_Map1";
-            this.history_Map1.Size = new System.Drawing.Size(680, 519);
-            this.history_Map1.TabIndex = 3;
-            // 
             // logoAnimator
             // 
             this.logoAnimator.AnimationType = BunifuAnimatorNS.AnimationType.ScaleAndRotate;
             this.logoAnimator.Cursor = null;
-            animation2.AnimateOnlyDifferences = true;
-            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
-            animation2.LeafCoeff = 0F;
-            animation2.MaxTime = 1F;
-            animation2.MinTime = 0F;
-            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
-            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
-            animation2.MosaicSize = 0;
-            animation2.Padding = new System.Windows.Forms.Padding(30);
-            animation2.RotateCoeff = 0.5F;
-            animation2.RotateLimit = 0.2F;
-            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
-            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
-            animation2.TimeCoeff = 0F;
-            animation2.TransparencyCoeff = 0F;
-            this.logoAnimator.DefaultAnimation = animation2;
+            animation5.AnimateOnlyDifferences = true;
+            animation5.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.BlindCoeff")));
+            animation5.LeafCoeff = 0F;
+            animation5.MaxTime = 1F;
+            animation5.MinTime = 0F;
+            animation5.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicCoeff")));
+            animation5.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicShift")));
+            animation5.MosaicSize = 0;
+            animation5.Padding = new System.Windows.Forms.Padding(30);
+            animation5.RotateCoeff = 0.5F;
+            animation5.RotateLimit = 0.2F;
+            animation5.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.ScaleCoeff")));
+            animation5.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.SlideCoeff")));
+            animation5.TimeCoeff = 0F;
+            animation5.TransparencyCoeff = 0F;
+            this.logoAnimator.DefaultAnimation = animation5;
             // 
             // sideMenu
             // 
             this.sideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.sideMenu.Controls.Add(this.bunifuFlatButton1);
+            this.sideMenu.Controls.Add(this.RefreshButton);
             this.sideMenu.Controls.Add(this.setBoundaries);
             this.sideMenu.Controls.Add(this.adminTools);
             this.sideMenu.Controls.Add(this.customize_view);
@@ -277,43 +269,6 @@
             this.sideMenu.Size = new System.Drawing.Size(292, 520);
             this.sideMenu.TabIndex = 0;
             this.sideMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // bunifuFlatButton1
-            // 
-            this.bunifuFlatButton1.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.bunifuFlatButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.bunifuFlatButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuFlatButton1.BorderRadius = 0;
-            this.bunifuFlatButton1.ButtonText = "    History";
-            this.bunifuFlatButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelAnimator.SetDecoration(this.bunifuFlatButton1, BunifuAnimatorNS.DecorationType.None);
-            this.logoAnimator.SetDecoration(this.bunifuFlatButton1, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuFlatButton1.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuFlatButton1.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton1.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton1.Iconimage")));
-            this.bunifuFlatButton1.Iconimage_right = null;
-            this.bunifuFlatButton1.Iconimage_right_Selected = null;
-            this.bunifuFlatButton1.Iconimage_Selected = null;
-            this.bunifuFlatButton1.IconMarginLeft = 0;
-            this.bunifuFlatButton1.IconMarginRight = 0;
-            this.bunifuFlatButton1.IconRightVisible = true;
-            this.bunifuFlatButton1.IconRightZoom = 0D;
-            this.bunifuFlatButton1.IconVisible = true;
-            this.bunifuFlatButton1.IconZoom = 80D;
-            this.bunifuFlatButton1.IsTab = true;
-            this.bunifuFlatButton1.Location = new System.Drawing.Point(3, 462);
-            this.bunifuFlatButton1.Name = "bunifuFlatButton1";
-            this.bunifuFlatButton1.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
-            this.bunifuFlatButton1.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.bunifuFlatButton1.OnHoverTextColor = System.Drawing.Color.White;
-            this.bunifuFlatButton1.selected = false;
-            this.bunifuFlatButton1.Size = new System.Drawing.Size(277, 48);
-            this.bunifuFlatButton1.TabIndex = 10;
-            this.bunifuFlatButton1.Text = "    History";
-            this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton1.Click += new System.EventHandler(this.bunifuFlatButton1_Click_2);
             // 
             // setBoundaries
             // 
@@ -574,29 +529,41 @@
             // 
             this.panelAnimator.AnimationType = BunifuAnimatorNS.AnimationType.Particles;
             this.panelAnimator.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 1;
-            animation1.Padding = new System.Windows.Forms.Padding(100, 50, 100, 150);
-            animation1.RotateCoeff = 0F;
-            animation1.RotateLimit = 0F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 2F;
-            animation1.TransparencyCoeff = 0F;
-            this.panelAnimator.DefaultAnimation = animation1;
+            animation6.AnimateOnlyDifferences = true;
+            animation6.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.BlindCoeff")));
+            animation6.LeafCoeff = 0F;
+            animation6.MaxTime = 1F;
+            animation6.MinTime = 0F;
+            animation6.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.MosaicCoeff")));
+            animation6.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation6.MosaicShift")));
+            animation6.MosaicSize = 1;
+            animation6.Padding = new System.Windows.Forms.Padding(100, 50, 100, 150);
+            animation6.RotateCoeff = 0F;
+            animation6.RotateLimit = 0F;
+            animation6.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.ScaleCoeff")));
+            animation6.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation6.SlideCoeff")));
+            animation6.TimeCoeff = 2F;
+            animation6.TransparencyCoeff = 0F;
+            this.panelAnimator.DefaultAnimation = animation6;
             // 
             // bunifuElipse1
             // 
             this.bunifuElipse1.ElipseRadius = 5;
             this.bunifuElipse1.TargetControl = this;
             // 
-            // MainInterface_final1
+            // RefreshButton
+            // 
+            this.logoAnimator.SetDecoration(this.RefreshButton, BunifuAnimatorNS.DecorationType.None);
+            this.panelAnimator.SetDecoration(this.RefreshButton, BunifuAnimatorNS.DecorationType.None);
+            this.RefreshButton.Location = new System.Drawing.Point(108, 130);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(75, 23);
+            this.RefreshButton.TabIndex = 10;
+            this.RefreshButton.Text = "Refresh";
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
+            // 
+            // mapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -608,7 +575,7 @@
             this.logoAnimator.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.panelAnimator.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "MainInterface_final1";
+            this.Name = "mapForm";
             this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.header.ResumeLayout(false);
@@ -618,7 +585,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.mapPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.map)).EndInit();
             this.sideMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.search_image)).EndInit();
@@ -639,7 +605,6 @@
         private System.Windows.Forms.Panel mapPanel;
         private BunifuAnimatorNS.BunifuTransition panelAnimator;
         private BunifuAnimatorNS.BunifuTransition logoAnimator;
-        private System.Windows.Forms.PictureBox map;
         private System.Windows.Forms.Panel sideMenu;
         private Bunifu.Framework.UI.BunifuFlatButton adminTools;
         private Bunifu.Framework.UI.BunifuFlatButton customize_view;
@@ -655,8 +620,8 @@
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton3;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton4;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
-        public History_Map history_Map1;
+        private EGIS.Controls.SFMap sfMap1;
+        private System.Windows.Forms.Button RefreshButton;
     }
 }
 
