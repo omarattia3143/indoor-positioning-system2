@@ -145,6 +145,24 @@
     <Compile Include="Group.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="History.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="History.Designer.cs">
+      <DependentUpon>History.cs</DependentUpon>
+    </Compile>
+    <Compile Include="History_Map.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="History_Map.Designer.cs">
+      <DependentUpon>History_Map.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mapform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mapform.Designer.cs">
+      <DependentUpon>mapform.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model1.cs" />
     <Compile Include="Model11.cs">
       <AutoGen>True</AutoGen>
@@ -175,12 +193,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="mapForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="mapForm.Designer.cs">
-      <DependentUpon>mapForm.cs</DependentUpon>
     </Compile>
     <Compile Include="loginForm.cs">
       <SubType>UserControl</SubType>
@@ -218,11 +230,17 @@
     <EmbeddedResource Include="EditUser1.resx">
       <DependentUpon>EditUser1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="History.resx">
+      <DependentUpon>History.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="History_Map.resx">
+      <DependentUpon>History_Map.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mapform.resx">
+      <DependentUpon>mapform.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="viewDevices.resx">
       <DependentUpon>viewDevices.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="mapForm.resx">
-      <DependentUpon>mapForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="loginForm.resx">
       <DependentUpon>loginForm.cs</DependentUpon>
@@ -322,6 +340,8 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model11.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\icons8-businessman-480.png" />
+    <None Include="Resources\icons8-businessman-16.png" />
     <None Include="Resources\facebook-avatar.jpg" />
   </ItemGroup>
   <ItemGroup>

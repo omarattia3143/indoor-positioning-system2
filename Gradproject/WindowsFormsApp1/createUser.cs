@@ -17,7 +17,8 @@ namespace WindowsFormsApp1
     public partial class CreateUser1 : UserControl
     {
         private string fileName;
-        private List<Device> list;
+        private string fileName_icon;
+        private string fileName_picture;
 
         SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\omarb\source\repos\indoor-positioning-system2\Gradproject\WindowsFormsApp1\Database.mdf;Integrated Security=True");
 
@@ -58,20 +59,25 @@ namespace WindowsFormsApp1
 
         }
 
-        private void createBtn2_Click(object sender, EventArgs e)
-        {            // save image
+
+
+        private byte[] saveImage(string fileName)
+        {
             byte[] imageBt = null;
             FileStream fstream = new FileStream(this.fileName, FileMode.Open, FileAccess.Read);
             BinaryReader br = new BinaryReader(fstream);
-            imageBt = br.ReadBytes((int)fstream.Length);
+           return imageBt = br.ReadBytes((int)fstream.Length);
+        }
 
-
+        private void createBtn2_Click(object sender, EventArgs e)
+        {
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
-            cmd.Parameters.Add(new SqlParameter("@IMG", imageBt));
+            cmd.Parameters.Add(new SqlParameter("@IMG", saveImage(fileName_picture)));
+            cmd.Parameters.Add(new SqlParameter("@ICON", saveImage(fileName_icon)));
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into Device(device_name,device_bluetooth_address,device_picture) values('" + nameTextbox.Text +
-                              "','" + macTextbox.Text + "',@IMG)";
+            cmd.CommandText = "insert into Device(device_name,device_bluetooth_address,device_picture,device_icon,device_info,device_override_group_icon) values('" + nameTextbox.Text +
+                              "','" + macTextbox.Text + "',@IMG,@ICON,'"+descriptionBox.Text+"','"+checkbox.Checked+"')";
             cmd.ExecuteNonQuery();
             connection.Close();
 
@@ -100,6 +106,21 @@ namespace WindowsFormsApp1
         }
         private void avatar_Click(object sender, EventArgs e)
         {
+            fileName_picture = spawnImage(avatar);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            fileName_icon = spawnImage(icon);
+        }
+
+        private string spawnImage(PictureBox imagebox)
+        {
             using (FileDialog ofd = new OpenFileDialog()
             {
                 Filter = "JPG Files(*.jpg)|*.jpg|PNG Files(*.png)|*.png|All Files(*.*)|*.*",
@@ -109,10 +130,9 @@ namespace WindowsFormsApp1
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     fileName = ofd.FileName;
-                    avatar.Image = Image.FromFile(fileName);
+                    imagebox.Image = Image.FromFile(fileName);
                 }
-
+            return fileName;
         }
-
     }
 }

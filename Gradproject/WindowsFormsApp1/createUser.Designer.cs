@@ -33,6 +33,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.checkbox = new Bunifu.Framework.UI.BunifuCheckbox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.icon = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.macTextbox = new Bunifu.Framework.UI.BunifuMaterialTextbox();
@@ -48,6 +55,7 @@
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +71,13 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.checkbox);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.icon);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.macTextbox);
@@ -82,13 +97,95 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.comboBox1.ForeColor = System.Drawing.SystemColors.Info;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(228, 343);
+            this.comboBox1.Location = new System.Drawing.Point(228, 340);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(192, 21);
-            this.comboBox1.TabIndex = 33;
+            this.comboBox1.Size = new System.Drawing.Size(181, 21);
+            this.comboBox1.TabIndex = 41;
+            // 
+            // checkbox
+            // 
+            this.checkbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.checkbox.ChechedOffColor = System.Drawing.Color.White;
+            this.checkbox.Checked = true;
+            this.checkbox.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.checkbox.ForeColor = System.Drawing.Color.White;
+            this.checkbox.Location = new System.Drawing.Point(311, 404);
+            this.checkbox.Name = "checkbox";
+            this.checkbox.Size = new System.Drawing.Size(20, 20);
+            this.checkbox.TabIndex = 40;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.Control;
+            this.label10.Location = new System.Drawing.Point(29, 404);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(173, 24);
+            this.label10.TabIndex = 39;
+            this.label10.Text = "Picture Override";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.label9.Location = new System.Drawing.Point(648, 404);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(87, 39);
+            this.label9.TabIndex = 38;
+            this.label9.Text = "Icon";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.label8.Location = new System.Drawing.Point(643, 95);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(124, 39);
+            this.label8.TabIndex = 37;
+            this.label8.Text = "Picture";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.Control;
+            this.label7.Location = new System.Drawing.Point(485, 95);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(168, 39);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "Personnal";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.Control;
+            this.label6.Location = new System.Drawing.Point(563, 404);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(90, 39);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Map";
+            // 
+            // icon
+            // 
+            this.icon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.icon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(204)))), ((int)(((byte)(223)))));
+            this.icon.Image = global::WindowsFormsApp1.Properties.Resources.icons8_businessman_480;
+            this.icon.Location = new System.Drawing.Point(594, 466);
+            this.icon.Name = "icon";
+            this.icon.Size = new System.Drawing.Size(120, 123);
+            this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.icon.TabIndex = 34;
+            this.icon.TabStop = false;
+            this.icon.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
@@ -130,7 +227,7 @@
             this.macTextbox.Location = new System.Drawing.Point(228, 253);
             this.macTextbox.Margin = new System.Windows.Forms.Padding(4);
             this.macTextbox.Name = "macTextbox";
-            this.macTextbox.Size = new System.Drawing.Size(199, 33);
+            this.macTextbox.Size = new System.Drawing.Size(242, 21);
             this.macTextbox.TabIndex = 25;
             this.macTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -151,7 +248,7 @@
             this.nameTextbox.Location = new System.Drawing.Point(228, 183);
             this.nameTextbox.Margin = new System.Windows.Forms.Padding(4);
             this.nameTextbox.Name = "nameTextbox";
-            this.nameTextbox.Size = new System.Drawing.Size(199, 33);
+            this.nameTextbox.Size = new System.Drawing.Size(242, 24);
             this.nameTextbox.TabIndex = 21;
             this.nameTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.nameTextbox.OnValueChanged += new System.EventHandler(this.nameTextbox_OnValueChanged);
@@ -173,7 +270,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(39, 343);
+            this.label5.Location = new System.Drawing.Point(29, 340);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 24);
             this.label5.TabIndex = 27;
@@ -201,12 +298,12 @@
             this.descriptionBox.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.descriptionBox.ForeColor = System.Drawing.Color.White;
             this.descriptionBox.isPassword = false;
-            this.descriptionBox.Location = new System.Drawing.Point(393, 426);
+            this.descriptionBox.Location = new System.Drawing.Point(33, 466);
             this.descriptionBox.Margin = new System.Windows.Forms.Padding(4);
             this.descriptionBox.Name = "descriptionBox";
-            this.descriptionBox.Size = new System.Drawing.Size(370, 198);
+            this.descriptionBox.Size = new System.Drawing.Size(370, 136);
             this.descriptionBox.TabIndex = 32;
-            this.descriptionBox.Text = "Description...";
+            this.descriptionBox.Text = "Additional info...";
             this.descriptionBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // avatar
@@ -214,7 +311,7 @@
             this.avatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.avatar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(204)))), ((int)(((byte)(223)))));
             this.avatar.Image = global::WindowsFormsApp1.Properties.Resources.facebook_avatar;
-            this.avatar.Location = new System.Drawing.Point(542, 95);
+            this.avatar.Location = new System.Drawing.Point(555, 157);
             this.avatar.Name = "avatar";
             this.avatar.Size = new System.Drawing.Size(209, 207);
             this.avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -245,7 +342,7 @@
             this.cancelBtn.IconVisible = true;
             this.cancelBtn.IconZoom = 90D;
             this.cancelBtn.IsTab = false;
-            this.cancelBtn.Location = new System.Drawing.Point(191, 507);
+            this.cancelBtn.Location = new System.Drawing.Point(403, 652);
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -283,7 +380,7 @@
             this.insertBtn.IconVisible = true;
             this.insertBtn.IconZoom = 90D;
             this.insertBtn.IsTab = false;
-            this.insertBtn.Location = new System.Drawing.Point(33, 507);
+            this.insertBtn.Location = new System.Drawing.Point(199, 652);
             this.insertBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.insertBtn.Name = "insertBtn";
             this.insertBtn.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -321,6 +418,7 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).EndInit();
             this.ResumeLayout(false);
 
@@ -342,6 +440,13 @@
         public Bunifu.Framework.UI.BunifuMaterialTextbox nameTextbox;
         public Bunifu.Framework.UI.BunifuMetroTextbox descriptionBox;
         public System.Windows.Forms.PictureBox avatar;
-        public System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.PictureBox icon;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label10;
+        private Bunifu.Framework.UI.BunifuCheckbox checkbox;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

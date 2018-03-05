@@ -24,16 +24,21 @@ namespace WindowsFormsApp1
 
         public void display_data()
         {
-            connection.Open();
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Device";
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter sda = new SqlDataAdapter(cmd);
-            sda.Fill(dt);
-            datagrid.DataSource = dt;
-            connection.Close();
+            try {
+                connection.Open();
+                SqlCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "select * from Device";
+                cmd.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                sda.Fill(dt);
+                datagrid.DataSource = dt;
+                connection.Close();
+            }catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
 
@@ -167,12 +172,6 @@ namespace WindowsFormsApp1
         {
             panel3.SendToBack();
             editUser11.BringToFront();
-
-            //EditUser1 ss = new EditUser1();
-            //Form fc = Application.OpenForms["EditUser1"];
-            //if (fc != null)
-            //    fc.Close();
-            //ss.Show();
         }
 
         private void searchBtn_Click(object sender, EventArgs e)
