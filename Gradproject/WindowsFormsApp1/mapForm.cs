@@ -26,7 +26,7 @@ namespace WindowsFormsApp1 {
         string Beacons = "C:\\Users\\Omar\\Desktop\\Semester 9\\Grad I\\egis_dt_4_5_7\\try shape\\QGIS\\Indoor Shape Files\\Beacons.shp";
         string Coverage = "C:\\Users\\Omar\\Desktop\\Semester 9\\Grad I\\egis_dt_4_5_7\\try shape\\QGIS\\Indoor Shape Files\\Coverage.shp";
         //string Coverage = "C:\\Users\\Omar\\Desktop\\Semester 9\\Grad I\\egis_dt_4_5_7\\try shape\\QGIS\\cliped\\AllCoverage.shp";
-        string Bluetooth = "C:\\Users\\Omar\\Desktop\\Semester 9\\Grad I\\egis_dt_4_5_7\\try shape\\QGIS\\bticon.png";
+        string Bluetooth = "C:/Users/omarb/Desktop/bticon.png";
         int moveCloserToTheOriginBy = 10;
         List<PointF> myPoints;
 
@@ -40,6 +40,7 @@ namespace WindowsFormsApp1 {
             sfMap1.Paint += SfMap1_Paint;
             sfMap1.MouseClick += SfMap1_MouseClick;
             var dbContext = new DatabaseEntities1(); //class derived from DbContext
+           
             var contacts = (from c in dbContext.Devices select c).ToList(); //read data
             BluetoothDevices = contacts;
             //contacts.FirstOrDefault().FirstName = "Alex"; //edit 
@@ -537,7 +538,7 @@ namespace WindowsFormsApp1 {
             sfMap1.FitToExtent(sfMap1[SelectedFloor * 3].GetActualExtent());
         }
 
-        private void bunifuFlatButton1_Click_2(object sender, EventArgs e)
+        private void bunifuFlatButton1_Click_3(object sender, EventArgs e)
         {
             History ss = new History();
             Form fc = Application.OpenForms["History"];
@@ -545,6 +546,8 @@ namespace WindowsFormsApp1 {
                 fc.Close();
             ss.Show();
         }
+
+        
 
     }
 }

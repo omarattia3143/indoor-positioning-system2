@@ -72,10 +72,19 @@
     <Reference Include="Carbon.Versioning, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Documents\packages\Carbon.Versioning.1.4.0\lib\netstandard2.0\Carbon.Versioning.dll</HintPath>
     </Reference>
+    <Reference Include="EGIS.Controls">
+      <HintPath>..\..\EGIS.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="EGIS.ShapeFileLib">
+      <HintPath>..\..\EGIS.ShapeFileLib.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="SharpCompress, Version=0.19.2.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpCompress.0.19.2\lib\net45\SharpCompress.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -119,6 +128,7 @@
     <Compile Include="Boundary.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="BuddyClasses.cs" />
     <Compile Include="createUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
