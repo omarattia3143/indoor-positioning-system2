@@ -471,8 +471,9 @@ namespace WindowsFormsApp1 {
             }
         }
 
-        private void c1ZoomPanel1_ZoomFactorChanged(object sender, EventArgs e) {
-
+        private void c1ZoomPanel1_ZoomFactorChanged(object sender, EventArgs e)
+        {
+            
         }
 
         private void c1Zoom1_ZoomFactorChanged(object sender, EventArgs e) {
@@ -493,8 +494,9 @@ namespace WindowsFormsApp1 {
             sfMap1.BringToFront();
         }
 
-        private void customize_view_Click_1(object sender, EventArgs e) {
-
+        private void customize_view_Click_1(object sender, EventArgs e)
+        {
+            
         }
 
         private void adminTools_Click(object sender, EventArgs e) {
@@ -534,5 +536,15 @@ namespace WindowsFormsApp1 {
             sfMap1.Refresh();
             sfMap1.FitToExtent(sfMap1[SelectedFloor * 3].GetActualExtent());
         }
+
+        private void bunifuFlatButton1_Click_2(object sender, EventArgs e)
+        {
+            History ss = new History();
+            Form fc = Application.OpenForms["History"];
+            if (fc != null)
+                fc.Close();
+            ss.Show();
+        }
+
     }
 }
