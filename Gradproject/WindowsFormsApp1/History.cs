@@ -112,7 +112,8 @@ namespace WindowsFormsApp1
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            history_Map1.BringToFront();
+            panel1.BringToFront();
+            history_Galal1.BringToFront();
             historypanel.SendToBack();
 
         }
