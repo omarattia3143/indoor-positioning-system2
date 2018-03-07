@@ -112,5 +112,14 @@ namespace WindowsFormsApp1
                 fc.Close();
             ss.Show();
         }
+
+        private void groupsBtn_Click(object sender, EventArgs e)
+        {
+            Group1 ss = new Group1();
+            Form fc = Application.OpenForms["Group1"];
+            if (fc != null)
+                fc.Close();
+            ss.Show();
+        }
     }
 }

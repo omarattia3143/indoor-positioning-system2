@@ -148,18 +148,7 @@ namespace WindowsFormsApp1
             // TODO: This line of code loads data into the 'databaseDataSet1.Device' table. You can move, or remove it, as needed.
             //  this.deviceTableAdapter.Fill(this.databaseDataSet1.Device);
 
-            /////////////////////////////////DROP LIST CODE
-            editName = name.Text;
-            connection.Open();
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Device inner join Groups on Device.group_id = Groups.group_id";
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                editUser2.comboBox1.Items.Add(reader["group_name"].ToString());
-            }
-            connection.Close();
+            
         }
 
         
