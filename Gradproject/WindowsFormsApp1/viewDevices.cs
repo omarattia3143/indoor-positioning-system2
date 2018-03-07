@@ -19,7 +19,9 @@ namespace WindowsFormsApp1
         public viewDevices()
         {
             InitializeComponent();
-            display_data();
+            editUser2.SendToBack();
+            createUser1.SendToBack();
+            panel3.BringToFront();
         }
 
         public void display_data()
@@ -28,7 +30,7 @@ namespace WindowsFormsApp1
                 connection.Open();
                 SqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select * from Device";
+                cmd.CommandText = "select * from DeviceGroup";
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -126,6 +128,14 @@ namespace WindowsFormsApp1
 
         private void viewDevices_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseDataSet5.DeviceGroup' table. You can move, or remove it, as needed.
+            this.deviceGroupTableAdapter3.Fill(this.databaseDataSet5.DeviceGroup);
+            // TODO: This line of code loads data into the 'databaseDataSet4.DeviceGroup' table. You can move, or remove it, as needed.
+            this.deviceGroupTableAdapter2.Fill(this.databaseDataSet4.DeviceGroup);
+            // TODO: This line of code loads data into the 'database_FINAL_Source.DeviceGroup' table. You can move, or remove it, as needed.
+            this.deviceGroupTableAdapter1.Fill(this.database_FINAL_Source.DeviceGroup);
+            // TODO: This line of code loads data into the 'databaseDataSet3.DeviceGroup' table. You can move, or remove it, as needed.
+            this.deviceGroupTableAdapter.Fill(this.databaseDataSet3.DeviceGroup);
             // TODO: This line of code loads data into the 'databaseDataSet3.View' table. You can move, or remove it, as needed.
             // TODO: This line of code loads data into the 'databaseDataSet2.Admin' table. You can move, or remove it, as needed.
             this.adminTableAdapter.Fill(this.databaseDataSet2.Admin);
@@ -147,17 +157,57 @@ namespace WindowsFormsApp1
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                //CreateUser1.comboBox1.Items.Add(reader["group_name"].ToString());
+                editUser2.comboBox1.Items.Add(reader["group_name"].ToString());
             }
             connection.Close();
         }
 
-        private void deleteBtn_Click(object sender, EventArgs e)
+        
+
+        
+
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
-            
+            display_data();
         }
 
-        private void deleteBtn_Click_1(object sender, EventArgs e)
+        
+        private void name_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                connection.Open();
+                SqlCommand cmd = connection.CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "Select * from DeviceGroup where device_name='" + name.Text + "'";
+                cmd.ExecuteNonQuery();
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                sda.Fill(dt);
+                datagrid.DataSource = dt;
+                connection.Close();
+            }
+        }
+
+
+
+
+        private void createBtn_Click_1(object sender, EventArgs e)
+        {
+            
+            panel3.SendToBack();
+            editUser2.SendToBack();
+            createUser1.BringToFront();
+        }
+
+        private void addEditBtn_Click_1(object sender, EventArgs e)
+        {
+            panel3.SendToBack();
+            editUser2.BringToFront();
+            createUser1.SendToBack();
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
         {
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
@@ -168,18 +218,12 @@ namespace WindowsFormsApp1
             display_data();
         }
 
-        private void insertBtn_Click(object sender, EventArgs e)
-        {
-            panel3.SendToBack();
-            editUser11.BringToFront();
-        }
-
         private void searchBtn_Click(object sender, EventArgs e)
         {
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from Device where device_name = '" + name.Text + "'";
+            cmd.CommandText = "select * from DeviceGroup where device_name = '" + name.Text + "'";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -188,58 +232,14 @@ namespace WindowsFormsApp1
             connection.Close();
         }
 
-        public void datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void bunifuFlatButton1_Click_2(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                //gets a collection that contains all the rows
-                DataGridViewRow row = this.datagrid.Rows[e.RowIndex];
-                //populate the textbox from specific value of the coordinates of column and row.
-                editUser11.nameTextbox.Text = row.Cells[1].Value.ToString();
-                name.Text = row.Cells[1].Value.ToString();
-                editUser11.macTextbox.Text = row.Cells[2].Value.ToString();
-                editUser11.descriptionBox.Text = row.Cells[3].Value.ToString();
-                editUser11.comboBox1.Text = row.Cells[5].Value.ToString();
-                try
-                {
-                    byte[] image = (byte[])(row.Cells[6].Value);
-                    MemoryStream ms = new MemoryStream(image);
-                    editUser11.avatar.Image = Image.FromStream(ms);
-                }
-                catch
-                {
-                    editUser11.avatar.Image = null;
-
-                }
-
-              
-                    
-
-            }
-        }
-
-        private void bunifuFlatButton1_Click(object sender, EventArgs e)
-        {
-            display_data();
-        }
-
-        private void createBtn_Click(object sender, EventArgs e)
-        {
-            createUser11.nameTextbox.Text = "";
-            createUser11.macTextbox.Text = "";
-            createUser11.descriptionBox.Text = "";
-            panel3.SendToBack();
-            createUser11.BringToFront();
-        }
-
-        private void name_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
+            try
             {
                 connection.Open();
                 SqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "Select * from Device where device_name='" + name.Text + "'";
+                cmd.CommandText = "select * from DeviceGroup";
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -247,26 +247,56 @@ namespace WindowsFormsApp1
                 datagrid.DataSource = dt;
                 connection.Close();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-        private void createUser1_Load(object sender, EventArgs e)
+        private void datagrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            if (e.RowIndex >= 0)
+            {
+                //gets a collection that contains all the rows
+                DataGridViewRow row = this.datagrid.Rows[e.RowIndex];
+                //populate the textbox from specific value of the coordinates of column and row.
+                editUser2.nameTextbox.Text = row.Cells[0].Value.ToString();
+                name.Text = row.Cells[0].Value.ToString();
+                editUser2.macTextbox.Text = row.Cells[1].Value.ToString();
+                editUser2.descriptionBox.Text = row.Cells[3].Value.ToString();
+                editUser2.comboBox1.Text = row.Cells[5].Value.ToString();
+
+                try
+                {
+                    byte[] picture = (byte[])(row.Cells[4].Value);
+                    MemoryStream ms = new MemoryStream(picture);
+                    editUser2.avatar.Image = Image.FromStream(ms);
+
+                    
+                }
+                catch
+                {
+                    editUser2.avatar.Image = null;
+
+
+                }
+                try
+                {
+
+
+                    byte[] icon = (byte[])(row.Cells[2].Value);
+                    MemoryStream mse = new MemoryStream(icon);
+                    editUser2.icon.Image = Image.FromStream(mse);
+                }
+                catch
+                {
+                    editUser2.icon.Image = null;
+
+
+                }
+
+            }
         }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void name_OnValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void editUser11_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

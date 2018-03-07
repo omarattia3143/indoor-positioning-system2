@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DatabaseDataSet4" targetNamespace="http://tempuri.org/DatabaseDataSet4.xsd" xmlns:mstns="http://tempuri.org/DatabaseDataSet4.xsd" xmlns="http://tempuri.org/DatabaseDataSet4.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DatabaseConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DatabaseConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WindowsFormsApp1.Properties.Settings.GlobalReference.Default.DatabaseConnectionString1" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DeviceGroupTableAdapter" GeneratorDataComponentClassName="DeviceGroupTableAdapter" Name="DeviceGroup" UserDataComponentName="DeviceGroupTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="DatabaseConnectionString1 (Settings)" DbObjectName="dbo.DeviceGroup" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT device_name, device_bluetooth_address, device_icon, device_info, device_picture, group_name, device_override_group_icon FROM dbo.DeviceGroup</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="device_name" DataSetColumn="device_name" />
+              <Mapping SourceColumn="device_bluetooth_address" DataSetColumn="device_bluetooth_address" />
+              <Mapping SourceColumn="device_icon" DataSetColumn="device_icon" />
+              <Mapping SourceColumn="device_info" DataSetColumn="device_info" />
+              <Mapping SourceColumn="device_picture" DataSetColumn="device_picture" />
+              <Mapping SourceColumn="group_name" DataSetColumn="group_name" />
+              <Mapping SourceColumn="device_override_group_icon" DataSetColumn="device_override_group_icon" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DatabaseDataSet4" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DatabaseDataSet4" msprop:Generator_UserDSName="DatabaseDataSet4">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DeviceGroup" msprop:Generator_TableClassName="DeviceGroupDataTable" msprop:Generator_TableVarName="tableDeviceGroup" msprop:Generator_TablePropName="DeviceGroup" msprop:Generator_RowDeletingName="DeviceGroupRowDeleting" msprop:Generator_RowChangingName="DeviceGroupRowChanging" msprop:Generator_RowEvHandlerName="DeviceGroupRowChangeEventHandler" msprop:Generator_RowDeletedName="DeviceGroupRowDeleted" msprop:Generator_UserTableName="DeviceGroup" msprop:Generator_RowChangedName="DeviceGroupRowChanged" msprop:Generator_RowEvArgName="DeviceGroupRowChangeEvent" msprop:Generator_RowClassName="DeviceGroupRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="device_name" msprop:Generator_ColumnVarNameInTable="columndevice_name" msprop:Generator_ColumnPropNameInRow="device_name" msprop:Generator_ColumnPropNameInTable="device_nameColumn" msprop:Generator_UserColumnName="device_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="device_bluetooth_address" msprop:Generator_ColumnVarNameInTable="columndevice_bluetooth_address" msprop:Generator_ColumnPropNameInRow="device_bluetooth_address" msprop:Generator_ColumnPropNameInTable="device_bluetooth_addressColumn" msprop:Generator_UserColumnName="device_bluetooth_address" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="device_icon" msprop:Generator_ColumnVarNameInTable="columndevice_icon" msprop:Generator_ColumnPropNameInRow="device_icon" msprop:Generator_ColumnPropNameInTable="device_iconColumn" msprop:Generator_UserColumnName="device_icon" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="device_info" msprop:Generator_ColumnVarNameInTable="columndevice_info" msprop:Generator_ColumnPropNameInRow="device_info" msprop:Generator_ColumnPropNameInTable="device_infoColumn" msprop:Generator_UserColumnName="device_info" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="device_picture" msprop:Generator_ColumnVarNameInTable="columndevice_picture" msprop:Generator_ColumnPropNameInRow="device_picture" msprop:Generator_ColumnPropNameInTable="device_pictureColumn" msprop:Generator_UserColumnName="device_picture" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="group_name" msprop:Generator_ColumnVarNameInTable="columngroup_name" msprop:Generator_ColumnPropNameInRow="group_name" msprop:Generator_ColumnPropNameInTable="group_nameColumn" msprop:Generator_UserColumnName="group_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="device_override_group_icon" msprop:Generator_ColumnVarNameInTable="columndevice_override_group_icon" msprop:Generator_ColumnPropNameInRow="device_override_group_icon" msprop:Generator_ColumnPropNameInTable="device_override_group_iconColumn" msprop:Generator_UserColumnName="device_override_group_icon" type="xs:boolean" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

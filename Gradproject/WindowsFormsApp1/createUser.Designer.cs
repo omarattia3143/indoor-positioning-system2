@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class CreateUser1
+    partial class CreateUser
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateUser1));
-            this.panel1 = new System.Windows.Forms.Panel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateUser));
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.checkbox = new Bunifu.Framework.UI.BunifuCheckbox();
@@ -53,20 +52,10 @@
             this.insertBtn = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(767, 716);
-            this.panel1.TabIndex = 22;
             // 
             // panel2
             // 
@@ -98,19 +87,20 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(228, 340);
+            this.comboBox1.Location = new System.Drawing.Point(213, 340);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(181, 21);
             this.comboBox1.TabIndex = 41;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             // 
             // checkbox
             // 
-            this.checkbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.checkbox.BackColor = System.Drawing.Color.White;
             this.checkbox.ChechedOffColor = System.Drawing.Color.White;
-            this.checkbox.Checked = true;
+            this.checkbox.Checked = false;
             this.checkbox.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
             this.checkbox.ForeColor = System.Drawing.Color.White;
-            this.checkbox.Location = new System.Drawing.Point(311, 404);
+            this.checkbox.Location = new System.Drawing.Point(296, 404);
             this.checkbox.Name = "checkbox";
             this.checkbox.Size = new System.Drawing.Size(20, 20);
             this.checkbox.TabIndex = 40;
@@ -120,7 +110,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.SystemColors.Control;
-            this.label10.Location = new System.Drawing.Point(29, 404);
+            this.label10.Location = new System.Drawing.Point(14, 404);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(173, 24);
             this.label10.TabIndex = 39;
@@ -132,7 +122,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.label9.Location = new System.Drawing.Point(648, 404);
+            this.label9.Location = new System.Drawing.Point(633, 404);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(87, 39);
             this.label9.TabIndex = 38;
@@ -144,7 +134,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.label8.Location = new System.Drawing.Point(643, 95);
+            this.label8.Location = new System.Drawing.Point(628, 95);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(124, 39);
             this.label8.TabIndex = 37;
@@ -156,7 +146,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(485, 95);
+            this.label7.Location = new System.Drawing.Point(470, 95);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(168, 39);
             this.label7.TabIndex = 36;
@@ -168,7 +158,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(563, 404);
+            this.label6.Location = new System.Drawing.Point(548, 404);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(90, 39);
             this.label6.TabIndex = 35;
@@ -179,7 +169,7 @@
             this.icon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.icon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(204)))), ((int)(((byte)(223)))));
             this.icon.Image = global::WindowsFormsApp1.Properties.Resources.icons8_businessman_480;
-            this.icon.Location = new System.Drawing.Point(594, 466);
+            this.icon.Location = new System.Drawing.Point(579, 466);
             this.icon.Name = "icon";
             this.icon.Size = new System.Drawing.Size(120, 123);
             this.icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -204,7 +194,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(29, 262);
+            this.label4.Location = new System.Drawing.Point(14, 262);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(166, 24);
             this.label4.TabIndex = 26;
@@ -224,7 +214,7 @@
             this.macTextbox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
             this.macTextbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
             this.macTextbox.LineThickness = 3;
-            this.macTextbox.Location = new System.Drawing.Point(228, 253);
+            this.macTextbox.Location = new System.Drawing.Point(213, 253);
             this.macTextbox.Margin = new System.Windows.Forms.Padding(4);
             this.macTextbox.Name = "macTextbox";
             this.macTextbox.Size = new System.Drawing.Size(242, 21);
@@ -245,7 +235,7 @@
             this.nameTextbox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
             this.nameTextbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
             this.nameTextbox.LineThickness = 3;
-            this.nameTextbox.Location = new System.Drawing.Point(228, 183);
+            this.nameTextbox.Location = new System.Drawing.Point(213, 183);
             this.nameTextbox.Margin = new System.Windows.Forms.Padding(4);
             this.nameTextbox.Name = "nameTextbox";
             this.nameTextbox.Size = new System.Drawing.Size(242, 24);
@@ -270,7 +260,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(29, 340);
+            this.label5.Location = new System.Drawing.Point(14, 340);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 24);
             this.label5.TabIndex = 27;
@@ -281,7 +271,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(29, 192);
+            this.label3.Location = new System.Drawing.Point(14, 192);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 24);
             this.label3.TabIndex = 24;
@@ -298,7 +288,7 @@
             this.descriptionBox.Font = new System.Drawing.Font("Century Gothic", 9.75F);
             this.descriptionBox.ForeColor = System.Drawing.Color.White;
             this.descriptionBox.isPassword = false;
-            this.descriptionBox.Location = new System.Drawing.Point(33, 466);
+            this.descriptionBox.Location = new System.Drawing.Point(18, 466);
             this.descriptionBox.Margin = new System.Windows.Forms.Padding(4);
             this.descriptionBox.Name = "descriptionBox";
             this.descriptionBox.Size = new System.Drawing.Size(370, 136);
@@ -311,7 +301,7 @@
             this.avatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.avatar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(196)))), ((int)(((byte)(204)))), ((int)(((byte)(223)))));
             this.avatar.Image = global::WindowsFormsApp1.Properties.Resources.facebook_avatar;
-            this.avatar.Location = new System.Drawing.Point(555, 157);
+            this.avatar.Location = new System.Drawing.Point(540, 157);
             this.avatar.Name = "avatar";
             this.avatar.Size = new System.Drawing.Size(209, 207);
             this.avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -407,15 +397,14 @@
             this.bunifuDragControl1.TargetControl = null;
             this.bunifuDragControl1.Vertical = true;
             // 
-            // CreateUser1
+            // CreateUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.Controls.Add(this.panel1);
-            this.Name = "CreateUser1";
+            this.Controls.Add(this.panel2);
+            this.Name = "CreateUser";
             this.Size = new System.Drawing.Size(767, 716);
-            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.icon)).EndInit();
@@ -425,7 +414,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.Label label1;
@@ -436,11 +424,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton cancelBtn;
         private Bunifu.Framework.UI.BunifuFlatButton insertBtn;
         public System.Windows.Forms.Panel panel2;
-        public Bunifu.Framework.UI.BunifuMaterialTextbox macTextbox;
-        public Bunifu.Framework.UI.BunifuMaterialTextbox nameTextbox;
-        public Bunifu.Framework.UI.BunifuMetroTextbox descriptionBox;
-        public System.Windows.Forms.PictureBox avatar;
-        public System.Windows.Forms.PictureBox icon;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -448,5 +431,10 @@
         private System.Windows.Forms.Label label10;
         private Bunifu.Framework.UI.BunifuCheckbox checkbox;
         private System.Windows.Forms.ComboBox comboBox1;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox macTextbox;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox nameTextbox;
+        private Bunifu.Framework.UI.BunifuMetroTextbox descriptionBox;
+        private System.Windows.Forms.PictureBox avatar;
+        private System.Windows.Forms.PictureBox icon;
     }
 }

@@ -14,49 +14,51 @@ using System.Windows.Forms.VisualStyles;
 
 namespace WindowsFormsApp1
 {
-    public partial class CreateUser1 : UserControl
+    public partial class CreateUser : UserControl
     {
         private string fileName;
         private string fileName_icon;
         private string fileName_picture;
+        private int groupID;
 
         SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\source\repos\indoor-positioning-system2\Gradproject\WindowsFormsApp1\Database.mdf;Integrated Security=True");
 
 
-        public CreateUser1()
+        public CreateUser()
         {
             InitializeComponent();
+            fillComboGroup();
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void fillComboGroup()
         {
+            try
+            {
+                connection.Open();
 
-        }
+                using (SqlCommand cmd = new SqlCommand("select * from Groups", connection))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader != null)
+                        {
+                            while (reader.Read())
+                            {
+                                string groupNames = reader["group_name"].ToString();
+                                comboBox1.Items.Add(groupNames);
+                            }
+                        }
+                    }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
+                }
 
-        }
-
-        private void password_OnValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void username_OnValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
+                connection.Close();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
 
@@ -73,11 +75,23 @@ namespace WindowsFormsApp1
         {
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
-            cmd.Parameters.Add(new SqlParameter("@IMG", saveImage(fileName_picture)));
-            cmd.Parameters.Add(new SqlParameter("@ICON", saveImage(fileName_icon)));
+            byte[] picture = null;
+            FileStream fstream1 = new FileStream(this.fileName_picture, FileMode.Open, FileAccess.Read);
+            BinaryReader br1 = new BinaryReader(fstream1);
+            picture = br1.ReadBytes((int)fstream1.Length);
+
+            byte[] icon = null;
+            FileStream fstream = new FileStream(this.fileName_icon, FileMode.Open, FileAccess.Read);
+            BinaryReader br = new BinaryReader(fstream);
+            icon = br.ReadBytes((int)fstream.Length);
+
+
+            cmd.Parameters.Add(new SqlParameter("@IMG", picture));
+            cmd.Parameters.Add(new SqlParameter("@ICON", icon));
+
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into Device(device_name,device_bluetooth_address,device_picture,device_icon,device_info,device_override_group_icon) values('" + nameTextbox.Text +
-                              "','" + macTextbox.Text + "',@IMG,@ICON,'"+descriptionBox.Text+"','"+checkbox.Checked+"')";
+            cmd.CommandText = "insert into Device(device_picture,device_name,device_bluetooth_address,device_icon,device_info,device_override_group_icon,group_id) values(@IMG,'" + nameTextbox.Text +
+                              "','" + macTextbox.Text + "',@ICON,'" + descriptionBox.Text + "','" + checkbox.Checked + "','" + groupID + "')";
             cmd.ExecuteNonQuery();
             connection.Close();
 
@@ -96,22 +110,10 @@ namespace WindowsFormsApp1
 
         }
 
-        byte[] ConvertImageToBinary(Image img)
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                return ms.ToArray();
-            }
-        }
+        
         private void avatar_Click(object sender, EventArgs e)
         {
             fileName_picture = spawnImage(avatar);
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -133,6 +135,36 @@ namespace WindowsFormsApp1
                     imagebox.Image = Image.FromFile(fileName);
                 }
             return fileName;
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            try
+            {
+                connection.Open();
+
+                using (SqlCommand cmd = new SqlCommand("select * from Groups where group_name = '" + comboBox1.Text + "'", connection))
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader != null)
+                        {
+                            while (reader.Read())
+                            {
+                                groupID = (int)reader["group_id"];
+                            }
+                        }
+                    }
+
+                }
+
+                connection.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }
