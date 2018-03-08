@@ -44,17 +44,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.fromTime = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.toTime = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.datePicker = new Bunifu.Framework.UI.BunifuDatepicker();
+            this.fromDate = new Bunifu.Framework.UI.BunifuDatepicker();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.historypanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.history_Galal1 = new WindowsFormsApp1.History_Galal();
+            this.label7 = new System.Windows.Forms.Label();
+            this.toDate = new Bunifu.Framework.UI.BunifuDatepicker();
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).BeginInit();
@@ -62,6 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.historypanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // header
@@ -209,11 +212,11 @@
             this.panelAnimator.SetDecoration(this.label3, BunifuAnimatorNS.DecorationType.None);
             this.label3.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(12, 382);
+            this.label3.Location = new System.Drawing.Point(328, 216);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 30);
+            this.label3.Size = new System.Drawing.Size(77, 30);
             this.label3.TabIndex = 56;
-            this.label3.Text = "To:";
+            this.label3.Text = "Time:";
             // 
             // label6
             // 
@@ -222,11 +225,11 @@
             this.panelAnimator.SetDecoration(this.label6, BunifuAnimatorNS.DecorationType.None);
             this.label6.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(135, 220);
+            this.label6.Location = new System.Drawing.Point(463, 97);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(88, 39);
+            this.label6.Size = new System.Drawing.Size(51, 39);
             this.label6.TabIndex = 59;
-            this.label6.Text = "Time";
+            this.label6.Text = "To";
             // 
             // label4
             // 
@@ -235,22 +238,22 @@
             this.panelAnimator.SetDecoration(this.label4, BunifuAnimatorNS.DecorationType.None);
             this.label4.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(12, 302);
+            this.label4.Location = new System.Drawing.Point(12, 216);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 30);
+            this.label4.Size = new System.Drawing.Size(77, 30);
             this.label4.TabIndex = 55;
-            this.label4.Text = "From:";
+            this.label4.Text = "Time:";
             // 
-            // dateTimePicker1
+            // fromTime
             // 
-            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.panelAnimator.SetDecoration(this.dateTimePicker1, BunifuAnimatorNS.DecorationType.None);
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker1.Location = new System.Drawing.Point(101, 310);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowUpDown = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(176, 20);
-            this.dateTimePicker1.TabIndex = 60;
+            this.fromTime.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.panelAnimator.SetDecoration(this.fromTime, BunifuAnimatorNS.DecorationType.None);
+            this.fromTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.fromTime.Location = new System.Drawing.Point(101, 224);
+            this.fromTime.Name = "fromTime";
+            this.fromTime.ShowUpDown = true;
+            this.fromTime.Size = new System.Drawing.Size(176, 20);
+            this.fromTime.TabIndex = 60;
             // 
             // label1
             // 
@@ -261,19 +264,19 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(137, 97);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 36);
+            this.label1.Size = new System.Drawing.Size(85, 36);
             this.label1.TabIndex = 52;
-            this.label1.Text = "Date";
+            this.label1.Text = "From";
             // 
-            // dateTimePicker2
+            // toTime
             // 
-            this.panelAnimator.SetDecoration(this.dateTimePicker2, BunifuAnimatorNS.DecorationType.None);
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker2.Location = new System.Drawing.Point(101, 390);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.ShowUpDown = true;
-            this.dateTimePicker2.Size = new System.Drawing.Size(176, 20);
-            this.dateTimePicker2.TabIndex = 61;
+            this.panelAnimator.SetDecoration(this.toTime, BunifuAnimatorNS.DecorationType.None);
+            this.toTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.toTime.Location = new System.Drawing.Point(417, 224);
+            this.toTime.Name = "toTime";
+            this.toTime.ShowUpDown = true;
+            this.toTime.Size = new System.Drawing.Size(176, 20);
+            this.toTime.TabIndex = 61;
             // 
             // label2
             // 
@@ -282,27 +285,27 @@
             this.panelAnimator.SetDecoration(this.label2, BunifuAnimatorNS.DecorationType.None);
             this.label2.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(692, 97);
+            this.label2.Location = new System.Drawing.Point(704, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(242, 36);
             this.label2.TabIndex = 53;
             this.label2.Text = "Customize View";
             // 
-            // datePicker
+            // fromDate
             // 
-            this.datePicker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.datePicker.BorderRadius = 0;
-            this.panelAnimator.SetDecoration(this.datePicker, BunifuAnimatorNS.DecorationType.None);
-            this.datePicker.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.datePicker.ForeColor = System.Drawing.Color.White;
-            this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.datePicker.FormatCustom = null;
-            this.datePicker.Location = new System.Drawing.Point(96, 154);
-            this.datePicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(181, 36);
-            this.datePicker.TabIndex = 57;
-            this.datePicker.Value = new System.DateTime(2018, 3, 5, 14, 22, 34, 930);
+            this.fromDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.fromDate.BorderRadius = 0;
+            this.panelAnimator.SetDecoration(this.fromDate, BunifuAnimatorNS.DecorationType.None);
+            this.fromDate.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fromDate.ForeColor = System.Drawing.Color.White;
+            this.fromDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.fromDate.FormatCustom = null;
+            this.fromDate.Location = new System.Drawing.Point(96, 154);
+            this.fromDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.fromDate.Name = "fromDate";
+            this.fromDate.Size = new System.Drawing.Size(181, 36);
+            this.fromDate.TabIndex = 57;
+            this.fromDate.Value = new System.DateTime(2018, 3, 5, 14, 22, 34, 930);
             // 
             // label8
             // 
@@ -370,14 +373,8 @@
             this.historypanel.Controls.Add(this.bunifuFlatButton2);
             this.historypanel.Controls.Add(this.pictureBox1);
             this.historypanel.Controls.Add(this.label8);
-            this.historypanel.Controls.Add(this.datePicker);
-            this.historypanel.Controls.Add(this.label2);
-            this.historypanel.Controls.Add(this.dateTimePicker2);
+            this.historypanel.Controls.Add(this.fromDate);
             this.historypanel.Controls.Add(this.label1);
-            this.historypanel.Controls.Add(this.dateTimePicker1);
-            this.historypanel.Controls.Add(this.label4);
-            this.historypanel.Controls.Add(this.label6);
-            this.historypanel.Controls.Add(this.label3);
             this.historypanel.Controls.Add(this.label5);
             this.historypanel.Controls.Add(this.panel1);
             this.historypanel.Controls.Add(this.history_Galal1);
@@ -390,8 +387,18 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.fromTime);
+            this.panel1.Controls.Add(this.toDate);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.toTime);
+            this.panel1.Controls.Add(this.label7);
             this.panelAnimator.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(972, 520);
@@ -399,12 +406,44 @@
             // 
             // history_Galal1
             // 
+            this.history_Galal1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelAnimator.SetDecoration(this.history_Galal1, BunifuAnimatorNS.DecorationType.None);
-            this.history_Galal1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.history_Galal1.Location = new System.Drawing.Point(0, 0);
+            this.history_Galal1.Location = new System.Drawing.Point(0, 1);
+            this.history_Galal1.Margin = new System.Windows.Forms.Padding(3, 50, 3, 3);
             this.history_Galal1.Name = "history_Galal1";
-            this.history_Galal1.Size = new System.Drawing.Size(972, 520);
+            this.history_Galal1.Size = new System.Drawing.Size(972, 519);
             this.history_Galal1.TabIndex = 64;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.AutoSize = true;
+            this.panelAnimator.SetDecoration(this.label7, BunifuAnimatorNS.DecorationType.None);
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(328, 154);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 30);
+            this.label7.TabIndex = 58;
+            this.label7.Text = "Date:";
+            // 
+            // toDate
+            // 
+            this.toDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.toDate.BorderRadius = 0;
+            this.panelAnimator.SetDecoration(this.toDate, BunifuAnimatorNS.DecorationType.None);
+            this.toDate.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toDate.ForeColor = System.Drawing.Color.White;
+            this.toDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.toDate.FormatCustom = null;
+            this.toDate.Location = new System.Drawing.Point(412, 154);
+            this.toDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.toDate.Name = "toDate";
+            this.toDate.Size = new System.Drawing.Size(181, 36);
+            this.toDate.TabIndex = 57;
+            this.toDate.Value = new System.DateTime(2018, 3, 5, 14, 22, 34, 930);
             // 
             // History
             // 
@@ -428,6 +467,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.historypanel.ResumeLayout(false);
             this.historypanel.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -447,17 +488,19 @@
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label8;
-        private Bunifu.Framework.UI.BunifuDatepicker datePicker;
+        private Bunifu.Framework.UI.BunifuDatepicker fromDate;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker toTime;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker fromTime;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
         private History_Galal history_Galal1;
+        private Bunifu.Framework.UI.BunifuDatepicker toDate;
+        private System.Windows.Forms.Label label7;
     }
 }
 

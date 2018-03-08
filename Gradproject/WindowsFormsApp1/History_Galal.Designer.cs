@@ -29,7 +29,11 @@
             this.SlowerButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.PlayButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.FasterButton = new Bunifu.Framework.UI.BunifuImageButton();
-            this.TimeText = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.timeText = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.zoomOut = new System.Windows.Forms.Button();
+            this.speedText = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.totalTimeText = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.floorDropList = new Bunifu.Framework.UI.BunifuDropdown();
             ((System.ComponentModel.ISupportInitialize)(this.SlowerButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FasterButton)).BeginInit();
@@ -37,9 +41,11 @@
             // 
             // sfMap1
             // 
+            this.sfMap1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.sfMap1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sfMap1.CentrePoint2D = ((EGIS.ShapeFileLib.PointD)(resources.GetObject("sfMap1.CentrePoint2D")));
-            this.sfMap1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sfMap1.Location = new System.Drawing.Point(0, 0);
             this.sfMap1.MapBackColor = System.Drawing.SystemColors.Control;
             this.sfMap1.Name = "sfMap1";
@@ -109,29 +115,81 @@
             this.FasterButton.TabStop = false;
             this.FasterButton.Zoom = 10;
             // 
-            // TimeText
+            // timeText
             // 
-            this.TimeText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.timeText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TimeText.AutoSize = true;
-            this.TimeText.BackColor = System.Drawing.SystemColors.Control;
-            this.TimeText.Location = new System.Drawing.Point(217, 451);
-            this.TimeText.Name = "TimeText";
-            this.TimeText.Size = new System.Drawing.Size(54, 13);
-            this.TimeText.TabIndex = 3;
-            this.TimeText.Text = "Time here";
+            this.timeText.AutoSize = true;
+            this.timeText.BackColor = System.Drawing.SystemColors.Control;
+            this.timeText.Location = new System.Drawing.Point(217, 451);
+            this.timeText.Name = "timeText";
+            this.timeText.Size = new System.Drawing.Size(73, 13);
+            this.timeText.TabIndex = 3;
+            this.timeText.Text = "Running Time";
             // 
-            // History
+            // zoomOut
+            // 
+            this.zoomOut.Location = new System.Drawing.Point(3, 112);
+            this.zoomOut.Name = "zoomOut";
+            this.zoomOut.Size = new System.Drawing.Size(75, 23);
+            this.zoomOut.TabIndex = 5;
+            this.zoomOut.Text = "Zoom Out";
+            this.zoomOut.UseVisualStyleBackColor = true;
+            this.zoomOut.Click += new System.EventHandler(this.zoomOut_Click);
+            // 
+            // speedText
+            // 
+            this.speedText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.speedText.AutoSize = true;
+            this.speedText.BackColor = System.Drawing.SystemColors.Control;
+            this.speedText.Location = new System.Drawing.Point(91, 434);
+            this.speedText.Name = "speedText";
+            this.speedText.Size = new System.Drawing.Size(38, 13);
+            this.speedText.TabIndex = 3;
+            this.speedText.Text = "Speed";
+            // 
+            // totalTimeText
+            // 
+            this.totalTimeText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalTimeText.AutoSize = true;
+            this.totalTimeText.BackColor = System.Drawing.SystemColors.Control;
+            this.totalTimeText.Location = new System.Drawing.Point(581, 451);
+            this.totalTimeText.Name = "totalTimeText";
+            this.totalTimeText.Size = new System.Drawing.Size(57, 13);
+            this.totalTimeText.TabIndex = 3;
+            this.totalTimeText.Text = "Total Time";
+            // 
+            // floorDropList
+            // 
+            this.floorDropList.BackColor = System.Drawing.Color.Transparent;
+            this.floorDropList.BorderRadius = 3;
+            this.floorDropList.DisabledColor = System.Drawing.Color.Gray;
+            this.floorDropList.ForeColor = System.Drawing.Color.White;
+            this.floorDropList.Items = new string[0];
+            this.floorDropList.Location = new System.Drawing.Point(3, 81);
+            this.floorDropList.Name = "floorDropList";
+            this.floorDropList.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.floorDropList.onHoverColor = System.Drawing.Color.Teal;
+            this.floorDropList.selectedIndex = -1;
+            this.floorDropList.Size = new System.Drawing.Size(119, 25);
+            this.floorDropList.TabIndex = 6;
+            // 
+            // History_Galal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.TimeText);
+            this.Controls.Add(this.floorDropList);
+            this.Controls.Add(this.zoomOut);
+            this.Controls.Add(this.speedText);
+            this.Controls.Add(this.totalTimeText);
+            this.Controls.Add(this.timeText);
             this.Controls.Add(this.FasterButton);
             this.Controls.Add(this.PlayButton);
             this.Controls.Add(this.SlowerButton);
             this.Controls.Add(this.bunifuSlider1);
             this.Controls.Add(this.sfMap1);
-            this.Name = "History";
+            this.Name = "History_Galal";
             this.Size = new System.Drawing.Size(680, 519);
             ((System.ComponentModel.ISupportInitialize)(this.SlowerButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayButton)).EndInit();
@@ -148,6 +206,10 @@
         private Bunifu.Framework.UI.BunifuImageButton SlowerButton;
         private Bunifu.Framework.UI.BunifuImageButton PlayButton;
         private Bunifu.Framework.UI.BunifuImageButton FasterButton;
-        private Bunifu.Framework.UI.BunifuCustomLabel TimeText;
+        private Bunifu.Framework.UI.BunifuCustomLabel timeText;
+        private System.Windows.Forms.Button zoomOut;
+        private Bunifu.Framework.UI.BunifuCustomLabel speedText;
+        private Bunifu.Framework.UI.BunifuCustomLabel totalTimeText;
+        private Bunifu.Framework.UI.BunifuDropdown floorDropList;
     }
 }

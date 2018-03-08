@@ -14,17 +14,18 @@ using System.Windows.Forms;
 namespace WindowsFormsApp1 {
     public partial class History_Galal : UserControl {
         public static List<Device> BluetoothDevices;
+        public static int SelectedFloor = 0;
         public History_Galal() {
             InitializeComponent();
             sfMap1.BackColor = Color.FromArgb(240, 240, 240);
-            /*sfMap1.ZoomLevelChanged += SfMap1_ZoomLevelChanged;
+            sfMap1.ZoomLevelChanged += SfMap1_ZoomLevelChanged;
             LoadMaps();
-            sfMap1.FitToExtent(sfMap1[mapForm.SelectedFloor * 3].GetActualExtent());
+            sfMap1.FitToExtent(sfMap1[SelectedFloor * 3].GetActualExtent());
             sfMap1.Paint += SfMap1_Paint;
             sfMap1.MouseClick += SfMap1_MouseClick;
             var dbContext = new DatabaseEntities1(); //class derived from DbContext
             var contacts = (from c in dbContext.Devices select c).ToList(); //read data
-            BluetoothDevices = contacts;*/
+            BluetoothDevices = contacts;
         }
 
         private void LoadMaps() {
@@ -49,8 +50,29 @@ namespace WindowsFormsApp1 {
                 LoadCoverage(directories[i] + "/Coverage.shp", "Coverage " + i, false);
                 LoadBeacons(directories[i] + "/Beacons.shp", "Beacons " + i, setFLoorVisible);
                 setFLoorVisible = false;
+                floorDropList.AddItem("Floor " + (i + 1));
             }
+            floorDropList.selectedIndex = 0;
+            floorDropList.onItemSelected += floorDropList_onItemSelected;
 
+        }
+
+        private void floorDropList_onItemSelected(object sender, EventArgs e) {
+            //Console.WriteLine(""+ floorDroplist.selectedIndex);
+            if (floorDropList.selectedIndex != SelectedFloor) {
+                int tempint = SelectedFloor * 3;
+                for (int i = 0; i < 3; i++) {
+                    makeLayerInvisible(tempint + i);
+                }
+                SelectedFloor = floorDropList.selectedIndex;
+                tempint = SelectedFloor * 3;
+                for (int i = 0; i < 3; i++) {
+                    //if (i == 1)
+                    //    continue;
+                    makeLayerVisible(tempint + i);
+                }
+                sfMap1.FitToExtent(sfMap1[tempint].GetActualExtent());
+            }
         }
 
         private String selectfile() {
@@ -89,7 +111,7 @@ namespace WindowsFormsApp1 {
                 DrawMarker(e.Graphics, aPoint.X, aPoint.Y);
             }*/
             foreach (Device mydevice in BluetoothDevices) {
-                if (mydevice.connected && mydevice.floor == mapForm.SelectedFloor) {
+                if (mydevice.connected && mydevice.floor == SelectedFloor) {
                     Point pt = sfMap1.GisPointToPixelCoord(mydevice.Location);
                     e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                     e.Graphics.DrawImage(Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "ResizedIcons/Resizedpoliceofficer.png"), pt);
@@ -300,7 +322,7 @@ namespace WindowsFormsApp1 {
         public void makeLayerVisible(int layerIndex) {
             sfMap1[layerIndex].RenderSettings.MinZoomLevel = 0f;
             double temp = sfMap1.ZoomLevel;
-            sfMap1.FitToExtent(sfMap1[mapForm.SelectedFloor * 3].GetActualExtent());
+            sfMap1.FitToExtent(sfMap1[SelectedFloor * 3].GetActualExtent());
             sfMap1.ZoomLevel = temp;
 
         }
@@ -308,7 +330,7 @@ namespace WindowsFormsApp1 {
         public void makeLayerInvisible(int layerIndex) {
             sfMap1[layerIndex].RenderSettings.MinZoomLevel = float.MaxValue;
             double temp = sfMap1.ZoomLevel;
-            sfMap1.FitToExtent(sfMap1[mapForm.SelectedFloor * 3].GetActualExtent());
+            sfMap1.FitToExtent(sfMap1[SelectedFloor * 3].GetActualExtent());
             sfMap1.ZoomLevel = temp;
         }
 
@@ -322,6 +344,11 @@ namespace WindowsFormsApp1 {
 
         private void PlayButton_Click(object sender, EventArgs e) {
             PlayButton.Image = WindowsFormsApp1.Properties.Resources.Play_blue_icons_0000_Layer_1;
+        }
+
+        private void zoomOut_Click(object sender, EventArgs e) {
+            sfMap1.Refresh();
+            sfMap1.FitToExtent(sfMap1[SelectedFloor * 3].GetActualExtent());
         }
     }
 }
