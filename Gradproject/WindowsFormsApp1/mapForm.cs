@@ -26,8 +26,8 @@ namespace WindowsFormsApp1 {
         string Beacons = "C:\\Users\\Omar\\Desktop\\Semester 9\\Grad I\\egis_dt_4_5_7\\try shape\\QGIS\\Indoor Shape Files\\Beacons.shp";
         string Coverage = "C:\\Users\\Omar\\Desktop\\Semester 9\\Grad I\\egis_dt_4_5_7\\try shape\\QGIS\\Indoor Shape Files\\Coverage.shp";
         //string Coverage = "C:\\Users\\Omar\\Desktop\\Semester 9\\Grad I\\egis_dt_4_5_7\\try shape\\QGIS\\cliped\\AllCoverage.shp";
-        string Bluetooth = "C:/Users/omarb/Desktop/bticon.png";
-        int moveCloserToTheOriginBy = 10;
+        public static string Bluetooth = "C:/Users/Omar/Desktop/Semester 9/Grad I/egis_dt_4_5_7/old shape files/try shape/QGIS/bticon.png";
+        public static int moveCloserToTheOriginBy = 10;
         List<PointF> myPoints;
 
         public mapForm() {

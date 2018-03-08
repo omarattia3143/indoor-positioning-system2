@@ -52,7 +52,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
-      <HintPath>..\..\..\..\Downloads\Bunifu_UI_v1.5.3.dll</HintPath>
+      <HintPath>..\..\..\..\..\Users\Omar\Downloads\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
     <Reference Include="Carbon.Data.Protection, Version=0.16.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\Documents\packages\Carbon.Data.Protection.0.16.0\lib\netstandard2.0\Carbon.Data.Protection.dll</HintPath>
@@ -199,6 +199,12 @@
     <Compile Include="History.Designer.cs">
       <DependentUpon>History.cs</DependentUpon>
     </Compile>
+    <Compile Include="History_Galal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="History_Galal.designer.cs">
+      <DependentUpon>History_Galal.cs</DependentUpon>
+    </Compile>
     <Compile Include="History_Map.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -289,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="History.resx">
       <DependentUpon>History.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="History_Galal.resx">
+      <DependentUpon>History_Galal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="History_Map.resx">
       <DependentUpon>History_Map.cs</DependentUpon>
@@ -441,6 +450,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model11.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Play_blue_icons_0007_Layer-8.png" />
+    <None Include="Resources\Play_blue_icons_0006_Layer-7.png" />
+    <None Include="Resources\Play_blue_icons_0005_Layer-6.png" />
+    <None Include="Resources\Play_blue_icons_0004_Layer-5.png" />
+    <None Include="Resources\Play_blue_icons_0003_Layer-4.png" />
+    <None Include="Resources\Play_blue_icons_0002_Layer-3.png" />
+    <None Include="Resources\Play_blue_icons_0001_Layer-2.png" />
+    <None Include="Resources\Play_blue_icons_0000_Layer-1.png" />
+    <None Include="Resources\Play_blue_icons_0008_Layer-9.png" />
+    <None Include="Resources\Image1.bmp" />
     <None Include="Resources\icons8-businessman-480.png" />
     <None Include="Resources\icons8-businessman-16.png" />
     <None Include="Resources\facebook-avatar.jpg" />

@@ -123,6 +123,96 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Play_blue_icons_0000_Layer_1 {
+            get {
+                object obj = ResourceManager.GetObject("Play_blue_icons_0000_Layer_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Play_blue_icons_0001_Layer_2 {
+            get {
+                object obj = ResourceManager.GetObject("Play_blue_icons_0001_Layer_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Play_blue_icons_0002_Layer_3 {
+            get {
+                object obj = ResourceManager.GetObject("Play_blue_icons_0002_Layer_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Play_blue_icons_0003_Layer_4 {
+            get {
+                object obj = ResourceManager.GetObject("Play_blue_icons_0003_Layer_4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Play_blue_icons_0004_Layer_5 {
+            get {
+                object obj = ResourceManager.GetObject("Play_blue_icons_0004_Layer_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Play_blue_icons_0005_Layer_6 {
+            get {
+                object obj = ResourceManager.GetObject("Play_blue_icons_0005_Layer_6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Play_blue_icons_0006_Layer_7 {
+            get {
+                object obj = ResourceManager.GetObject("Play_blue_icons_0006_Layer_7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Play_blue_icons_0007_Layer_8 {
+            get {
+                object obj = ResourceManager.GetObject("Play_blue_icons_0007_Layer_8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Play_blue_icons_0008_Layer_9 {
+            get {
+                object obj = ResourceManager.GetObject("Play_blue_icons_0008_Layer_9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Systel_Logo {
             get {
                 object obj = ResourceManager.GetObject("Systel-Logo", resourceCulture);

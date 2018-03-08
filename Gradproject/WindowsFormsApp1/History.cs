@@ -112,7 +112,12 @@ namespace WindowsFormsApp1
 
         private void bunifuFlatButton2_Click(object sender, EventArgs e)
         {
-            history_Map1.BringToFront();
+            DateTime from = new DateTime(fromDate.Value.Year, fromDate.Value.Month, fromDate.Value.Day,
+                fromTime.Value.Hour, fromTime.Value.Minute, fromTime.Value.Second);
+            DateTime to = new DateTime(toDate.Value.Year, toDate.Value.Month, toDate.Value.Day,
+                 toTime.Value.Hour, toTime.Value.Minute, toTime.Value.Second);
+            panel1.BringToFront();
+            history_Galal1.BringToFront();
             historypanel.SendToBack();
 
         }
