@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
+            BunifuAnimatorNS.Animation animation11 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(History));
             this.header = new System.Windows.Forms.Panel();
             this.bunifuImageButton4 = new Bunifu.Framework.UI.BunifuImageButton();
@@ -39,7 +39,6 @@
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.panelAnimator = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -54,9 +53,10 @@
             this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.historypanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.history_Galal1 = new WindowsFormsApp1.History_Galal();
-            this.label7 = new System.Windows.Forms.Label();
             this.toDate = new Bunifu.Framework.UI.BunifuDatepicker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.history_Galal1 = new WindowsFormsApp1.History_Galal();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).BeginInit();
@@ -64,7 +64,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.historypanel.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // header
@@ -170,27 +169,22 @@
             // 
             this.panelAnimator.AnimationType = BunifuAnimatorNS.AnimationType.Particles;
             this.panelAnimator.Cursor = null;
-            animation2.AnimateOnlyDifferences = true;
-            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
-            animation2.LeafCoeff = 0F;
-            animation2.MaxTime = 1F;
-            animation2.MinTime = 0F;
-            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
-            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
-            animation2.MosaicSize = 1;
-            animation2.Padding = new System.Windows.Forms.Padding(100, 50, 100, 150);
-            animation2.RotateCoeff = 0F;
-            animation2.RotateLimit = 0F;
-            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
-            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
-            animation2.TimeCoeff = 2F;
-            animation2.TransparencyCoeff = 0F;
-            this.panelAnimator.DefaultAnimation = animation2;
-            // 
-            // bunifuElipse1
-            // 
-            this.bunifuElipse1.ElipseRadius = 5;
-            this.bunifuElipse1.TargetControl = this;
+            animation11.AnimateOnlyDifferences = true;
+            animation11.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.BlindCoeff")));
+            animation11.LeafCoeff = 0F;
+            animation11.MaxTime = 1F;
+            animation11.MinTime = 0F;
+            animation11.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.MosaicCoeff")));
+            animation11.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation11.MosaicShift")));
+            animation11.MosaicSize = 1;
+            animation11.Padding = new System.Windows.Forms.Padding(100, 50, 100, 150);
+            animation11.RotateCoeff = 0F;
+            animation11.RotateLimit = 0F;
+            animation11.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.ScaleCoeff")));
+            animation11.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation11.SlideCoeff")));
+            animation11.TimeCoeff = 2F;
+            animation11.TransparencyCoeff = 0F;
+            this.panelAnimator.DefaultAnimation = animation11;
             // 
             // label5
             // 
@@ -366,16 +360,24 @@
             this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bunifuFlatButton2.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton2.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuFlatButton2.Click += new System.EventHandler(this.bunifuFlatButton2_Click);
+            this.bunifuFlatButton2.Click += new System.EventHandler(this.continueButton_Click);
             // 
             // historypanel
             // 
+            this.historypanel.Controls.Add(this.label6);
             this.historypanel.Controls.Add(this.bunifuFlatButton2);
+            this.historypanel.Controls.Add(this.label4);
             this.historypanel.Controls.Add(this.pictureBox1);
+            this.historypanel.Controls.Add(this.fromTime);
             this.historypanel.Controls.Add(this.label8);
+            this.historypanel.Controls.Add(this.toDate);
+            this.historypanel.Controls.Add(this.label2);
             this.historypanel.Controls.Add(this.fromDate);
+            this.historypanel.Controls.Add(this.label3);
             this.historypanel.Controls.Add(this.label1);
+            this.historypanel.Controls.Add(this.toTime);
             this.historypanel.Controls.Add(this.label5);
+            this.historypanel.Controls.Add(this.label7);
             this.historypanel.Controls.Add(this.panel1);
             this.historypanel.Controls.Add(this.history_Galal1);
             this.panelAnimator.SetDecoration(this.historypanel, BunifuAnimatorNS.DecorationType.None);
@@ -390,44 +392,11 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.fromTime);
-            this.panel1.Controls.Add(this.toDate);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.toTime);
-            this.panel1.Controls.Add(this.label7);
             this.panelAnimator.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(972, 520);
+            this.panel1.Size = new System.Drawing.Size(975, 520);
             this.panel1.TabIndex = 65;
-            // 
-            // history_Galal1
-            // 
-            this.history_Galal1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelAnimator.SetDecoration(this.history_Galal1, BunifuAnimatorNS.DecorationType.None);
-            this.history_Galal1.Location = new System.Drawing.Point(0, 1);
-            this.history_Galal1.Margin = new System.Windows.Forms.Padding(3, 50, 3, 3);
-            this.history_Galal1.Name = "history_Galal1";
-            this.history_Galal1.Size = new System.Drawing.Size(972, 519);
-            this.history_Galal1.TabIndex = 64;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label7.AutoSize = true;
-            this.panelAnimator.SetDecoration(this.label7, BunifuAnimatorNS.DecorationType.None);
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(328, 154);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(78, 30);
-            this.label7.TabIndex = 58;
-            this.label7.Text = "Date:";
             // 
             // toDate
             // 
@@ -444,6 +413,36 @@
             this.toDate.Size = new System.Drawing.Size(181, 36);
             this.toDate.TabIndex = 57;
             this.toDate.Value = new System.DateTime(2018, 3, 5, 14, 22, 34, 930);
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.AutoSize = true;
+            this.panelAnimator.SetDecoration(this.label7, BunifuAnimatorNS.DecorationType.None);
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(328, 154);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(78, 30);
+            this.label7.TabIndex = 58;
+            this.label7.Text = "Date:";
+            // 
+            // history_Galal1
+            // 
+            this.history_Galal1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelAnimator.SetDecoration(this.history_Galal1, BunifuAnimatorNS.DecorationType.None);
+            this.history_Galal1.Location = new System.Drawing.Point(0, 40);
+            this.history_Galal1.Margin = new System.Windows.Forms.Padding(3, 50, 3, 3);
+            this.history_Galal1.Name = "history_Galal1";
+            this.history_Galal1.Size = new System.Drawing.Size(972, 480);
+            this.history_Galal1.TabIndex = 64;
+            // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 5;
+            this.bunifuElipse1.TargetControl = this;
             // 
             // History
             // 
@@ -467,8 +466,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.historypanel.ResumeLayout(false);
             this.historypanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

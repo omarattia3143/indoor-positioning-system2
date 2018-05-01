@@ -12,6 +12,7 @@ namespace WindowsFormsApp1
 {
     public partial class History : Form
     {
+        public static DateTime startDate, endDate;
         public History()
         {
             InitializeComponent();
@@ -104,18 +105,23 @@ namespace WindowsFormsApp1
         {
 
         }
-
-        private void bunifuFlatButton1_Click_2(object sender, EventArgs e)
+        
+        private void continueButton_Click(object sender, EventArgs e)
         {
-            history1.BringToFront();
-        }
-
-        private void bunifuFlatButton2_Click(object sender, EventArgs e)
-        {
-            DateTime from = new DateTime(fromDate.Value.Year, fromDate.Value.Month, fromDate.Value.Day,
+            // Create From to dates
+            DateTime myfromDate = new DateTime(fromDate.Value.Year, fromDate.Value.Month, fromDate.Value.Day,
                 fromTime.Value.Hour, fromTime.Value.Minute, fromTime.Value.Second);
-            DateTime to = new DateTime(toDate.Value.Year, toDate.Value.Month, toDate.Value.Day,
+            DateTime mytoDate = new DateTime(toDate.Value.Year, toDate.Value.Month, toDate.Value.Day,
                  toTime.Value.Hour, toTime.Value.Minute, toTime.Value.Second);
+            // query
+            startDate = myfromDate;
+            endDate = mytoDate;
+            if (endDate <= startDate)
+                return;
+
+            var dbContext = new DatabaseEntities1(); //class derived from DbContext
+            var myRecords = (from c in dbContext.Records where c.record_time < mytoDate && c.record_time > myfromDate select c).ToList(); //read data
+            history_Galal1.initializeHistoryFunctions(startDate.TrimMilliseconds(), endDate.TrimMilliseconds(), myRecords);
             panel1.BringToFront();
             history_Galal1.BringToFront();
             historypanel.SendToBack();

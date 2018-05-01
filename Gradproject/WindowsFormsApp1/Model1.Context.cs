@@ -29,10 +29,8 @@ namespace WindowsFormsApp1
         public DbSet<Beacon> Beacons { get; set; }
         public DbSet<Boundary> Boundaries { get; set; }
         public DbSet<Device> Devices { get; set; }
-        public DbSet<Floor> Floors { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<Record> Records { get; set; }
-        public DbSet<Sector> Sectors { get; set; }
     }
 }

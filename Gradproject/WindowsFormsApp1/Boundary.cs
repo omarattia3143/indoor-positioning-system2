@@ -16,16 +16,17 @@ namespace WindowsFormsApp1
     {
         public Boundary()
         {
+            this.Beacons = new HashSet<Beacon>();
             this.Devices = new HashSet<Device>();
         }
     
         public int boundary_id { get; set; }
         public string boundary_name { get; set; }
-        public string boundary_area_on_map { get; set; }
-        public Nullable<System.TimeSpan> boundary_from { get; set; }
-        public Nullable<System.TimeSpan> boundary_to { get; set; }
+        public Nullable<System.DateTime> boundary_from { get; set; }
+        public Nullable<System.DateTime> boundary_to { get; set; }
         public Nullable<bool> boundary_enabled { get; set; }
     
+        public virtual ICollection<Beacon> Beacons { get; set; }
         public virtual ICollection<Device> Devices { get; set; }
     }
 }

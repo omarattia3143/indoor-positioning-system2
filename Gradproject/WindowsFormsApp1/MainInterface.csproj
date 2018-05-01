@@ -125,6 +125,12 @@
     <Compile Include="Beacon.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Beacon_Config_map.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Beacon_Config_map.designer.cs">
+      <DependentUpon>Beacon_Config_map.cs</DependentUpon>
+    </Compile>
     <Compile Include="Boundary.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -148,9 +154,6 @@
     </Compile>
     <Compile Include="EditUser1.Designer.cs">
       <DependentUpon>EditUser1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Floor.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Group.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -191,8 +194,11 @@
     <Compile Include="Record.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Sector.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="Beacon_Config.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Beacon_Config.Designer.cs">
+      <DependentUpon>Beacon_Config.cs</DependentUpon>
     </Compile>
     <Compile Include="viewDevices.cs">
       <SubType>Form</SubType>
@@ -237,6 +243,9 @@
     <EmbeddedResource Include="admin_tools.resx">
       <DependentUpon>admin_tools.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Beacon_Config_map.resx">
+      <DependentUpon>Beacon_Config_map.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="createAdmin.resx">
       <DependentUpon>createAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -257,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="mapform.resx">
       <DependentUpon>mapform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Beacon_Config.resx">
+      <DependentUpon>Beacon_Config.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="viewDevices.resx">
       <DependentUpon>viewDevices.cs</DependentUpon>

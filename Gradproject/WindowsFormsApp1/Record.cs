@@ -15,13 +15,14 @@ namespace WindowsFormsApp1
     public partial class Record
     {
         public int record_id { get; set; }
-        public Nullable<System.DateTime> record_time { get; set; }
+        public Nullable<int> rssi { get; set; }
         public Nullable<int> device_id { get; set; }
-        public Nullable<double> record_x { get; set; }
-        public Nullable<double> record_y { get; set; }
-        public Nullable<int> floor_id { get; set; }
+        public Nullable<int> beacon_id { get; set; }
+        public Nullable<System.DateTime> record_time { get; set; }
+        public Nullable<double> record_location_x { get; set; }
+        public Nullable<double> record_location_y { get; set; }
     
+        public virtual Beacon Beacon { get; set; }
         public virtual Device Device { get; set; }
-        public virtual Floor Floor { get; set; }
     }
 }

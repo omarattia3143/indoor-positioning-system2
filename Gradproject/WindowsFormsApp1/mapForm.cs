@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -16,12 +17,14 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1 {
     public partial class mapForm : Form {
+        const int CONST_ID = 0, CONST_NAME = 1, CONST_BEACONID = 1, CONST_MINRSSI = 2, CONST_MAXRSSI = 3;
         public static double MaxZoomLevel = 10000;
         public static double MinZoomLevel = 0.01;
         public static int IconSize = 16;
         public static double xTrial = 356, yTrial = -308;
         public static int SelectedFloor = 0;
         public static List<Device> BluetoothDevices;
+        public static List<Beacon> BluetoothBeacons;
         string Rooms = "C:\\Users\\Omar\\Desktop\\Semester 9\\Grad I\\egis_dt_4_5_7\\try shape\\QGIS\\Indoor Shape Files\\Rooms.shp";
         string Beacons = "C:\\Users\\Omar\\Desktop\\Semester 9\\Grad I\\egis_dt_4_5_7\\try shape\\QGIS\\Indoor Shape Files\\Beacons.shp";
         string Coverage = "C:\\Users\\Omar\\Desktop\\Semester 9\\Grad I\\egis_dt_4_5_7\\try shape\\QGIS\\Indoor Shape Files\\Coverage.shp";
@@ -29,9 +32,55 @@ namespace WindowsFormsApp1 {
         public static string Bluetooth = "C:/Users/Omar/Desktop/Semester 9/Grad I/egis_dt_4_5_7/old shape files/try shape/QGIS/bticon.png";
         public static int moveCloserToTheOriginBy = 10;
         List<PointF> myPoints;
+        private Timer SimulatorTimer, LerpTimer;
+        private static DatabaseEntities1 mydbContext;
+        //private float lerpVariable = 0;
+
+        public void StartSimulator () {
+            SimulatorTimer = new Timer();
+            SimulatorTimer.Tick += new EventHandler(Simulator);
+            SimulatorTimer.Interval = 1000; // in miliseconds
+            SimulatorTimer.Start();
+        }
+
+        public void StartLerp() {
+            LerpTimer = new Timer();
+            LerpTimer.Tick += new EventHandler(Lerper);
+            LerpTimer.Interval = 30; // in miliseconds
+            LerpTimer.Start();
+        }
+        private void Lerper(object sender, EventArgs e) {
+            foreach (Device mydevice in BluetoothDevices) {
+                mydevice.lerpVariable += 0.03f;
+                if (mydevice.lerpVariable >= 0.98f)
+                    mydevice.lerpVariable = 1;
+                mydevice.Location = lerp(mydevice.FromLocation, mydevice.ToLocation,mydevice.lerpVariable);
+            }
+            sfMap1.Refresh();
+        }
+
+        private void Simulator(object sender, EventArgs e) {
+            Random rnd = new Random();
+            foreach (Device mydevice in BluetoothDevices) {
+                drawDeviceOnMap(rnd.Next(-40,-10), mydevice, BluetoothBeacons[mydevice.lastBeacon]);
+                mydevice.ticksB4ChangingBeacon++;
+                if(mydevice.ticksB4ChangingBeacon == 15) {
+                    mydevice.lastBeacon++;
+                    mydevice.ticksB4ChangingBeacon = 0;
+                    if (mydevice.lastBeacon >= BluetoothBeacons.Count)
+                        mydevice.lastBeacon = 0;
+                }
+            }
+        }
+
+        private PointF lerp(PointF v0, PointF v1, float t) {
+            PointF myoutput = new PointF(v0.X+t*(v1.X-v0.X), v0.Y + t * (v1.Y - v0.Y));
+            return myoutput;
+        }
 
         public mapForm() {
             InitializeComponent();
+            mydbContext = new DatabaseEntities1(); //class derived from DbContext
             myPoints = new List<PointF>();
             sfMap1.BackColor = Color.White;
             sfMap1.ZoomLevelChanged += SfMap1_ZoomLevelChanged;
@@ -39,16 +88,21 @@ namespace WindowsFormsApp1 {
             sfMap1.FitToExtent(sfMap1[SelectedFloor * 3].GetActualExtent());
             sfMap1.Paint += SfMap1_Paint;
             sfMap1.MouseClick += SfMap1_MouseClick;
-            var dbContext = new DatabaseEntities1(); //class derived from DbContext
            
-            var contacts = (from c in dbContext.Devices select c).ToList(); //read data
+            var contacts = (from c in mydbContext.Devices select c).ToList(); //read data
+            var mybeacons = (from c in mydbContext.Beacons select c).ToList(); //read data
             BluetoothDevices = contacts;
+            BluetoothBeacons = mybeacons;
             //contacts.FirstOrDefault().FirstName = "Alex"; //edit 
             //Device temp = contacts[2];
             //Console.WriteLine(contacts[2].device_name);
-            foreach (Device student in contacts) {
+            Random rnd = new Random();
+            foreach (Device student in BluetoothDevices) {// part of the simulation
                 Console.WriteLine("{0}, {1}", student.device_name, student.device_id);
+                student.lastBeacon = rnd.Next(0,mybeacons.Count-1);
             }
+            StartSimulator();
+            StartLerp();
             //contacts[1].device_name = "Galal";
             //dbContext.SaveChanges();
             //contacts[1].SomeData = "Hello World!";
@@ -89,6 +143,20 @@ namespace WindowsFormsApp1 {
             }
             floorDroplist.selectedIndex = 0;
             floorDroplist.onItemSelected += FloorDroplist_onItemSelected;
+            /*for (int i = 0; i < directories.Length; i++) { // This loop fills the beacons database. just for fun
+                for (int j = 0; j < sfMap1[2+(i*3)].RecordCount; j++) {
+                    string idonmap = sfMap1[2 + (i * 3)].GetAttributeFieldValues(j)[CONST_ID].Trim();
+                    using (var dbContext = new DatabaseEntities1()) {
+                        var beacon = dbContext.Set<Beacon>();
+                        beacon.Add(new Beacon {
+                            beacon_floor = i,
+                            beacon_idonmap = idonmap,
+                            beacon_bluetooth_address = "11:11:11:"+j+""+i
+                        });
+                        dbContext.SaveChanges();
+                    }
+                }
+            }*/
 
         }
 
@@ -230,7 +298,31 @@ namespace WindowsFormsApp1 {
                 sf.RenderSettings.MinZoomLevel = float.MaxValue;
             }
             //Console.WriteLine(string.Join(",", sf.GetAttributeFieldNames()));
+            
+            // This code should only be executed only on time at the begaining of adding the maps
+            /*for(int i=0; i < this.sfMap1[this.sfMap1.ShapeFileCount - 1].RecordCount; i++) {
 
+                try {
+                    var beacons = mydbContext.Set<Beacon>();
+                    Beacon abeacon = new Beacon {
+                        beacon_floor = (this.sfMap1.ShapeFileCount / 4),
+                        beacon_idonmap = this.sfMap1[this.sfMap1.ShapeFileCount - 1].GetAttributeFieldValues(i)[CONST_BEACONID].Trim()
+                    };
+                    beacons.Add(abeacon);
+                    mydbContext.SaveChanges();
+                } catch (DbEntityValidationException e) {
+                    foreach (var eve in e.EntityValidationErrors) {
+                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                        foreach (var ve in eve.ValidationErrors) {
+                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                ve.PropertyName, ve.ErrorMessage);
+                        }
+                    }
+                    throw;
+                }
+                Console.WriteLine("done dude!");
+            }*/
 
 
         }
@@ -282,15 +374,16 @@ namespace WindowsFormsApp1 {
 
         }
 
-        public PointF getClosestPoint(PointF Location, EGIS.ShapeFileLib.ShapeFile sf, int index) {
-            double tempAx = sf.GetShapeData(index)[0][0].X;
-            double tempAy = sf.GetShapeData(index)[0][0].Y;
+        public PointF getClosestPoint(PointF Location, int floor, int SectorIndex) {// Coverage Area Index
+            EGIS.ShapeFileLib.ShapeFile sf = sfMap1[(floor*3) + 1];
+            double tempAx = sf.GetShapeData(SectorIndex)[0][0].X;
+            double tempAy = sf.GetShapeData(SectorIndex)[0][0].Y;
             double tempBx = Location.X;
             double tempBy = Location.Y;
             double shortestDistance = Math.Sqrt((tempAx- tempBx)*(tempAx - tempBx) + (tempAy - tempBy)*(tempAy - tempBy));
             int closestPointIndex = 0;
-            for (int i =0; i <  sf.GetShapeData(index)[0].Length; i++) {
-                PointF mypoint = sf.GetShapeData(index)[0][i];
+            for (int i =0; i <  sf.GetShapeData(SectorIndex)[0].Length; i++) {
+                PointF mypoint = sf.GetShapeData(SectorIndex)[0][i];
                 tempAx = mypoint.X;
                 tempAy = mypoint.Y;
                 double dist = Math.Sqrt((tempAx - tempBx) * (tempAx - tempBx) + (tempAy - tempBy) * (tempAy - tempBy));
@@ -299,12 +392,12 @@ namespace WindowsFormsApp1 {
                     closestPointIndex = i;
                 }
             }
-            PointF closestPoint = sf.GetShapeData(index)[0][closestPointIndex];
-            double centerPointY = sf.GetShapeBoundsD(index).Bottom - (sf.GetShapeBoundsD(index).Height / 2);
-            double centerPointX = sf.GetShapeBoundsD(index).Right - (sf.GetShapeBoundsD(index).Width / 2);
-            Console.WriteLine("Buttom " + sf.GetShapeBoundsD(index).Bottom + " : Top " + sf.GetShapeBoundsD(index).Top
-                + " : Right " + sf.GetShapeBoundsD(index).Right + " : Left " + sf.GetShapeBoundsD(index).Left);
-            Console.WriteLine("Width: " + sf.GetShapeBoundsD(index).Width + " | Height: " + sf.GetShapeBoundsD(index).Height);
+            PointF closestPoint = sf.GetShapeData(SectorIndex)[0][closestPointIndex];
+            double centerPointY = sf.GetShapeBoundsD(SectorIndex).Bottom - (sf.GetShapeBoundsD(SectorIndex).Height / 2);
+            double centerPointX = sf.GetShapeBoundsD(SectorIndex).Right - (sf.GetShapeBoundsD(SectorIndex).Width / 2);
+            Console.WriteLine("Buttom " + sf.GetShapeBoundsD(SectorIndex).Bottom + " : Top " + sf.GetShapeBoundsD(SectorIndex).Top
+                + " : Right " + sf.GetShapeBoundsD(SectorIndex).Right + " : Left " + sf.GetShapeBoundsD(SectorIndex).Left);
+            Console.WriteLine("Width: " + sf.GetShapeBoundsD(SectorIndex).Width + " | Height: " + sf.GetShapeBoundsD(SectorIndex).Height);
             Console.WriteLine("Center X: " + centerPointX + " | Center Y: " + centerPointY);
             Console.WriteLine("X: " + closestPoint.X + " | Y: " + closestPoint.Y);
             if (centerPointX - closestPoint.X < 0) {
@@ -345,7 +438,12 @@ namespace WindowsFormsApp1 {
             Console.WriteLine("X: " + closestPoint.X + " | Y: " + closestPoint.Y);
             return closestPoint;
         }
-
+     
+        /* List of attributes and their corresponding indices
+         * Beacons    id = 0, Mac Adrs = 1
+         * Coverage   id = 0, Mac Adrs = 1, MinRSSI = 2, MaxRSSI = 3
+         * Room       id = 0, Name = 1
+         */
         public int getRecordNumberByAttribute(EGIS.ShapeFileLib.ShapeFile sf, int attribute,String value) {
             for (int i =0; i<sf.RecordCount; i++) {
                 if (sf.GetAttributeFieldValues(i)[attribute].Trim().Equals(value)) {
@@ -363,6 +461,82 @@ namespace WindowsFormsApp1 {
                 }
             }
             return myList;
+        }
+
+        public int getRSSISector(EGIS.ShapeFileLib.ShapeFile sf, String beaconIdOnMap, int RSSI) {
+            List<int> myList = new List<int>();
+            int minMinRSSI = 0, maxMaxRssi = 0, minSector = 0, maxSector = 0, flag = 0;
+            for (int i = 0; i < sf.RecordCount; i++) {
+                if (sf.GetAttributeFieldValues(i)[CONST_BEACONID].Trim().Equals(beaconIdOnMap.Trim())) {
+                    int myMinRSSI = Int32.Parse(sf.GetAttributeFieldValues(i)[CONST_MINRSSI].Trim());
+                    int myMaxRSSI = Int32.Parse(sf.GetAttributeFieldValues(i)[CONST_MAXRSSI].Trim());
+                    if(flag == 0) {
+                        flag = 1;
+                        minSector = maxSector = i;
+                        minMinRSSI = myMinRSSI;
+                        maxMaxRssi = myMaxRSSI;
+                    }
+                    if (RSSI > myMaxRSSI && RSSI < myMinRSSI) {
+                        return i;
+                    }
+                    if (myMinRSSI < minMinRSSI) {
+                        minMinRSSI = myMinRSSI;
+                        minSector = i;
+                    }
+                    if (myMaxRSSI > maxMaxRssi) {
+                        maxMaxRssi = myMaxRSSI;
+                        maxSector = i;
+                    }
+                }
+            }
+            if (flag == 0) {
+                return -1;
+            }else if (RSSI > minMinRSSI) {
+                return minSector;
+            } else {
+                return maxSector;
+            }
+        }
+
+        public void drawDeviceOnMap(int myRssi, Device mydevice, Beacon mybeacon) {
+            int mysector = getRSSISector(sfMap1[1 + (mybeacon.beacon_floor*3)], mybeacon.beacon_idonmap, myRssi);
+            mydevice.ToLocation = getClosestPoint(mydevice.Location,mybeacon.beacon_floor, mysector);
+            mydevice.FromLocation = mydevice.Location;
+            mydevice.connected = true;
+            mydevice.lerpVariable = 0;
+            if (mydevice.floor != mybeacon.beacon_floor) {
+                mydevice.lerpVariable = 1;
+                mydevice.Location = mydevice.ToLocation;
+                mydevice.FromLocation = mydevice.Location;
+            }
+            mydevice.floor = mybeacon.beacon_floor;
+            // Create Record
+            /*using (var dbContext = new DatabaseEntities1()) {
+                var records = dbContext.Set<Record>();
+                records.Add(new Record {
+                    record_time = DateTime.Now.TrimMilliseconds(),
+                    rssi = myRssi,
+                    Device = mydevice,
+                    Beacon = mybeacon
+                });
+                dbContext.SaveChanges();
+            }*/
+            //save record
+            /*var records = mydbContext.Set<Record>();
+            records.Add(new Record {
+                record_time = DateTime.Now.TrimMilliseconds(),
+                rssi = myRssi,
+                Device = mydevice,
+                Beacon = mybeacon,
+                record_location_x = mydevice.ToLocation.X,
+                record_location_y = mydevice.ToLocation.Y
+            });
+            mydbContext.SaveChanges();*/
+            //save record
+
+            sfMap1.Refresh();
+
+
         }
 
         public static Bitmap ResizeImage(Image image, int width, int height) {
@@ -526,19 +700,23 @@ namespace WindowsFormsApp1 {
                 makeLayerVisible(2);
             myPoints.Add(getRandomPoint(sfMap1[2],2));*/
             BluetoothDevices[0].floor = 0;
-            BluetoothDevices[0].connected = true;
-            BluetoothDevices[0].Location = sfMap1[0].GetShapeBounds(1).Location;
+            BluetoothDevices[0].connected = true; 
+            //BluetoothDevices[0].Location = sfMap1[0].GetShapeBounds(1).Location;
+            BluetoothDevices[0].Location = getRandomPoint(sfMap1[1],0);
             BluetoothDevices[1].floor = 0;
             BluetoothDevices[1].connected = true;
-            BluetoothDevices[1].Location = sfMap1[0].GetShapeBounds(2).Location;
+            BluetoothDevices[1].Location = getRandomPoint(sfMap1[1], 1);
             BluetoothDevices[2].floor = 1;
             BluetoothDevices[2].connected = true;
-            BluetoothDevices[2].Location = sfMap1[3].GetShapeBounds(1).Location;
+            BluetoothDevices[2].Location = getRandomPoint(sfMap1[4], 0);
             sfMap1.Refresh();
             sfMap1.FitToExtent(sfMap1[SelectedFloor * 3].GetActualExtent());
+           /* for (int i=0;i<86000;i=0) {
+
+            }*/
         }
 
-        private void bunifuFlatButton1_Click_3(object sender, EventArgs e)
+        private void History_Click(object sender, EventArgs e)
         {
             History ss = new History();
             Form fc = Application.OpenForms["History"];

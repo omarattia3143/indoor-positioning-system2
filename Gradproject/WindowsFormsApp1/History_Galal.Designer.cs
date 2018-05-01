@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(History_Galal));
             this.sfMap1 = new EGIS.Controls.SFMap();
-            this.bunifuSlider1 = new Bunifu.Framework.UI.BunifuSlider();
+            this.timeSlider = new Bunifu.Framework.UI.BunifuSlider();
             this.SlowerButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.PlayButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.FasterButton = new Bunifu.Framework.UI.BunifuImageButton();
@@ -57,20 +57,20 @@
             this.sfMap1.ZoomLevel = 1D;
             this.sfMap1.ZoomToSelectedExtentWhenCtrlKeydown = false;
             // 
-            // bunifuSlider1
+            // timeSlider
             // 
-            this.bunifuSlider1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.timeSlider.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.bunifuSlider1.BackColor = System.Drawing.SystemColors.Control;
-            this.bunifuSlider1.BackgroudColor = System.Drawing.Color.DarkGray;
-            this.bunifuSlider1.BorderRadius = 0;
-            this.bunifuSlider1.IndicatorColor = System.Drawing.Color.Cyan;
-            this.bunifuSlider1.Location = new System.Drawing.Point(220, 467);
-            this.bunifuSlider1.MaximumValue = 100;
-            this.bunifuSlider1.Name = "bunifuSlider1";
-            this.bunifuSlider1.Size = new System.Drawing.Size(415, 30);
-            this.bunifuSlider1.TabIndex = 1;
-            this.bunifuSlider1.Value = 0;
+            this.timeSlider.BackColor = System.Drawing.SystemColors.Control;
+            this.timeSlider.BackgroudColor = System.Drawing.Color.DarkGray;
+            this.timeSlider.BorderRadius = 0;
+            this.timeSlider.IndicatorColor = System.Drawing.Color.Cyan;
+            this.timeSlider.Location = new System.Drawing.Point(220, 467);
+            this.timeSlider.MaximumValue = 100;
+            this.timeSlider.Name = "timeSlider";
+            this.timeSlider.Size = new System.Drawing.Size(415, 30);
+            this.timeSlider.TabIndex = 1;
+            this.timeSlider.Value = 0;
             // 
             // SlowerButton
             // 
@@ -85,6 +85,7 @@
             this.SlowerButton.TabIndex = 2;
             this.SlowerButton.TabStop = false;
             this.SlowerButton.Zoom = 10;
+            this.SlowerButton.Click += new System.EventHandler(this.SlowerButton_Click);
             // 
             // PlayButton
             // 
@@ -114,6 +115,7 @@
             this.FasterButton.TabIndex = 2;
             this.FasterButton.TabStop = false;
             this.FasterButton.Zoom = 10;
+            this.FasterButton.Click += new System.EventHandler(this.FasterButton_Click);
             // 
             // timeText
             // 
@@ -154,7 +156,7 @@
             this.totalTimeText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.totalTimeText.AutoSize = true;
             this.totalTimeText.BackColor = System.Drawing.SystemColors.Control;
-            this.totalTimeText.Location = new System.Drawing.Point(581, 451);
+            this.totalTimeText.Location = new System.Drawing.Point(530, 451);
             this.totalTimeText.Name = "totalTimeText";
             this.totalTimeText.Size = new System.Drawing.Size(57, 13);
             this.totalTimeText.TabIndex = 3;
@@ -187,7 +189,7 @@
             this.Controls.Add(this.FasterButton);
             this.Controls.Add(this.PlayButton);
             this.Controls.Add(this.SlowerButton);
-            this.Controls.Add(this.bunifuSlider1);
+            this.Controls.Add(this.timeSlider);
             this.Controls.Add(this.sfMap1);
             this.Name = "History_Galal";
             this.Size = new System.Drawing.Size(680, 519);
@@ -202,7 +204,7 @@
         #endregion
 
         private EGIS.Controls.SFMap sfMap1;
-        private Bunifu.Framework.UI.BunifuSlider bunifuSlider1;
+        private Bunifu.Framework.UI.BunifuSlider timeSlider;
         private Bunifu.Framework.UI.BunifuImageButton SlowerButton;
         private Bunifu.Framework.UI.BunifuImageButton PlayButton;
         private Bunifu.Framework.UI.BunifuImageButton FasterButton;

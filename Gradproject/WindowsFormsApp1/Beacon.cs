@@ -16,16 +16,16 @@ namespace WindowsFormsApp1
     {
         public Beacon()
         {
-            this.Sectors = new HashSet<Sector>();
+            this.Records = new HashSet<Record>();
+            this.Boundaries = new HashSet<Boundary>();
         }
     
         public int beacon_id { get; set; }
-        public Nullable<int> floor_id { get; set; }
-        public Nullable<double> beacon_x { get; set; }
-        public Nullable<double> beacon_y { get; set; }
+        public string beacon_idonmap { get; set; }
+        public int beacon_floor { get; set; }
         public string beacon_bluetooth_address { get; set; }
     
-        public virtual ICollection<Sector> Sectors { get; set; }
-        public virtual Floor Floor { get; set; }
+        public virtual ICollection<Record> Records { get; set; }
+        public virtual ICollection<Boundary> Boundaries { get; set; }
     }
 }

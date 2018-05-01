@@ -7,14 +7,35 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
+/*
+ 2 arrays
+ time array from 2 pm to 3 pm
+ record array 
+     
+     
+     */
+
 namespace WindowsFormsApp1 {
     public partial class History_Galal : UserControl {
-        public static List<Device> BluetoothDevices;
         public static int SelectedFloor = 0;
+        private Timer LerpTimer, SimulatorTimer;
+        private List<Record> allRecords;
+        private Myclass[] mapping;
+        private bool simulationSwitch = false;
+        private int simulationSecond = 0;
+        private DateTime startTime;
+        private int speed = 1;
+        private float lerpSpeed = 0;
+
+        private class Myclass {
+            public int from = -1, to = -1;
+        }
+
         public History_Galal() {
             InitializeComponent();
             sfMap1.BackColor = Color.FromArgb(240, 240, 240);
@@ -25,7 +46,128 @@ namespace WindowsFormsApp1 {
             sfMap1.MouseClick += SfMap1_MouseClick;
             var dbContext = new DatabaseEntities1(); //class derived from DbContext
             var contacts = (from c in dbContext.Devices select c).ToList(); //read data
-            BluetoothDevices = contacts;
+            timeSlider.ValueChanged += TimeSlider_ValueChanged;
+            //timeSlider.
+            //timeSlider.
+        }
+
+        private void TimeSlider_ValueChanged(object sender, EventArgs e)//user set the value himself
+        {
+            if(simulationSwitch)
+                switchToPause();
+            simulationSecond = timeSlider.Value;
+            totalTimeText.Text = startTime.AddSeconds(simulationSecond).ToString("dd/MM/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            //Here we are supposed to draw location on the map
+        }
+
+        public void StartLerp(int myspeed) {
+            LerpTimer = new Timer();
+            LerpTimer.Tick += new EventHandler(Lerper);
+            LerpTimer.Interval = 30/myspeed; // in miliseconds
+            lerpSpeed = ((float)LerpTimer.Interval) / 1000f;
+            //LerpTimer.Start();
+        }
+
+        public void changeLerpSpeed(int myspeed) {
+            LerpTimer.Stop();
+            LerpTimer.Interval = 30 / myspeed; // in miliseconds
+            lerpSpeed = ((float)LerpTimer.Interval) / 1000f;
+            if(simulationSwitch)
+                LerpTimer.Start();
+        }
+
+        private void Lerper(object sender, EventArgs e) {
+            if (simulationSwitch) {
+                foreach (Record mydevice in allRecords) {
+                    mydevice.lerpVariable += lerpSpeed;
+                    if (mydevice.lerpVariable >= 0.98f)
+                        mydevice.lerpVariable = 1;
+                    mydevice.Location = lerp(mydevice.FromLocation, mydevice.ToLocation, mydevice.lerpVariable);
+                }
+                sfMap1.Refresh();
+            }
+        }
+
+        private PointF lerp(PointF v0, PointF v1, float t) {
+            PointF myoutput = new PointF(v0.X + t * (v1.X - v0.X), v0.Y + t * (v1.Y - v0.Y));
+            return myoutput;
+        }
+
+        public void StartSimulator(int myspeed) {
+            SimulatorTimer = new Timer();
+            SimulatorTimer.Tick += new EventHandler(Simulator);
+            SimulatorTimer.Interval = 1000/myspeed; // in miliseconds
+            //SimulatorTimer.Start();
+        }
+
+        public void changeSimulatorSpeed(int myspeed) {
+            SimulatorTimer.Stop();
+            SimulatorTimer.Interval = 1000 / myspeed; // in miliseconds
+            if(simulationSwitch)
+                SimulatorTimer.Start();
+        }
+
+        private void Simulator(object sender, EventArgs e) {
+            if (simulationSwitch) {
+                if (timeSlider.Value < timeSlider.MaximumValue) {
+                    timeSlider.Value = ++simulationSecond;
+                    //totalTimeText.Text = "Value = " + timeSlider.Value;
+                    totalTimeText.Text = startTime.AddSeconds(simulationSecond).ToString("dd/MM/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+                    timeSlider.Invalidate();
+                    if (mapping[simulationSecond] != null) {
+                        for (int i = mapping[simulationSecond].from; i <= mapping[simulationSecond].to; i++) {
+                            drawDeviceOnMap(allRecords[i]);
+                        }
+                        sfMap1.Refresh();
+                    }
+                }
+            }
+        }
+
+        public void drawDeviceOnMap(Record myrecord) {
+            myrecord.Device.ToLocation = new PointF((float)myrecord.record_location_x, (float)myrecord.record_location_y) ;
+            myrecord.Device.FromLocation = myrecord.Location;
+            myrecord.Device.connected = true;
+            myrecord.Device.lerpVariable = 0;
+            if (myrecord.Device.floor != myrecord.Beacon.beacon_floor) {
+                myrecord.Device.lerpVariable = 1;
+                myrecord.Device.Location = myrecord.Device.ToLocation;
+                myrecord.Device.FromLocation = myrecord.Device.Location;
+            }
+            myrecord.Device.floor = myrecord.Beacon.beacon_floor;
+
+            sfMap1.Refresh();
+
+            
+        }
+
+        public void initializeHistoryFunctions(DateTime start, DateTime end, List<Record> myRecords) {
+            //StartLerp();
+            startTime = start;
+            totalTimeText.Text = start.ToString("dd/MM/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            timeText.Text = start.ToString("dd/MM/yyyy hh:mm:ss tt", CultureInfo.InvariantCulture);
+            speedText.Text = "Speed x" + speed;
+            allRecords = myRecords;
+            //int durationInSeconds = (int)(History.endDate - History.startDate).TotalSeconds;
+            int durationInSeconds = (int)(end -start).TotalSeconds;
+            mapping = new Myclass[durationInSeconds];
+            int myindex = 0;
+            for (int i=0; i<durationInSeconds;i++) {
+                bool vergin = true;
+                while (myindex < myRecords.Count && start == myRecords[myindex].record_time) {
+                    if (vergin) {
+                        mapping[i] = new Myclass();
+                        mapping[i].from = myindex;
+                        vergin = false;
+                    }
+                    mapping[i].to = myindex;
+                    myindex++;
+                }
+                start = start.AddSeconds(1);
+            }
+            //timeText.Text = "Total sec = "+durationInSeconds;
+            timeSlider.MaximumValue = durationInSeconds;
+            StartSimulator(speed);
         }
 
         private void LoadMaps() {
@@ -105,18 +247,21 @@ namespace WindowsFormsApp1 {
         }
 
         private void SfMap1_Paint(object sender, PaintEventArgs e) {
-            //throw new NotImplementedException
-            //DrawMarker(e.Graphics, xTrial, yTrial); //sfMap1[2].GetShapeBoundsD(0).Right, sfMap1[2].GetShapeBoundsD(0).Y + (sfMap1[2].GetShapeBoundsD(0).Height/2));
-            /*foreach (PointF aPoint in myPoints) {
-                DrawMarker(e.Graphics, aPoint.X, aPoint.Y);
-            }*/
-            foreach (Device mydevice in BluetoothDevices) {
+            if (mapping[simulationSecond] != null)
+                for (int i = mapping[simulationSecond].from; i <= mapping[simulationSecond].to; i++) {
+                    if (allRecords[i].Device.floor == SelectedFloor) {
+                        Point pt = sfMap1.GisPointToPixelCoord(allRecords[i].Device.Location);
+                        e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                        e.Graphics.DrawImage(Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "ResizedIcons/Resizedpoliceofficer.png"), pt);
+                    }
+            }
+            /*foreach (Device mydevice in BluetoothDevices) {
                 if (mydevice.connected && mydevice.floor == SelectedFloor) {
                     Point pt = sfMap1.GisPointToPixelCoord(mydevice.Location);
                     e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                     e.Graphics.DrawImage(Image.FromFile(AppDomain.CurrentDomain.BaseDirectory + "ResizedIcons/Resizedpoliceofficer.png"), pt);
                 }
-            }
+            }*/
         }
 
         private void DrawMarker(Graphics g, double locX, double locY) {
@@ -343,12 +488,47 @@ namespace WindowsFormsApp1 {
         }
 
         private void PlayButton_Click(object sender, EventArgs e) {
+            if (simulationSwitch) {
+                switchToPause();
+            } else {
+                switchToPlay();
+            }
+        }
+
+        private void switchToPause() {
+            SimulatorTimer.Stop();
+            simulationSwitch = false;
+            //LerpTimer.Stop();
+            PlayButton.Image = WindowsFormsApp1.Properties.Resources.Play_blue_icons_0008_Layer_9;
+        }
+
+        private void switchToPlay() {
+            simulationSwitch = true;
+            SimulatorTimer.Start();
+            //LerpTimer.Start();
             PlayButton.Image = WindowsFormsApp1.Properties.Resources.Play_blue_icons_0000_Layer_1;
+        }
+
+        private void SlowerButton_Click(object sender, EventArgs e) {
+            if (speed > 1) {
+                speed--;
+                speedText.Text = "Speed x" + speed;
+                changeSimulatorSpeed(speed);
+                //changeLerpSpeed(speed);
+            }
+        }
+
+        private void FasterButton_Click(object sender, EventArgs e) {
+            speed++;
+            speedText.Text = "Speed x" + speed;
+            changeSimulatorSpeed(speed);
+            //changeLerpSpeed(speed);
         }
 
         private void zoomOut_Click(object sender, EventArgs e) {
             sfMap1.Refresh();
             sfMap1.FitToExtent(sfMap1[SelectedFloor * 3].GetActualExtent());
         }
+        
     }
 }
