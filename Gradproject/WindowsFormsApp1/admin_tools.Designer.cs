@@ -200,6 +200,7 @@
             this.groupsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.groupsBtn.Textcolor = System.Drawing.Color.White;
             this.groupsBtn.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupsBtn.Click += new System.EventHandler(this.groupsBtn_Click);
             // 
             // usersBtn
             // 

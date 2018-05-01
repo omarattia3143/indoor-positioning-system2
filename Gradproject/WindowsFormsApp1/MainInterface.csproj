@@ -135,6 +135,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="BuddyClasses.cs" />
+    <Compile Include="createGroup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="createGroup.Designer.cs">
+      <DependentUpon>createGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="createUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,17 +152,49 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseDataSet2.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseDataSet31.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseDataSet31.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseDataSet5.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DatabaseDataSet5.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Database_FINAL_Source.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Database_FINAL_Source.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Device.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EditUser1.cs">
+    <Compile Include="editGroup1.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EditUser1.Designer.cs">
-      <DependentUpon>EditUser1.cs</DependentUpon>
+    <Compile Include="editGroup1.Designer.cs">
+      <DependentUpon>editGroup1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EditUser.Designer.cs">
+      <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Group.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Group1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Group1.Designer.cs">
+      <DependentUpon>Group1.cs</DependentUpon>
     </Compile>
     <Compile Include="History.cs">
       <SubType>Form</SubType>
@@ -249,11 +287,20 @@
     <EmbeddedResource Include="createAdmin.resx">
       <DependentUpon>createAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="createGroup.resx">
+      <DependentUpon>createGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="createUser.resx">
       <DependentUpon>createUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditUser1.resx">
-      <DependentUpon>EditUser1.cs</DependentUpon>
+    <EmbeddedResource Include="editGroup1.resx">
+      <DependentUpon>editGroup1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditUser.resx">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Group1.resx">
+      <DependentUpon>Group1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="History.resx">
       <DependentUpon>History.cs</DependentUpon>
@@ -323,6 +370,50 @@
     </None>
     <None Include="DatabaseDataSet2.xss">
       <DependentUpon>DatabaseDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseDataSet31.xsc">
+      <DependentUpon>DatabaseDataSet31.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseDataSet31.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatabaseDataSet31.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DatabaseDataSet31.xss">
+      <DependentUpon>DatabaseDataSet31.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseDataSet4.xsc">
+      <DependentUpon>DatabaseDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatabaseDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DatabaseDataSet4.xss">
+      <DependentUpon>DatabaseDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseDataSet5.xsc">
+      <DependentUpon>DatabaseDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="DatabaseDataSet5.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DatabaseDataSet5.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DatabaseDataSet5.xss">
+      <DependentUpon>DatabaseDataSet5.xsd</DependentUpon>
+    </None>
+    <None Include="Database_FINAL_Source.xsc">
+      <DependentUpon>Database_FINAL_Source.xsd</DependentUpon>
+    </None>
+    <None Include="Database_FINAL_Source.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Database_FINAL_Source.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Database_FINAL_Source.xss">
+      <DependentUpon>Database_FINAL_Source.xsd</DependentUpon>
     </None>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>

@@ -14,18 +14,25 @@ using System.Windows.Forms.VisualStyles;
 
 namespace WindowsFormsApp1
 {
-    public partial class EditUser1 : UserControl
+    public partial class editGroup1 : UserControl
     {
         private string fileName;
-        private List<Device> list;
+        private string fileName_icon;
+        private string fileName_picture;
+        private int groupID;
 
         SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\source\repos\indoor-positioning-system2\Gradproject\WindowsFormsApp1\Database.mdf;Integrated Security=True");
 
 
-        public EditUser1()
+        public editGroup1()
         {
             InitializeComponent();
+
         }
+
+
+
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -57,21 +64,29 @@ namespace WindowsFormsApp1
 
         }
 
-        private void createBtn2_Click(object sender, EventArgs e)
+
+
+        private byte[] saveImage(string fileName)
         {
             byte[] imageBt = null;
             FileStream fstream = new FileStream(this.fileName, FileMode.Open, FileAccess.Read);
             BinaryReader br = new BinaryReader(fstream);
-            imageBt = br.ReadBytes((int)fstream.Length);
+            return imageBt = br.ReadBytes((int)fstream.Length);
+        }
 
-
+        private void createBtn2_Click(object sender, EventArgs e)
+        {
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
-            cmd.Parameters.Add(new SqlParameter("@IMG", imageBt));
+            cmd.Parameters.Add(new SqlParameter("@IMG", saveImage(fileName_picture)));
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "update Device set device_name='"+nameTextbox.Text+"',device_bluetooth_address='"+macTextbox.Text+"',device_picture=@IMG where device_name='"+nameTextbox.Text+"'";
+            cmd.CommandText = "update Groups set group_name = '" + nameTextbox.Text + "' , group_info = '" + descriptionBox.Text + "' , group_icon = @IMG where group_name = '"+nameTextbox.Text+"'";
             cmd.ExecuteNonQuery();
             connection.Close();
+
+
+
+
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -84,15 +99,16 @@ namespace WindowsFormsApp1
 
         }
 
-        byte[] ConvertImageToBinary(Image img)
+        
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                return ms.ToArray();
-            }
+
         }
-        private void avatar_Click(object sender, EventArgs e)
+
+
+
+        private string spawnImage(PictureBox imagebox)
         {
             using (FileDialog ofd = new OpenFileDialog()
             {
@@ -103,14 +119,14 @@ namespace WindowsFormsApp1
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     fileName = ofd.FileName;
-                    avatar.Image = Image.FromFile(fileName);
+                    imagebox.Image = Image.FromFile(fileName);
                 }
-
+            return fileName;
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
+        private void avatar_Click(object sender, EventArgs e)
         {
-
+            fileName_picture = spawnImage(avatar);
         }
     }
 }

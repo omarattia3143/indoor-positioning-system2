@@ -12,32 +12,34 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class viewDevices : Form
+    public partial class Group1 : Form
     {
         public static string editName;
         SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\source\repos\indoor-positioning-system2\Gradproject\WindowsFormsApp1\Database.mdf;Integrated Security=True");
-        public viewDevices()
+        public Group1()
         {
             InitializeComponent();
-            editUser2.SendToBack();
-            createUser1.SendToBack();
+            editGroup11.SendToBack();
+            createGroup1.SendToBack();
             panel3.BringToFront();
         }
 
         public void display_data()
         {
-            try {
+            try
+            {
                 connection.Open();
                 SqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select * from DeviceGroup";
+                cmd.CommandText = "select * from Groups";
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 sda.Fill(dt);
                 datagrid.DataSource = dt;
                 connection.Close();
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
             }
@@ -108,7 +110,7 @@ namespace WindowsFormsApp1
 
         private void adminBtn_Click_2(object sender, EventArgs e)
         {
-            
+
         }
 
         private void tile1_Click(object sender, EventArgs e)
@@ -128,6 +130,9 @@ namespace WindowsFormsApp1
 
         private void viewDevices_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'databaseDataSet2.Groups' table. You can move, or remove it, as needed.
+            this.groupsTableAdapter.Fill(this.databaseDataSet2.Groups);
+            // TODO: This line of code loads data into the 'databaseDataSet2.Groups' table. You can move, or remove it, as needed.
             // TODO: This line of code loads data into the 'databaseDataSet5.DeviceGroup' table. You can move, or remove it, as needed.
             this.deviceGroupTableAdapter3.Fill(this.databaseDataSet5.DeviceGroup);
             // TODO: This line of code loads data into the 'databaseDataSet4.DeviceGroup' table. You can move, or remove it, as needed.
@@ -151,19 +156,19 @@ namespace WindowsFormsApp1
             
         }
 
-        
 
-        
+
+
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
         {
             display_data();
         }
 
-        
+
         private void name_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 connection.Open();
                 SqlCommand cmd = connection.CreateCommand();
@@ -183,17 +188,17 @@ namespace WindowsFormsApp1
 
         private void createBtn_Click_1(object sender, EventArgs e)
         {
-            
+
             panel3.SendToBack();
-            editUser2.SendToBack();
-            createUser1.BringToFront();
+            editGroup11.SendToBack();
+            createGroup1.BringToFront();
         }
 
         private void addEditBtn_Click_1(object sender, EventArgs e)
         {
             panel3.SendToBack();
-            editUser2.BringToFront();
-            createUser1.SendToBack();
+            editGroup11.BringToFront();
+            createGroup1.SendToBack();
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
@@ -201,7 +206,7 @@ namespace WindowsFormsApp1
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "delete from Device where device_name='" + name.Text + "'";
+            cmd.CommandText = "delete from Groups where group_name='" + name.Text + "'";
             cmd.ExecuteNonQuery();
             connection.Close();
             display_data();
@@ -212,7 +217,7 @@ namespace WindowsFormsApp1
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select * from DeviceGroup where device_name = '" + name.Text + "'";
+            cmd.CommandText = "select * from Groups where group_name = '" + name.Text + "'";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -228,7 +233,7 @@ namespace WindowsFormsApp1
                 connection.Open();
                 SqlCommand cmd = connection.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "select * from DeviceGroup";
+                cmd.CommandText = "select * from Groups";
                 cmd.ExecuteNonQuery();
                 DataTable dt = new DataTable();
                 SqlDataAdapter sda = new SqlDataAdapter(cmd);
@@ -246,46 +251,29 @@ namespace WindowsFormsApp1
         {
             if (e.RowIndex >= 0)
             {
-                //gets a collection that contains all the rows
                 DataGridViewRow row = this.datagrid.Rows[e.RowIndex];
-                //populate the textbox from specific value of the coordinates of column and row.
-                editUser2.nameTextbox.Text = row.Cells[0].Value.ToString();
-                name.Text = row.Cells[0].Value.ToString();
-                editUser2.macTextbox.Text = row.Cells[1].Value.ToString();
-                editUser2.descriptionBox.Text = row.Cells[3].Value.ToString();
-                editUser2.comboBox1.Text = row.Cells[5].Value.ToString();
+                name.Text = row.Cells[1].Value.ToString();
+                editGroup11.nameTextbox.Text = row.Cells[1].Value.ToString();
+                editGroup11.descriptionBox.Text = row.Cells[2].Value.ToString();
 
                 try
                 {
-                    byte[] picture = (byte[])(row.Cells[4].Value);
+                    byte[] picture = (byte[])(row.Cells[3].Value);
                     MemoryStream ms = new MemoryStream(picture);
-                    editUser2.avatar.Image = Image.FromStream(ms);
+                    editGroup11.avatar.Image = Image.FromStream(ms);
 
-                    
+
                 }
                 catch
                 {
-                    editUser2.avatar.Image = null;
+                    editGroup11.avatar.Image = null;
 
 
                 }
-                try
-                {
 
-
-                    byte[] icon = (byte[])(row.Cells[2].Value);
-                    MemoryStream mse = new MemoryStream(icon);
-                    editUser2.icon.Image = Image.FromStream(mse);
-                }
-                catch
-                {
-                    editUser2.icon.Image = null;
-
-
-                }
 
             }
         }
-        
+
     }
 }

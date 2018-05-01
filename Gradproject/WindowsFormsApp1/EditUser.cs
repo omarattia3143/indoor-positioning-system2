@@ -14,7 +14,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace WindowsFormsApp1
 {
-    public partial class CreateUser : UserControl
+    public partial class EditUser : UserControl
     {
         private string fileName;
         private string fileName_icon;
@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
         SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\source\repos\indoor-positioning-system2\Gradproject\WindowsFormsApp1\Database.mdf;Integrated Security=True");
 
 
-        public CreateUser()
+        public EditUser()
         {
             InitializeComponent();
             fillComboGroup();
@@ -54,11 +54,42 @@ namespace WindowsFormsApp1
                 }
 
                 connection.Close();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void password_OnValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void username_OnValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
 
 
@@ -68,7 +99,7 @@ namespace WindowsFormsApp1
             byte[] imageBt = null;
             FileStream fstream = new FileStream(this.fileName, FileMode.Open, FileAccess.Read);
             BinaryReader br = new BinaryReader(fstream);
-           return imageBt = br.ReadBytes((int)fstream.Length);
+            return imageBt = br.ReadBytes((int)fstream.Length);
         }
 
         private void createBtn2_Click(object sender, EventArgs e)
@@ -85,13 +116,12 @@ namespace WindowsFormsApp1
             BinaryReader br = new BinaryReader(fstream);
             icon = br.ReadBytes((int)fstream.Length);
 
-
+            
             cmd.Parameters.Add(new SqlParameter("@IMG", picture));
             cmd.Parameters.Add(new SqlParameter("@ICON", icon));
-
+            
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into Device(device_picture,device_name,device_bluetooth_address,device_icon,device_info,device_override_group_icon,group_id) values(@IMG,'" + nameTextbox.Text +
-                              "','" + macTextbox.Text + "',@ICON,'" + descriptionBox.Text + "','" + checkbox.Checked + "','" + groupID + "')";
+            cmd.CommandText = "update Device set device_name='" + nameTextbox.Text + "' , device_bluetooth_address='" + macTextbox.Text + "' , device_picture = @IMG , device_icon = @ICON , device_info = '" + descriptionBox.Text + "' , device_override_group_icon = '" + checkbox.Checked + "' , group_id = '" + groupID + "' where device_name='" + nameTextbox.Text + "'";
             cmd.ExecuteNonQuery();
             connection.Close();
 
@@ -110,10 +140,22 @@ namespace WindowsFormsApp1
 
         }
 
-        
+        byte[] ConvertImageToBinary(Image img)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                return ms.ToArray();
+            }
+        }
         private void avatar_Click(object sender, EventArgs e)
         {
             fileName_picture = spawnImage(avatar);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -160,11 +202,11 @@ namespace WindowsFormsApp1
 
                 connection.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
     }
 }

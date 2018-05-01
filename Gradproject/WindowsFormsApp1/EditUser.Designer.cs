@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class CreateUser
+    partial class EditUser
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateUser));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditUser));
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.checkbox = new Bunifu.Framework.UI.BunifuCheckbox();
@@ -397,13 +397,13 @@
             this.bunifuDragControl1.TargetControl = null;
             this.bunifuDragControl1.Vertical = true;
             // 
-            // CreateUser
+            // EditUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
             this.Controls.Add(this.panel2);
-            this.Name = "CreateUser";
+            this.Name = "EditUser";
             this.Size = new System.Drawing.Size(767, 716);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -424,17 +424,17 @@
         private Bunifu.Framework.UI.BunifuFlatButton cancelBtn;
         private Bunifu.Framework.UI.BunifuFlatButton insertBtn;
         public System.Windows.Forms.Panel panel2;
+        public Bunifu.Framework.UI.BunifuMaterialTextbox macTextbox;
+        public Bunifu.Framework.UI.BunifuMaterialTextbox nameTextbox;
+        public Bunifu.Framework.UI.BunifuMetroTextbox descriptionBox;
+        public System.Windows.Forms.PictureBox avatar;
+        public System.Windows.Forms.PictureBox icon;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label10;
-        private Bunifu.Framework.UI.BunifuCheckbox checkbox;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox macTextbox;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox nameTextbox;
-        private Bunifu.Framework.UI.BunifuMetroTextbox descriptionBox;
-        private System.Windows.Forms.PictureBox avatar;
-        private System.Windows.Forms.PictureBox icon;
+        public System.Windows.Forms.ComboBox comboBox1;
+        public Bunifu.Framework.UI.BunifuCheckbox checkbox;
     }
 }
