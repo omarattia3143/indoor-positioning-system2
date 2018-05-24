@@ -27,7 +27,7 @@ namespace WindowsFormsApp1
         public Nullable<int> group_id { get; set; }
         public string device_info { get; set; }
         public byte[] device_picture { get; set; }
-        public Nullable<bool> device_override_group_icon { get; set; }
+        public bool device_override_group_icon { get; set; }
     
         public virtual ICollection<Record> Records { get; set; }
         public virtual Group Group { get; set; }

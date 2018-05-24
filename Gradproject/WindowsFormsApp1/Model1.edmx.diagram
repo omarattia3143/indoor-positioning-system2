@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ca3ac94a2e1a4b0c9826de4a9ab6a91c" Name="Diagram1" ZoomLevel="46">
-        <EntityTypeShape EntityType="DatabaseModel1.Admin" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DatabaseModel1.Beacon" Width="1.5" PointX="0.75" PointY="3.375" />
-        <EntityTypeShape EntityType="DatabaseModel1.Boundary" Width="1.5" PointX="3" PointY="6.75" />
-        <EntityTypeShape EntityType="DatabaseModel1.Device" Width="1.5" PointX="5.25" PointY="6.375" />
-        <EntityTypeShape EntityType="DatabaseModel1.Group" Width="1.5" PointX="3" PointY="10" />
-        <EntityTypeShape EntityType="DatabaseModel1.Notification" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DatabaseModel1.Record" Width="1.5" PointX="3" PointY="3.125" />
+      <Diagram DiagramId="ca3ac94a2e1a4b0c9826de4a9ab6a91c" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="DatabaseModel1.Admin" Width="1.5" PointX="0.75" PointY="7" />
+        <EntityTypeShape EntityType="DatabaseModel1.Beacon" Width="1.5" PointX="0.75" PointY="3.625" />
+        <EntityTypeShape EntityType="DatabaseModel1.Boundary" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="DatabaseModel1.Device" Width="1.5" PointX="5.25" PointY="3.125" />
+        <EntityTypeShape EntityType="DatabaseModel1.Group" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="DatabaseModel1.Notification" Width="1.5" PointX="7.75" PointY="1" />
+        <EntityTypeShape EntityType="DatabaseModel1.Record" Width="1.5" PointX="7.5" PointY="3.375" />
         <AssociationConnector Association="DatabaseModel1.FK_beacon2" />
         <AssociationConnector Association="DatabaseModel1.FK_device2" />
         <AssociationConnector Association="DatabaseModel1.FK_group" />

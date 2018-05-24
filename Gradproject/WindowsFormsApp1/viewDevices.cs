@@ -19,6 +19,8 @@ namespace WindowsFormsApp1
         public viewDevices()
         {
             InitializeComponent();
+            display_data();
+
             editUser2.SendToBack();
             createUser1.SendToBack();
             panel3.BringToFront();
@@ -91,6 +93,7 @@ namespace WindowsFormsApp1
 
         private void createAdmin1_Load(object sender, EventArgs e)
         {
+            
             display_data();
 
         }
@@ -128,25 +131,25 @@ namespace WindowsFormsApp1
 
         private void viewDevices_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'databaseDataSet5.DeviceGroup' table. You can move, or remove it, as needed.
-            this.deviceGroupTableAdapter3.Fill(this.databaseDataSet5.DeviceGroup);
-            // TODO: This line of code loads data into the 'databaseDataSet4.DeviceGroup' table. You can move, or remove it, as needed.
-            this.deviceGroupTableAdapter2.Fill(this.databaseDataSet4.DeviceGroup);
-            // TODO: This line of code loads data into the 'database_FINAL_Source.DeviceGroup' table. You can move, or remove it, as needed.
-            this.deviceGroupTableAdapter1.Fill(this.database_FINAL_Source.DeviceGroup);
-            // TODO: This line of code loads data into the 'databaseDataSet3.DeviceGroup' table. You can move, or remove it, as needed.
-            this.deviceGroupTableAdapter.Fill(this.databaseDataSet3.DeviceGroup);
-            // TODO: This line of code loads data into the 'databaseDataSet3.View' table. You can move, or remove it, as needed.
-            // TODO: This line of code loads data into the 'databaseDataSet2.Admin' table. You can move, or remove it, as needed.
-            this.adminTableAdapter.Fill(this.databaseDataSet2.Admin);
-            // TODO: This line of code loads data into the 'databaseDataSet2._Device_Boundary' table. You can move, or remove it, as needed.
-            this.device_BoundaryTableAdapter.Fill(this.databaseDataSet2._Device_Boundary);
-            // TODO: This line of code loads data into the 'databaseDataSet2.Record' table. You can move, or remove it, as needed.
-            this.recordTableAdapter.Fill(this.databaseDataSet2.Record);
-            // TODO: This line of code loads data into the 'databaseDataSet2.Device' table. You can move, or remove it, as needed.
-            this.deviceTableAdapter1.Fill(this.databaseDataSet2.Device);
-            // TODO: This line of code loads data into the 'databaseDataSet1.Device' table. You can move, or remove it, as needed.
-            //  this.deviceTableAdapter.Fill(this.databaseDataSet1.Device);
+            //// TODO: This line of code loads data into the 'databaseDataSet5.DeviceGroup' table. You can move, or remove it, as needed.
+            //this.deviceGroupTableAdapter3.Fill(this.databaseDataSet5.DeviceGroup);
+            //// TODO: This line of code loads data into the 'databaseDataSet4.DeviceGroup' table. You can move, or remove it, as needed.
+            //this.deviceGroupTableAdapter2.Fill(this.databaseDataSet4.DeviceGroup);
+            //// TODO: This line of code loads data into the 'database_FINAL_Source.DeviceGroup' table. You can move, or remove it, as needed.
+            //this.deviceGroupTableAdapter1.Fill(this.database_FINAL_Source.DeviceGroup);
+            //// TODO: This line of code loads data into the 'databaseDataSet3.DeviceGroup' table. You can move, or remove it, as needed.
+            //this.deviceGroupTableAdapter.Fill(this.databaseDataSet3.DeviceGroup);
+            //// TODO: This line of code loads data into the 'databaseDataSet3.View' table. You can move, or remove it, as needed.
+            //// TODO: This line of code loads data into the 'databaseDataSet2.Admin' table. You can move, or remove it, as needed.
+            //this.adminTableAdapter.Fill(this.databaseDataSet2.Admin);
+            //// TODO: This line of code loads data into the 'databaseDataSet2._Device_Boundary' table. You can move, or remove it, as needed.
+            //this.device_BoundaryTableAdapter.Fill(this.databaseDataSet2._Device_Boundary);
+            //// TODO: This line of code loads data into the 'databaseDataSet2.Record' table. You can move, or remove it, as needed.
+            //this.recordTableAdapter.Fill(this.databaseDataSet2.Record);
+            //// TODO: This line of code loads data into the 'databaseDataSet2.Device' table. You can move, or remove it, as needed.
+            //this.deviceTableAdapter1.Fill(this.databaseDataSet2.Device);
+            //// TODO: This line of code loads data into the 'databaseDataSet1.Device' table. You can move, or remove it, as needed.
+            ////  this.deviceTableAdapter.Fill(this.databaseDataSet1.Device);
 
             
         }

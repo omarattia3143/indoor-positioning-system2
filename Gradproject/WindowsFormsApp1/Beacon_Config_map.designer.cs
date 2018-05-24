@@ -55,6 +55,7 @@
             this.zoomOut.TabIndex = 5;
             this.zoomOut.Text = "Full Extent";
             this.zoomOut.UseVisualStyleBackColor = true;
+            this.zoomOut.Visible = false;
             this.zoomOut.Click += new System.EventHandler(this.zoomOut_Click);
             // 
             // floorDropList
@@ -71,6 +72,7 @@
             this.floorDropList.selectedIndex = -1;
             this.floorDropList.Size = new System.Drawing.Size(119, 25);
             this.floorDropList.TabIndex = 6;
+            this.floorDropList.Visible = false;
             // 
             // Beacon_Config_map
             // 
@@ -87,7 +89,7 @@
 
         #endregion
 
-        private EGIS.Controls.SFMap sfMap1;
+        public EGIS.Controls.SFMap sfMap1;
         private System.Windows.Forms.Button zoomOut;
         private Bunifu.Framework.UI.BunifuDropdown floorDropList;
     }

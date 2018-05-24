@@ -22,8 +22,6 @@
           <Property Name="beacon_floor" Type="int" Nullable="false" />
           <Property Name="beacon_bluetooth_address" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\SOURCE\REPOS\INDOOR-POSITIONING-SYSTEM2\GRADPROJECT\WINDOWSFORMSAPP1\DATABASE.MDF.dbo.Beacon-Boundary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Beacon-Boundary">
           <Key>
             <PropertyRef Name="beacon_id" />
@@ -37,10 +35,10 @@ warning 6002: The table/view 'C:\SOURCE\REPOS\INDOOR-POSITIONING-SYSTEM2\GRADPRO
             <PropertyRef Name="boundary_id" />
           </Key>
           <Property Name="boundary_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="boundary_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="boundary_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="boundary_from" Type="datetime" />
           <Property Name="boundary_to" Type="datetime" />
-          <Property Name="boundary_enabled" Type="bit" />
+          <Property Name="boundary_enabled" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Device">
           <Key>
@@ -53,10 +51,8 @@ warning 6002: The table/view 'C:\SOURCE\REPOS\INDOOR-POSITIONING-SYSTEM2\GRADPRO
           <Property Name="group_id" Type="int" />
           <Property Name="device_info" Type="nvarchar" MaxLength="150" />
           <Property Name="device_picture" Type="varbinary(max)" />
-          <Property Name="device_override_group_icon" Type="bit" />
+          <Property Name="device_override_group_icon" Type="bit" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\SOURCE\REPOS\INDOOR-POSITIONING-SYSTEM2\GRADPROJECT\WINDOWSFORMSAPP1\DATABASE.MDF.dbo.Device-Boundary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Device-Boundary">
           <Key>
             <PropertyRef Name="device_id" />
@@ -88,11 +84,11 @@ warning 6002: The table/view 'C:\SOURCE\REPOS\INDOOR-POSITIONING-SYSTEM2\GRADPRO
           </Key>
           <Property Name="record_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="rssi" Type="int" />
-          <Property Name="device_id" Type="int" />
-          <Property Name="beacon_id" Type="int" />
-          <Property Name="record_time" Type="datetime" />
-          <Property Name="record_location_x" Type="float" />
-          <Property Name="record_location_y" Type="float" />
+          <Property Name="device_id" Type="int" Nullable="false" />
+          <Property Name="beacon_id" Type="int" Nullable="false" />
+          <Property Name="record_time" Type="datetime" Nullable="false" />
+          <Property Name="record_location_x" Type="float" Nullable="false" />
+          <Property Name="record_location_y" Type="float" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6013: The table/view 'C:\SOURCE\REPOS\INDOOR-POSITIONING-SYSTEM2\GRADPROJECT\WINDOWSFORMSAPP1\DATABASE.MDF.dbo.DeviceGroup' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
@@ -119,7 +115,7 @@ warning 6013: The table/view 'C:\SOURCE\REPOS\INDOOR-POSITIONING-SYSTEM2\GRADPRO
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_beacon2">
-          <End Role="Beacon" Type="Self.Beacon" Multiplicity="0..1">
+          <End Role="Beacon" Type="Self.Beacon" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Record" Type="Self.Record" Multiplicity="*" />
@@ -175,7 +171,7 @@ warning 6013: The table/view 'C:\SOURCE\REPOS\INDOOR-POSITIONING-SYSTEM2\GRADPRO
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_device2">
-          <End Role="Device" Type="Self.Device" Multiplicity="0..1">
+          <End Role="Device" Type="Self.Device" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Record" Type="Self.Record" Multiplicity="*" />
@@ -203,23 +199,13 @@ warning 6013: The table/view 'C:\SOURCE\REPOS\INDOOR-POSITIONING-SYSTEM2\GRADPRO
         <EntityContainer Name="DatabaseModel1StoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Beacon" EntityType="Self.Beacon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Beacon-Boundary" EntityType="Self.Beacon-Boundary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Boundary" EntityType="Self.Boundary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Device" EntityType="Self.Device" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Device-Boundary" EntityType="Self.Device-Boundary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Record" EntityType="Self.Record" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Beacon-Boundary" EntityType="Self.Beacon-Boundary" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[Beacon-Boundary].[beacon_id] AS [beacon_id], 
-[Beacon-Boundary].[boundary_id] AS [boundary_id]
-FROM [dbo].[Beacon-Boundary] AS [Beacon-Boundary]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Device-Boundary" EntityType="Self.Device-Boundary" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[Device-Boundary].[device_id] AS [device_id], 
-[Device-Boundary].[boundary_id] AS [boundary_id]
-FROM [dbo].[Device-Boundary] AS [Device-Boundary]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_beacon" Association="Self.FK_beacon">
             <End Role="Beacon" EntitySet="Beacon" />
             <End Role="Beacon-Boundary" EntitySet="Beacon-Boundary" />
@@ -306,10 +292,10 @@ FROM [dbo].[Device-Boundary] AS [Device-Boundary]</DefiningQuery>
             <PropertyRef Name="boundary_id" />
           </Key>
           <Property Name="boundary_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="boundary_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="boundary_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="boundary_from" Type="DateTime" Precision="3" />
           <Property Name="boundary_to" Type="DateTime" Precision="3" />
-          <Property Name="boundary_enabled" Type="Boolean" />
+          <Property Name="boundary_enabled" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Beacons" Relationship="DatabaseModel1.Beacon_Boundary" FromRole="Boundary" ToRole="Beacon" />
           <NavigationProperty Name="Devices" Relationship="DatabaseModel1.Device_Boundary" FromRole="Boundary" ToRole="Device" />
         </EntityType>
@@ -324,7 +310,7 @@ FROM [dbo].[Device-Boundary] AS [Device-Boundary]</DefiningQuery>
           <Property Name="group_id" Type="Int32" />
           <Property Name="device_info" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="device_picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="device_override_group_icon" Type="Boolean" />
+          <Property Name="device_override_group_icon" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Records" Relationship="DatabaseModel1.FK_device2" FromRole="Device" ToRole="Record" />
           <NavigationProperty Name="Group" Relationship="DatabaseModel1.FK_group" FromRole="Device" ToRole="Group" />
           <NavigationProperty Name="Boundaries" Relationship="DatabaseModel1.Device_Boundary" FromRole="Device" ToRole="Boundary" />
@@ -353,16 +339,16 @@ FROM [dbo].[Device-Boundary] AS [Device-Boundary]</DefiningQuery>
           </Key>
           <Property Name="record_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="rssi" Type="Int32" />
-          <Property Name="device_id" Type="Int32" />
-          <Property Name="beacon_id" Type="Int32" />
-          <Property Name="record_time" Type="DateTime" Precision="3" />
-          <Property Name="record_location_x" Type="Double" />
-          <Property Name="record_location_y" Type="Double" />
+          <Property Name="device_id" Type="Int32" Nullable="false" />
+          <Property Name="beacon_id" Type="Int32" Nullable="false" />
+          <Property Name="record_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="record_location_x" Type="Double" Nullable="false" />
+          <Property Name="record_location_y" Type="Double" Nullable="false" />
           <NavigationProperty Name="Beacon" Relationship="DatabaseModel1.FK_beacon2" FromRole="Record" ToRole="Beacon" />
           <NavigationProperty Name="Device" Relationship="DatabaseModel1.FK_device2" FromRole="Record" ToRole="Device" />
         </EntityType>
         <Association Name="FK_beacon2">
-          <End Type="DatabaseModel1.Beacon" Role="Beacon" Multiplicity="0..1">
+          <End Type="DatabaseModel1.Beacon" Role="Beacon" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Type="DatabaseModel1.Record" Role="Record" Multiplicity="*" />
@@ -376,7 +362,7 @@ FROM [dbo].[Device-Boundary] AS [Device-Boundary]</DefiningQuery>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_device2">
-          <End Type="DatabaseModel1.Device" Role="Device" Multiplicity="0..1">
+          <End Type="DatabaseModel1.Device" Role="Device" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
           <End Type="DatabaseModel1.Record" Role="Record" Multiplicity="*" />

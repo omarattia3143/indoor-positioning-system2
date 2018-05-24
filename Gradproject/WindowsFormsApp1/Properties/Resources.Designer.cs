@@ -123,6 +123,26 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap noman {
+            get {
+                object obj = ResourceManager.GetObject("noman", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nomanbig {
+            get {
+                object obj = ResourceManager.GetObject("nomanbig", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Play_blue_icons_0000_Layer_1 {
             get {
                 object obj = ResourceManager.GetObject("Play_blue_icons_0000_Layer_1", resourceCulture);
@@ -206,6 +226,16 @@ namespace WindowsFormsApp1.Properties {
         internal static System.Drawing.Bitmap Play_blue_icons_0008_Layer_9 {
             get {
                 object obj = ResourceManager.GetObject("Play_blue_icons_0008_Layer_9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Resizedbticon {
+            get {
+                object obj = ResourceManager.GetObject("Resizedbticon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

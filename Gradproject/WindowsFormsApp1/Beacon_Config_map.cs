@@ -11,6 +11,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using WindowsFormsApp1.Properties;
 
 /*
  2 arrays
@@ -22,7 +23,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1 {
     public partial class Beacon_Config_map : UserControl {
-        public static int SelectedFloor = 0;
+        public int SelectedFloor = 0;
 
         private class Myclass {
             public int from = -1, to = -1;
@@ -30,15 +31,16 @@ namespace WindowsFormsApp1 {
 
         public Beacon_Config_map() {
             InitializeComponent();
+        }
+
+        public void initializeMap() {
             sfMap1.BackColor = Color.FromArgb(240, 240, 240);
             sfMap1.ZoomLevelChanged += SfMap1_ZoomLevelChanged;
             LoadMaps();
             sfMap1.FitToExtent(sfMap1[SelectedFloor * 3].GetActualExtent());
             sfMap1.Paint += SfMap1_Paint;
-            sfMap1.MouseClick += SfMap1_MouseClick;
             var dbContext = new DatabaseEntities1(); //class derived from DbContext
             var contacts = (from c in dbContext.Devices select c).ToList(); //read data
-
         }
 
         public void drawDeviceOnMap(Record myrecord) {
@@ -127,13 +129,7 @@ namespace WindowsFormsApp1 {
             return "";
         }
 
-        private void SfMap1_MouseClick(object sender, MouseEventArgs e) {
-            //throw new NotImplementedException();
-            if (e.Button == System.Windows.Forms.MouseButtons.Left) {
-                Console.WriteLine("X = " + sfMap1.MousePosToGisPoint(e.Location).X + ", Y = " + sfMap1.MousePosToGisPoint(e.Location).Y);
-            }
-
-        }
+        
 
         private void SfMap1_Paint(object sender, PaintEventArgs e) {
         }
@@ -204,9 +200,10 @@ namespace WindowsFormsApp1 {
             System.IO.Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "ResizedIcons");
             string iconpath = AppDomain.CurrentDomain.BaseDirectory + "ResizedIcons/Resizedbticon.png";
             if (!File.Exists(iconpath)) {
-                Image img = Image.FromFile(mapForm.Bluetooth);
-                Bitmap temp = ResizeImage(img, mapForm.IconSize, mapForm.IconSize);
-                temp.Save(iconpath, ImageFormat.Png);
+                /*Image img = Image.FromFile(Bluetooth);
+                Bitmap temp = ResizeImage(img, IconSize, IconSize);
+                temp.Save(iconpath, ImageFormat.Png);*/
+                Resources.Resizedbticon.Save(iconpath, ImageFormat.Png);
             }
             sf.RenderSettings.PointImageSymbol = iconpath;
 

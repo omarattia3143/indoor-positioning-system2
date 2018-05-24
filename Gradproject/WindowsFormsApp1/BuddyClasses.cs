@@ -10,12 +10,18 @@ namespace WindowsFormsApp1 {
         public PointF Location = new PointF(0f, 0f);
         public PointF FromLocation = new PointF(0f, 0f);
         public PointF ToLocation = new PointF(0f, 0f);
-        public int floor = -1;
+        public int floor = -1, inActive = 0;
         public float lerpVariable = 0;
         public bool connected = false;
-        // for simulation purposes
-        public int lastBeacon = 0;
+        public int lastBeaconId = -1;
+        public bool showCustomized = true;
+        // For simulation purposes
+        public int SimulationlastBeacon = 0;
         public int ticksB4ChangingBeacon = 0;
+        // For History
+        public List<PointF> History_Location = new List<PointF>();
+        public List<Beacon> History_Beacon = new List<Beacon>();
+        public List<int> History_Time = new List<int>();
     }
     public static class Aclass {
         public static DateTime TrimMilliseconds(this DateTime dt) {

@@ -10,12 +10,18 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class History : Form
-    {
+    public partial class History : Form {
         public static DateTime startDate, endDate;
+        public List<Device> mydevices;
         public History()
         {
             InitializeComponent();
+            var dbContext = new DatabaseEntities1(); //class derived from DbContext
+            mydevices = (from c in dbContext.Devices select c).ToList();
+            checkedListBox1.DisplayMember = "device_name";
+            foreach (Device myd in mydevices) {
+                checkedListBox1.Items.Add(myd);
+            }
         }
 
         private void bunifuSlider1_ValueChanged(object sender, EventArgs e)
@@ -119,9 +125,18 @@ namespace WindowsFormsApp1
             if (endDate <= startDate)
                 return;
 
+            List<Device> myselectedItems = checkedListBox1.CheckedItems.Cast<Device>().ToList();
+            List<int> myselItemsID = new List<int>();
+            foreach (Device x in myselectedItems) {
+                myselItemsID.Add(x.device_id);
+            }
             var dbContext = new DatabaseEntities1(); //class derived from DbContext
-            var myRecords = (from c in dbContext.Records where c.record_time < mytoDate && c.record_time > myfromDate select c).ToList(); //read data
-            history_Galal1.initializeHistoryFunctions(startDate.TrimMilliseconds(), endDate.TrimMilliseconds(), myRecords);
+            var myRecords = (from c in dbContext.Records
+                             where 
+                             c.record_time < mytoDate && c.record_time > myfromDate && myselItemsID.Contains(c.device_id)
+                             select c).ToList(); //read data
+            history_Galal1.inisializeMap();
+            history_Galal1.initializeHistoryFunctions(startDate.TrimMilliseconds(), endDate.TrimMilliseconds(), myRecords, myselectedItems);
             panel1.BringToFront();
             history_Galal1.BringToFront();
             historypanel.SendToBack();

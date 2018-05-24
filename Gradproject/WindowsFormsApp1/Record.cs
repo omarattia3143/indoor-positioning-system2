@@ -16,11 +16,11 @@ namespace WindowsFormsApp1
     {
         public int record_id { get; set; }
         public Nullable<int> rssi { get; set; }
-        public Nullable<int> device_id { get; set; }
-        public Nullable<int> beacon_id { get; set; }
-        public Nullable<System.DateTime> record_time { get; set; }
-        public Nullable<double> record_location_x { get; set; }
-        public Nullable<double> record_location_y { get; set; }
+        public int device_id { get; set; }
+        public int beacon_id { get; set; }
+        public System.DateTime record_time { get; set; }
+        public double record_location_x { get; set; }
+        public double record_location_y { get; set; }
     
         public virtual Beacon Beacon { get; set; }
         public virtual Device Device { get; set; }

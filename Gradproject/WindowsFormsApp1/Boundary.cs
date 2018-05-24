@@ -24,7 +24,7 @@ namespace WindowsFormsApp1
         public string boundary_name { get; set; }
         public Nullable<System.DateTime> boundary_from { get; set; }
         public Nullable<System.DateTime> boundary_to { get; set; }
-        public Nullable<bool> boundary_enabled { get; set; }
+        public bool boundary_enabled { get; set; }
     
         public virtual ICollection<Beacon> Beacons { get; set; }
         public virtual ICollection<Device> Devices { get; set; }

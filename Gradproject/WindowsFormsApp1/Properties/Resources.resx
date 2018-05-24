@@ -166,4 +166,13 @@
   <data name="Play_blue_icons_0008_Layer_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Play_blue_icons_0008_Layer-9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="nomanbig" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nomanbig.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="noman" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\ResizedIcons\noman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Resizedbticon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\ResizedIcons\Resizedbticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

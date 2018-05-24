@@ -51,7 +51,7 @@
             this.customize_view = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuImageButton1 = new Bunifu.Framework.UI.BunifuImageButton();
             this.floorDroplist = new Bunifu.Framework.UI.BunifuDropdown();
-            this.bunifuMaterialTextbox1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.searchBox = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.search_image = new Bunifu.Framework.UI.BunifuImageButton();
             this.mapWindow = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnMenu = new Bunifu.Framework.UI.BunifuImageButton();
@@ -59,6 +59,8 @@
             this.panelAnimator = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.loginForm1 = new WindowsFormsApp1.loginForm();
+            this.customizedView1 = new WindowsFormsApp1.CustomizedView();
+            this.boundaryControl1 = new WindowsFormsApp1.boundaryControl();
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton3)).BeginInit();
@@ -187,6 +189,8 @@
             // 
             this.mapPanel.Controls.Add(this.sfMap1);
             this.mapPanel.Controls.Add(this.loginForm1);
+            this.mapPanel.Controls.Add(this.customizedView1);
+            this.mapPanel.Controls.Add(this.boundaryControl1);
             this.panelAnimator.SetDecoration(this.mapPanel, BunifuAnimatorNS.DecorationType.None);
             this.logoAnimator.SetDecoration(this.mapPanel, BunifuAnimatorNS.DecorationType.None);
             this.mapPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -246,7 +250,7 @@
             this.sideMenu.Controls.Add(this.customize_view);
             this.sideMenu.Controls.Add(this.bunifuImageButton1);
             this.sideMenu.Controls.Add(this.floorDroplist);
-            this.sideMenu.Controls.Add(this.bunifuMaterialTextbox1);
+            this.sideMenu.Controls.Add(this.searchBox);
             this.sideMenu.Controls.Add(this.search_image);
             this.sideMenu.Controls.Add(this.mapWindow);
             this.sideMenu.Controls.Add(this.btnMenu);
@@ -301,11 +305,11 @@
             // 
             this.logoAnimator.SetDecoration(this.RefreshButton, BunifuAnimatorNS.DecorationType.None);
             this.panelAnimator.SetDecoration(this.RefreshButton, BunifuAnimatorNS.DecorationType.None);
-            this.RefreshButton.Location = new System.Drawing.Point(108, 130);
+            this.RefreshButton.Location = new System.Drawing.Point(107, 119);
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(75, 23);
             this.RefreshButton.TabIndex = 10;
-            this.RefreshButton.Text = "Refresh";
+            this.RefreshButton.Text = "Full Extent";
             this.RefreshButton.UseVisualStyleBackColor = true;
             this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
@@ -344,6 +348,7 @@
             this.setBoundaries.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.setBoundaries.Textcolor = System.Drawing.Color.White;
             this.setBoundaries.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setBoundaries.Click += new System.EventHandler(this.setBoundaries_Click);
             // 
             // adminTools
             // 
@@ -455,28 +460,29 @@
             this.floorDroplist.Size = new System.Drawing.Size(194, 32);
             this.floorDroplist.TabIndex = 5;
             // 
-            // bunifuMaterialTextbox1
+            // searchBox
             // 
-            this.bunifuMaterialTextbox1.AccessibleDescription = "";
-            this.bunifuMaterialTextbox1.AccessibleName = "";
-            this.bunifuMaterialTextbox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.panelAnimator.SetDecoration(this.bunifuMaterialTextbox1, BunifuAnimatorNS.DecorationType.None);
-            this.logoAnimator.SetDecoration(this.bunifuMaterialTextbox1, BunifuAnimatorNS.DecorationType.None);
-            this.bunifuMaterialTextbox1.Font = new System.Drawing.Font("Century Gothic", 9.75F);
-            this.bunifuMaterialTextbox1.ForeColor = System.Drawing.Color.White;
-            this.bunifuMaterialTextbox1.HintForeColor = System.Drawing.Color.White;
-            this.bunifuMaterialTextbox1.HintText = "Search Devices ...";
-            this.bunifuMaterialTextbox1.isPassword = false;
-            this.bunifuMaterialTextbox1.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.bunifuMaterialTextbox1.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.bunifuMaterialTextbox1.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.bunifuMaterialTextbox1.LineThickness = 3;
-            this.bunifuMaterialTextbox1.Location = new System.Drawing.Point(57, 171);
-            this.bunifuMaterialTextbox1.Margin = new System.Windows.Forms.Padding(4);
-            this.bunifuMaterialTextbox1.Name = "bunifuMaterialTextbox1";
-            this.bunifuMaterialTextbox1.Size = new System.Drawing.Size(228, 33);
-            this.bunifuMaterialTextbox1.TabIndex = 0;
-            this.bunifuMaterialTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.searchBox.AccessibleDescription = "";
+            this.searchBox.AccessibleName = "";
+            this.searchBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.panelAnimator.SetDecoration(this.searchBox, BunifuAnimatorNS.DecorationType.None);
+            this.logoAnimator.SetDecoration(this.searchBox, BunifuAnimatorNS.DecorationType.None);
+            this.searchBox.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.searchBox.ForeColor = System.Drawing.Color.White;
+            this.searchBox.HintForeColor = System.Drawing.Color.White;
+            this.searchBox.HintText = "Search Devices ...";
+            this.searchBox.isPassword = false;
+            this.searchBox.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.searchBox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.searchBox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
+            this.searchBox.LineThickness = 3;
+            this.searchBox.Location = new System.Drawing.Point(57, 171);
+            this.searchBox.Margin = new System.Windows.Forms.Padding(4);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(228, 33);
+            this.searchBox.TabIndex = 0;
+            this.searchBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.searchBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBox_KeyDown);
             // 
             // search_image
             // 
@@ -530,7 +536,7 @@
             this.mapWindow.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mapWindow.Textcolor = System.Drawing.Color.White;
             this.mapWindow.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mapWindow.Click += new System.EventHandler(this.customize_view_Click);
+            this.mapWindow.Click += new System.EventHandler(this.map_Click);
             // 
             // btnMenu
             // 
@@ -602,6 +608,32 @@
             this.loginForm1.TabIndex = 1;
             this.loginForm1.Load += new System.EventHandler(this.loginForm1_Load);
             // 
+            // customizedView1
+            // 
+            this.customizedView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.customizedView1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.logoAnimator.SetDecoration(this.customizedView1, BunifuAnimatorNS.DecorationType.None);
+            this.panelAnimator.SetDecoration(this.customizedView1, BunifuAnimatorNS.DecorationType.None);
+            this.customizedView1.Location = new System.Drawing.Point(0, 0);
+            this.customizedView1.Name = "customizedView1";
+            this.customizedView1.Size = new System.Drawing.Size(677, 517);
+            this.customizedView1.TabIndex = 12;
+            // 
+            // boundaryControl1
+            // 
+            this.boundaryControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.boundaryControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
+            this.logoAnimator.SetDecoration(this.boundaryControl1, BunifuAnimatorNS.DecorationType.None);
+            this.panelAnimator.SetDecoration(this.boundaryControl1, BunifuAnimatorNS.DecorationType.None);
+            this.boundaryControl1.Location = new System.Drawing.Point(0, 1);
+            this.boundaryControl1.Name = "boundaryControl1";
+            this.boundaryControl1.Size = new System.Drawing.Size(677, 517);
+            this.boundaryControl1.TabIndex = 12;
+            // 
             // mapForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -649,7 +681,7 @@
         private Bunifu.Framework.UI.BunifuFlatButton customize_view;
         private Bunifu.Framework.UI.BunifuImageButton bunifuImageButton1;
         private Bunifu.Framework.UI.BunifuDropdown floorDroplist;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMaterialTextbox1;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox searchBox;
         private Bunifu.Framework.UI.BunifuImageButton search_image;
         private Bunifu.Framework.UI.BunifuFlatButton mapWindow;
         private Bunifu.Framework.UI.BunifuImageButton btnMenu;
@@ -662,6 +694,8 @@
         private EGIS.Controls.SFMap sfMap1;
         private System.Windows.Forms.Button RefreshButton;
         private Bunifu.Framework.UI.BunifuFlatButton History;
+        private CustomizedView customizedView1;
+        private boundaryControl boundaryControl1;
     }
 }
 

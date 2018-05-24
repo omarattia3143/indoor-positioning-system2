@@ -37,11 +37,16 @@
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.zoomOut = new System.Windows.Forms.Button();
+            this.beaconCombo = new Bunifu.Framework.UI.BunifuDropdown();
+            this.floorDropList = new Bunifu.Framework.UI.BunifuDropdown();
+            this.macAddressTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.saveButton = new System.Windows.Forms.Button();
             this.bunifuDragControl2 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.beacon_Config_map1 = new WindowsFormsApp1.Beacon_Config_map();
-            this.saveButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.addressTextBox = new System.Windows.Forms.TextBox();
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.image1)).BeginInit();
@@ -152,7 +157,12 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.Controls.Add(this.addressTextBox);
+            this.panel2.Controls.Add(this.zoomOut);
+            this.panel2.Controls.Add(this.beaconCombo);
+            this.panel2.Controls.Add(this.floorDropList);
+            this.panel2.Controls.Add(this.macAddressTextBox);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.saveButton);
             this.panel2.Controls.Add(this.beacon_Config_map1);
@@ -162,6 +172,100 @@
             this.panel2.Size = new System.Drawing.Size(909, 466);
             this.panel2.TabIndex = 7;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // zoomOut
+            // 
+            this.zoomOut.Location = new System.Drawing.Point(125, 44);
+            this.zoomOut.Name = "zoomOut";
+            this.zoomOut.Size = new System.Drawing.Size(119, 23);
+            this.zoomOut.TabIndex = 8;
+            this.zoomOut.Text = "Full Extent";
+            this.zoomOut.UseVisualStyleBackColor = true;
+            this.zoomOut.Click += new System.EventHandler(this.zoomOut_Click);
+            // 
+            // beaconCombo
+            // 
+            this.beaconCombo.BackColor = System.Drawing.Color.Transparent;
+            this.beaconCombo.BorderRadius = 3;
+            this.beaconCombo.DisabledColor = System.Drawing.Color.Gray;
+            this.beaconCombo.ForeColor = System.Drawing.Color.White;
+            this.beaconCombo.Items = new string[0];
+            this.beaconCombo.Location = new System.Drawing.Point(125, 97);
+            this.beaconCombo.Name = "beaconCombo";
+            this.beaconCombo.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.beaconCombo.onHoverColor = System.Drawing.Color.Teal;
+            this.beaconCombo.selectedIndex = -1;
+            this.beaconCombo.Size = new System.Drawing.Size(119, 25);
+            this.beaconCombo.TabIndex = 7;
+            this.beaconCombo.onItemSelected += new System.EventHandler(this.beaconCombo_onItemSelected);
+            // 
+            // floorDropList
+            // 
+            this.floorDropList.BackColor = System.Drawing.Color.Transparent;
+            this.floorDropList.BorderRadius = 3;
+            this.floorDropList.DisabledColor = System.Drawing.Color.Gray;
+            this.floorDropList.ForeColor = System.Drawing.Color.White;
+            this.floorDropList.Items = new string[0];
+            this.floorDropList.Location = new System.Drawing.Point(125, 13);
+            this.floorDropList.Name = "floorDropList";
+            this.floorDropList.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.floorDropList.onHoverColor = System.Drawing.Color.Teal;
+            this.floorDropList.selectedIndex = -1;
+            this.floorDropList.Size = new System.Drawing.Size(119, 25);
+            this.floorDropList.TabIndex = 7;
+            this.floorDropList.onItemSelected += new System.EventHandler(this.floorDropList_onItemSelected);
+            // 
+            // macAddressTextBox
+            // 
+            this.macAddressTextBox.Location = new System.Drawing.Point(8, 183);
+            this.macAddressTextBox.Name = "macAddressTextBox";
+            this.macAddressTextBox.Size = new System.Drawing.Size(232, 20);
+            this.macAddressTextBox.TabIndex = 3;
+            this.macAddressTextBox.TextChanged += new System.EventHandler(this.addressTextBox_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(3, 93);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(95, 29);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Beacon";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(3, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 29);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Floor";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(3, 138);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(241, 29);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Beacon Mac Address";
+            // 
+            // saveButton
+            // 
+            this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saveButton.Location = new System.Drawing.Point(0, 381);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(254, 85);
+            this.saveButton.TabIndex = 1;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // bunifuDragControl2
             // 
@@ -180,34 +284,6 @@
             this.beacon_Config_map1.Name = "beacon_Config_map1";
             this.beacon_Config_map1.Size = new System.Drawing.Size(653, 466);
             this.beacon_Config_map1.TabIndex = 0;
-            // 
-            // saveButton
-            // 
-            this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveButton.Location = new System.Drawing.Point(0, 381);
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(254, 85);
-            this.saveButton.TabIndex = 1;
-            this.saveButton.Text = "Save";
-            this.saveButton.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(9, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(241, 29);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Beacon Mac Address";
-            // 
-            // addressTextBox
-            // 
-            this.addressTextBox.Location = new System.Drawing.Point(12, 143);
-            this.addressTextBox.Name = "addressTextBox";
-            this.addressTextBox.Size = new System.Drawing.Size(232, 20);
-            this.addressTextBox.TabIndex = 3;
             // 
             // Beacon_Config
             // 
@@ -246,8 +322,13 @@
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl2;
         private Beacon_Config_map beacon_Config_map1;
         private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.TextBox addressTextBox;
+        private System.Windows.Forms.TextBox macAddressTextBox;
         private System.Windows.Forms.Label label1;
+        private Bunifu.Framework.UI.BunifuDropdown floorDropList;
+        private System.Windows.Forms.Label label2;
+        private Bunifu.Framework.UI.BunifuDropdown beaconCombo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button zoomOut;
     }
 }
 

@@ -71,15 +71,16 @@
             this.deviceGroupBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.deviceGroupBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.deviceGroupTableAdapter3 = new WindowsFormsApp1.DatabaseDataSet5TableAdapters.DeviceGroupTableAdapter();
-            this.createUser1 = new WindowsFormsApp1.CreateUser();
-            this.editUser2 = new WindowsFormsApp1.EditUser();
+            this.deviceGroupBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.deviceGroupBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
             this.devicenameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.devicebluetoothaddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deviceiconDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.deviceinfoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.devicepictureDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.groupnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deviceoverridegroupiconDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.createUser1 = new WindowsFormsApp1.CreateUser();
+            this.editUser2 = new WindowsFormsApp1.EditUser();
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.image1)).BeginInit();
@@ -98,6 +99,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deviceGroupBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deviceGroupBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceGroupBindingSource4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceGroupBindingSource5)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuDragControl1
@@ -520,9 +523,8 @@
             this.deviceiconDataGridViewImageColumn,
             this.deviceinfoDataGridViewTextBoxColumn,
             this.devicepictureDataGridViewImageColumn,
-            this.groupnameDataGridViewTextBoxColumn,
-            this.deviceoverridegroupiconDataGridViewCheckBoxColumn});
-            this.datagrid.DataSource = this.deviceGroupBindingSource2;
+            this.groupnameDataGridViewTextBoxColumn});
+            this.datagrid.DataSource = this.deviceGroupBindingSource5;
             this.datagrid.DoubleBuffered = true;
             this.datagrid.EnableHeadersVisualStyles = false;
             this.datagrid.GridColor = System.Drawing.Color.Black;
@@ -534,7 +536,7 @@
             this.datagrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.datagrid.RowHeadersVisible = false;
             this.datagrid.RowHeadersWidth = 100;
-            this.datagrid.RowTemplate.Height = 150;
+            this.datagrid.RowTemplate.Height = 90;
             this.datagrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagrid.Size = new System.Drawing.Size(743, 568);
             this.datagrid.TabIndex = 60;
@@ -583,6 +585,66 @@
             // 
             this.deviceGroupTableAdapter3.ClearBeforeFill = true;
             // 
+            // deviceGroupBindingSource4
+            // 
+            this.deviceGroupBindingSource4.DataMember = "DeviceGroup";
+            this.deviceGroupBindingSource4.DataSource = this.databaseDataSet5;
+            // 
+            // deviceGroupBindingSource5
+            // 
+            this.deviceGroupBindingSource5.DataMember = "DeviceGroup";
+            this.deviceGroupBindingSource5.DataSource = this.database_FINAL_Source;
+            // 
+            // devicenameDataGridViewTextBoxColumn
+            // 
+            this.devicenameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.devicenameDataGridViewTextBoxColumn.DataPropertyName = "device_name";
+            this.devicenameDataGridViewTextBoxColumn.HeaderText = "device_name";
+            this.devicenameDataGridViewTextBoxColumn.Name = "devicenameDataGridViewTextBoxColumn";
+            this.devicenameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // devicebluetoothaddressDataGridViewTextBoxColumn
+            // 
+            this.devicebluetoothaddressDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.devicebluetoothaddressDataGridViewTextBoxColumn.DataPropertyName = "device_bluetooth_address";
+            this.devicebluetoothaddressDataGridViewTextBoxColumn.HeaderText = "device_bluetooth_address";
+            this.devicebluetoothaddressDataGridViewTextBoxColumn.Name = "devicebluetoothaddressDataGridViewTextBoxColumn";
+            this.devicebluetoothaddressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // deviceiconDataGridViewImageColumn
+            // 
+            this.deviceiconDataGridViewImageColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.deviceiconDataGridViewImageColumn.DataPropertyName = "device_icon";
+            this.deviceiconDataGridViewImageColumn.HeaderText = "device_icon";
+            this.deviceiconDataGridViewImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.deviceiconDataGridViewImageColumn.Name = "deviceiconDataGridViewImageColumn";
+            this.deviceiconDataGridViewImageColumn.ReadOnly = true;
+            // 
+            // deviceinfoDataGridViewTextBoxColumn
+            // 
+            this.deviceinfoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.deviceinfoDataGridViewTextBoxColumn.DataPropertyName = "device_info";
+            this.deviceinfoDataGridViewTextBoxColumn.HeaderText = "device_info";
+            this.deviceinfoDataGridViewTextBoxColumn.Name = "deviceinfoDataGridViewTextBoxColumn";
+            this.deviceinfoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // devicepictureDataGridViewImageColumn
+            // 
+            this.devicepictureDataGridViewImageColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.devicepictureDataGridViewImageColumn.DataPropertyName = "device_picture";
+            this.devicepictureDataGridViewImageColumn.HeaderText = "device_picture";
+            this.devicepictureDataGridViewImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.devicepictureDataGridViewImageColumn.Name = "devicepictureDataGridViewImageColumn";
+            this.devicepictureDataGridViewImageColumn.ReadOnly = true;
+            // 
+            // groupnameDataGridViewTextBoxColumn
+            // 
+            this.groupnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.groupnameDataGridViewTextBoxColumn.DataPropertyName = "group_name";
+            this.groupnameDataGridViewTextBoxColumn.HeaderText = "group_name";
+            this.groupnameDataGridViewTextBoxColumn.Name = "groupnameDataGridViewTextBoxColumn";
+            this.groupnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // createUser1
             // 
             this.createUser1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
@@ -598,57 +660,6 @@
             this.editUser2.Name = "editUser2";
             this.editUser2.Size = new System.Drawing.Size(767, 716);
             this.editUser2.TabIndex = 2;
-            // 
-            // devicenameDataGridViewTextBoxColumn
-            // 
-            this.devicenameDataGridViewTextBoxColumn.DataPropertyName = "device_name";
-            this.devicenameDataGridViewTextBoxColumn.HeaderText = "device_name";
-            this.devicenameDataGridViewTextBoxColumn.Name = "devicenameDataGridViewTextBoxColumn";
-            this.devicenameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // devicebluetoothaddressDataGridViewTextBoxColumn
-            // 
-            this.devicebluetoothaddressDataGridViewTextBoxColumn.DataPropertyName = "device_bluetooth_address";
-            this.devicebluetoothaddressDataGridViewTextBoxColumn.HeaderText = "device_bluetooth_address";
-            this.devicebluetoothaddressDataGridViewTextBoxColumn.Name = "devicebluetoothaddressDataGridViewTextBoxColumn";
-            this.devicebluetoothaddressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // deviceiconDataGridViewImageColumn
-            // 
-            this.deviceiconDataGridViewImageColumn.DataPropertyName = "device_icon";
-            this.deviceiconDataGridViewImageColumn.HeaderText = "device_icon";
-            this.deviceiconDataGridViewImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.deviceiconDataGridViewImageColumn.Name = "deviceiconDataGridViewImageColumn";
-            this.deviceiconDataGridViewImageColumn.ReadOnly = true;
-            // 
-            // deviceinfoDataGridViewTextBoxColumn
-            // 
-            this.deviceinfoDataGridViewTextBoxColumn.DataPropertyName = "device_info";
-            this.deviceinfoDataGridViewTextBoxColumn.HeaderText = "device_info";
-            this.deviceinfoDataGridViewTextBoxColumn.Name = "deviceinfoDataGridViewTextBoxColumn";
-            this.deviceinfoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // devicepictureDataGridViewImageColumn
-            // 
-            this.devicepictureDataGridViewImageColumn.DataPropertyName = "device_picture";
-            this.devicepictureDataGridViewImageColumn.HeaderText = "device_picture";
-            this.devicepictureDataGridViewImageColumn.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.devicepictureDataGridViewImageColumn.Name = "devicepictureDataGridViewImageColumn";
-            this.devicepictureDataGridViewImageColumn.ReadOnly = true;
-            // 
-            // groupnameDataGridViewTextBoxColumn
-            // 
-            this.groupnameDataGridViewTextBoxColumn.DataPropertyName = "group_name";
-            this.groupnameDataGridViewTextBoxColumn.HeaderText = "group_name";
-            this.groupnameDataGridViewTextBoxColumn.Name = "groupnameDataGridViewTextBoxColumn";
-            this.groupnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // deviceoverridegroupiconDataGridViewCheckBoxColumn
-            // 
-            this.deviceoverridegroupiconDataGridViewCheckBoxColumn.DataPropertyName = "device_override_group_icon";
-            this.deviceoverridegroupiconDataGridViewCheckBoxColumn.HeaderText = "device_override_group_icon";
-            this.deviceoverridegroupiconDataGridViewCheckBoxColumn.Name = "deviceoverridegroupiconDataGridViewCheckBoxColumn";
-            this.deviceoverridegroupiconDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // viewDevices
             // 
@@ -684,6 +695,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.deviceBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deviceGroupBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deviceGroupBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceGroupBindingSource4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deviceGroupBindingSource5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -729,13 +742,14 @@
         private DatabaseDataSet5 databaseDataSet5;
         private System.Windows.Forms.BindingSource deviceGroupBindingSource2;
         private DatabaseDataSet5TableAdapters.DeviceGroupTableAdapter deviceGroupTableAdapter3;
+        private System.Windows.Forms.BindingSource deviceGroupBindingSource4;
+        private System.Windows.Forms.BindingSource deviceGroupBindingSource5;
         private System.Windows.Forms.DataGridViewTextBoxColumn devicenameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn devicebluetoothaddressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn deviceiconDataGridViewImageColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn deviceinfoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn devicepictureDataGridViewImageColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn deviceoverridegroupiconDataGridViewCheckBoxColumn;
     }
 }
 

@@ -86,10 +86,11 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(213, 340);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(181, 21);
+            this.comboBox1.Size = new System.Drawing.Size(181, 30);
             this.comboBox1.TabIndex = 41;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             // 
@@ -205,7 +206,7 @@
             this.macTextbox.AccessibleDescription = "";
             this.macTextbox.AccessibleName = "";
             this.macTextbox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.macTextbox.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.macTextbox.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.macTextbox.ForeColor = System.Drawing.Color.White;
             this.macTextbox.HintForeColor = System.Drawing.Color.White;
             this.macTextbox.HintText = "";
@@ -213,7 +214,7 @@
             this.macTextbox.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
             this.macTextbox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
             this.macTextbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.macTextbox.LineThickness = 3;
+            this.macTextbox.LineThickness = 4;
             this.macTextbox.Location = new System.Drawing.Point(213, 253);
             this.macTextbox.Margin = new System.Windows.Forms.Padding(4);
             this.macTextbox.Name = "macTextbox";
@@ -226,7 +227,7 @@
             this.nameTextbox.AccessibleDescription = "";
             this.nameTextbox.AccessibleName = "";
             this.nameTextbox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.nameTextbox.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.nameTextbox.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameTextbox.ForeColor = System.Drawing.Color.White;
             this.nameTextbox.HintForeColor = System.Drawing.Color.White;
             this.nameTextbox.HintText = "";
@@ -234,7 +235,7 @@
             this.nameTextbox.LineFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
             this.nameTextbox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
             this.nameTextbox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
-            this.nameTextbox.LineThickness = 3;
+            this.nameTextbox.LineThickness = 4;
             this.nameTextbox.Location = new System.Drawing.Point(213, 183);
             this.nameTextbox.Margin = new System.Windows.Forms.Padding(4);
             this.nameTextbox.Name = "nameTextbox";
@@ -285,7 +286,7 @@
             this.descriptionBox.BorderColorMouseHover = System.Drawing.Color.Orange;
             this.descriptionBox.BorderThickness = 3;
             this.descriptionBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.descriptionBox.Font = new System.Drawing.Font("Century Gothic", 9.75F);
+            this.descriptionBox.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptionBox.ForeColor = System.Drawing.Color.White;
             this.descriptionBox.isPassword = false;
             this.descriptionBox.Location = new System.Drawing.Point(18, 466);
