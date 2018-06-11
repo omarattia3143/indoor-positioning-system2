@@ -62,6 +62,7 @@ namespace WindowsFormsApp1 {
         public void initializeBoundary(int mybndry) {
             myBoundary = (from c in dbContext.Boundaries where c.boundary_id == mybndry select c).ToList()[0];
             boundaryName.Text = myBoundary.boundary_name;
+            enableCheckbox.Checked = myBoundary.boundary_enabled;
             fromTime.Value = myBoundary.boundary_from.GetValueOrDefault();
             toTime.Value = myBoundary.boundary_to.GetValueOrDefault();
             foreach (Device mydevice in myBoundary.Devices) {
@@ -81,6 +82,7 @@ namespace WindowsFormsApp1 {
         public void initializeBoundary(Boundary mybndry) {
             myBoundary = (from c in dbContext.Boundaries where c.boundary_id == mybndry.boundary_id select c).ToList()[0];
             boundaryName.Text = myBoundary.boundary_name;
+            enableCheckbox.Checked = myBoundary.boundary_enabled;
             fromTime.Value = myBoundary.boundary_from.GetValueOrDefault();
             toTime.Value = myBoundary.boundary_to.GetValueOrDefault();
             foreach (Device mydevice in myBoundary.Devices) {

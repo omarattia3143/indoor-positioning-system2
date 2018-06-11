@@ -44,6 +44,7 @@
             this.sfMap1 = new EGIS.Controls.SFMap();
             this.logoAnimator = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.sideMenu = new System.Windows.Forms.Panel();
+            this.NotificationPanel = new System.Windows.Forms.Panel();
             this.History = new Bunifu.Framework.UI.BunifuFlatButton();
             this.RefreshButton = new System.Windows.Forms.Button();
             this.setBoundaries = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -54,10 +55,12 @@
             this.searchBox = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.search_image = new Bunifu.Framework.UI.BunifuImageButton();
             this.mapWindow = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.NottificationButton = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnMenu = new Bunifu.Framework.UI.BunifuImageButton();
             this.logo = new System.Windows.Forms.PictureBox();
             this.panelAnimator = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.loginForm1 = new WindowsFormsApp1.loginForm();
             this.customizedView1 = new WindowsFormsApp1.CustomizedView();
             this.boundaryControl1 = new WindowsFormsApp1.boundaryControl();
@@ -70,6 +73,7 @@
             this.sideMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.search_image)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NottificationButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
@@ -243,6 +247,7 @@
             // sideMenu
             // 
             this.sideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.sideMenu.Controls.Add(this.NotificationPanel);
             this.sideMenu.Controls.Add(this.History);
             this.sideMenu.Controls.Add(this.RefreshButton);
             this.sideMenu.Controls.Add(this.setBoundaries);
@@ -253,6 +258,7 @@
             this.sideMenu.Controls.Add(this.searchBox);
             this.sideMenu.Controls.Add(this.search_image);
             this.sideMenu.Controls.Add(this.mapWindow);
+            this.sideMenu.Controls.Add(this.NottificationButton);
             this.sideMenu.Controls.Add(this.btnMenu);
             this.sideMenu.Controls.Add(this.logo);
             this.panelAnimator.SetDecoration(this.sideMenu, BunifuAnimatorNS.DecorationType.None);
@@ -263,6 +269,17 @@
             this.sideMenu.Size = new System.Drawing.Size(292, 520);
             this.sideMenu.TabIndex = 0;
             this.sideMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // NotificationPanel
+            // 
+            this.NotificationPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panelAnimator.SetDecoration(this.NotificationPanel, BunifuAnimatorNS.DecorationType.None);
+            this.logoAnimator.SetDecoration(this.NotificationPanel, BunifuAnimatorNS.DecorationType.None);
+            this.NotificationPanel.Location = new System.Drawing.Point(0, 164);
+            this.NotificationPanel.Name = "NotificationPanel";
+            this.NotificationPanel.Size = new System.Drawing.Size(292, 353);
+            this.NotificationPanel.TabIndex = 12;
             // 
             // History
             // 
@@ -538,6 +555,24 @@
             this.mapWindow.TextFont = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mapWindow.Click += new System.EventHandler(this.map_Click);
             // 
+            // NottificationButton
+            // 
+            this.NottificationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NottificationButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.panelAnimator.SetDecoration(this.NottificationButton, BunifuAnimatorNS.DecorationType.None);
+            this.logoAnimator.SetDecoration(this.NottificationButton, BunifuAnimatorNS.DecorationType.None);
+            this.NottificationButton.Image = global::WindowsFormsApp1.Properties.Resources.bell_256;
+            this.NottificationButton.ImageActive = null;
+            this.NottificationButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.NottificationButton.Location = new System.Drawing.Point(246, 71);
+            this.NottificationButton.Name = "NottificationButton";
+            this.NottificationButton.Size = new System.Drawing.Size(34, 34);
+            this.NottificationButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.NottificationButton.TabIndex = 1;
+            this.NottificationButton.TabStop = false;
+            this.NottificationButton.Zoom = 10;
+            this.NottificationButton.Click += new System.EventHandler(this.btnNotification_Click);
+            // 
             // btnMenu
             // 
             this.btnMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -595,6 +630,13 @@
             // 
             this.bunifuElipse1.ElipseRadius = 5;
             this.bunifuElipse1.TargetControl = this;
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Indoor Positioning System";
+            this.notifyIcon1.Visible = true;
             // 
             // loginForm1
             // 
@@ -659,6 +701,7 @@
             this.sideMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.search_image)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NottificationButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
@@ -696,6 +739,9 @@
         private Bunifu.Framework.UI.BunifuFlatButton History;
         private CustomizedView customizedView1;
         private boundaryControl boundaryControl1;
+        private Bunifu.Framework.UI.BunifuImageButton NottificationButton;
+        private System.Windows.Forms.Panel NotificationPanel;
+        public System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 

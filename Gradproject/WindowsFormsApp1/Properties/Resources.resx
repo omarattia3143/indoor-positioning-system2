@@ -142,29 +142,35 @@
   <data name="Play_blue_icons_0003_Layer_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Play_blue_icons_0003_Layer-4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Msa_logo_3d" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Msa_logo_3d.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UoG_New_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UoG_New_Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Play_blue_icons_0001_Layer_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Play_blue_icons_0001_Layer-2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Resizedbticon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\ResizedIcons\Resizedbticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Systel-Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Systel-Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Akoakoa_Plan_Main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Akoakoa_Plan_Main.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="building" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\building.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Play_blue_icons_0000_Layer_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Play_blue_icons_0000_Layer-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="icons8-businessman-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-businessman-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Play_blue_icons_0006_Layer_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Play_blue_icons_0006_Layer-7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Akoakoa_Plan_Main" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Akoakoa_Plan_Main.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-businessman-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-businessman-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Resizedbticon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\ResizedIcons\Resizedbticon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Play_blue_icons_0000_Layer_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Play_blue_icons_0000_Layer-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="noman" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\ResizedIcons\noman.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,10 +181,7 @@
   <data name="nomanbig" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\nomanbig.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Msa_logo_3d" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Msa_logo_3d.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UoG_New_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UoG_New_Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bell-256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bell-256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -487,6 +487,7 @@
     <None Include="Resources\Akoakoa_Plan_Main.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\bell-256.png" />
     <None Include="Resources\UoG_New_Logo.png" />
     <None Include="Resources\Msa_logo_3d.jpg" />
     <None Include="bin\Debug\ResizedIcons\Resizedbticon.png" />

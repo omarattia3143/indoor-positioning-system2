@@ -131,6 +131,7 @@ namespace WindowsFormsApp1 {
         }
 
         public void devicesAndBeacon() {
+            mydbContext = new DatabaseEntities1();
             using (var dbContext = new DatabaseEntities1()) {
                 BluetoothDevices = (from c in mydbContext.Devices select c).ToList(); //read data
                 BluetoothBeacons = (from c in mydbContext.Beacons select c).ToList(); //read data
@@ -226,6 +227,11 @@ namespace WindowsFormsApp1 {
                 dbContext.SaveChanges();
             }
             Console.WriteLine(notif); // Important
+            notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
+            notifyIcon1.BalloonTipTitle = "Notice";
+            notifyIcon1.BalloonTipText = notif;
+
+            notifyIcon1.ShowBalloonTip(5000);
         }
 
         private void initializeDevices() {
@@ -839,6 +845,28 @@ namespace WindowsFormsApp1 {
             }
         }
 
+        private void btnNotification_Click(object sender, EventArgs e) {
+            /*if (sideMenu.Width == 54) {
+                sideMenu.Visible = false;
+                sideMenu.Width = 278;
+                panelAnimator.ShowSync(sideMenu);
+                logoAnimator.ShowSync(logo);
+            } else {
+                logoAnimator.Hide(logo);
+                sideMenu.Visible = false;
+                sideMenu.Width = 54;
+                panelAnimator.ShowSync(sideMenu);
+            }*/
+            
+            notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
+            notifyIcon1.BalloonTipTitle = "Notify Icon Test Application";
+            notifyIcon1.BalloonTipText = "You have just minimized the application." +
+                                        Environment.NewLine +
+                                        "Right-click on the icon for more options.";
+
+            notifyIcon1.ShowBalloonTip(5000);
+        }
+
         private void search_image_Click(object sender, EventArgs e) {
             if (sideMenu.Width == 54) {
                 sideMenu.Visible = false;
@@ -899,18 +927,21 @@ namespace WindowsFormsApp1 {
         }
 
         private void updateBoundaries() {
+            mydbContext = new DatabaseEntities1();
             using (var dbContext = new DatabaseEntities1()) {
                 AllBoundaries = (from c in mydbContext.Boundaries select c).ToList(); //read data
             }
         }
 
         private void updateBeacons() {// Important
+            mydbContext = new DatabaseEntities1();
             using (var dbContext = new DatabaseEntities1()) {
                 BluetoothBeacons = (from c in mydbContext.Beacons select c).ToList(); //read data
             }
         }
 
         private void updateDevices() {// Important
+            mydbContext = new DatabaseEntities1();
             using (var dbContext = new DatabaseEntities1()) {
                 BluetoothDevices = (from c in mydbContext.Devices select c).ToList(); //read data
             }
@@ -921,6 +952,7 @@ namespace WindowsFormsApp1 {
                 BluetoothDevices[i].showCustomized = customizedView1.devicesList.GetItemChecked(i);
             }
         }
+        
 
         private void setBoundaries_Click(object sender, EventArgs e) {
             boundaryControl1.BringToFront();
