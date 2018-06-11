@@ -300,6 +300,12 @@
     <Compile Include="createAdmin.Designer.cs">
       <DependentUpon>createAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="yaWelcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="yaWelcome.Designer.cs">
+      <DependentUpon>yaWelcome.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="admin_tools.resx">
       <DependentUpon>admin_tools.cs</DependentUpon>
     </EmbeddedResource>
@@ -365,6 +371,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="yaWelcome.resx">
+      <DependentUpon>yaWelcome.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="DatabaseDataSet.xsc">
       <DependentUpon>DatabaseDataSet.xsd</DependentUpon>
     </None>
@@ -478,6 +487,8 @@
     <None Include="Resources\Akoakoa_Plan_Main.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\UoG_New_Logo.png" />
+    <None Include="Resources\Msa_logo_3d.jpg" />
     <None Include="bin\Debug\ResizedIcons\Resizedbticon.png" />
     <None Include="bin\Debug\ResizedIcons\noman.png" />
     <Content Include="Database.mdf">

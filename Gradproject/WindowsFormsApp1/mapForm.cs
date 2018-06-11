@@ -684,79 +684,59 @@ namespace WindowsFormsApp1 {
         }
 
         public void drawDeviceOnMap(int myRssi, Device mydevice, Beacon mybeacon) {// Important The passed device MUST be from the BluetoothDevices List
-            int mysector = getRSSISector(sfMap1[1 + (mybeacon.beacon_floor*3)], mybeacon.beacon_idonmap, myRssi);
-            mydevice.ToLocation = getClosestPoint(mydevice.Location,mybeacon.beacon_floor, mysector);
-            mydevice.FromLocation = mydevice.Location;
-            if (mydevice.floor != -1 && !mydevice.connected)
-                createNotification(mydevice.device_name+" just connected!");
+            try {
+                int mysector = getRSSISector(sfMap1[1 + (mybeacon.beacon_floor * 3)], mybeacon.beacon_idonmap, myRssi);
+                mydevice.ToLocation = getClosestPoint(mydevice.Location, mybeacon.beacon_floor, mysector);
+                mydevice.FromLocation = mydevice.Location;
+                if (mydevice.floor != -1 && !mydevice.connected)
+                    createNotification(mydevice.device_name + " just connected!");
 
-            // Boundary Check
-            if (mydevice.lastBeaconId != -1) {
-                foreach (Boundary mybound in AllBoundaries) {
-                    if (!mybound.boundary_enabled)
-                        continue;
-                    var deviceSetToBoundary = mybound.Devices.Any(item => item.device_id == mydevice.device_id);
-                    if (deviceSetToBoundary) {
-                        var wasItInsideBoundary = mybound.Beacons.Any(item => item.beacon_id == mydevice.lastBeaconId);
-                        if (wasItInsideBoundary) {
-                            var stillInsideBoundary = mybound.Beacons.Any(item => item.beacon_id == mybeacon.beacon_id);
-                            if (!stillInsideBoundary) {
-                                createNotification(mydevice.device_name+" has Left "+mybound.boundary_name);
-                            }
-                        } else {
-                            var enteredBoundary = mybound.Beacons.Any(item => item.beacon_id == mybeacon.beacon_id);
-                            if (enteredBoundary) {
-                                createNotification(mydevice.device_name + " has Entered " + mybound.boundary_name);
+                // Boundary Check
+                if (mydevice.lastBeaconId != -1) {
+                    foreach (Boundary mybound in AllBoundaries) {
+                        if (!mybound.boundary_enabled)
+                            continue;
+                        var deviceSetToBoundary = mybound.Devices.Any(item => item.device_id == mydevice.device_id);
+                        if (deviceSetToBoundary) {
+                            var wasItInsideBoundary = mybound.Beacons.Any(item => item.beacon_id == mydevice.lastBeaconId);
+                            if (wasItInsideBoundary) {
+                                var stillInsideBoundary = mybound.Beacons.Any(item => item.beacon_id == mybeacon.beacon_id);
+                                if (!stillInsideBoundary) {
+                                    createNotification(mydevice.device_name + " has Left " + mybound.boundary_name);
+                                }
+                            } else {
+                                var enteredBoundary = mybound.Beacons.Any(item => item.beacon_id == mybeacon.beacon_id);
+                                if (enteredBoundary) {
+                                    createNotification(mydevice.device_name + " has Entered " + mybound.boundary_name);
+                                }
                             }
                         }
                     }
                 }
-            }
-            // Boundary Check
+                // Boundary Check
 
-            mydevice.lastBeaconId = mybeacon.beacon_id;
-            mydevice.connected = true;
-            mydevice.inActive = deviceInActiveLimit;
-            mydevice.lerpVariable = 0;
-            if (mydevice.floor != mybeacon.beacon_floor) {
-                mydevice.lerpVariable = 1;
-                mydevice.Location = mydevice.ToLocation;
-                mydevice.FromLocation = mydevice.Location;
-            }
-            mydevice.floor = mybeacon.beacon_floor;
-            // Create Record old FAKES
-            /*using (var dbContext = new DatabaseEntities1()) {
-                var records = dbContext.Set<Record>();
-                records.Add(new Record {
+                mydevice.lastBeaconId = mybeacon.beacon_id;
+                mydevice.connected = true;
+                mydevice.inActive = deviceInActiveLimit;
+                mydevice.lerpVariable = 0;
+                if (mydevice.floor != mybeacon.beacon_floor) {
+                    mydevice.lerpVariable = 1;
+                    mydevice.Location = mydevice.ToLocation;
+                    mydevice.FromLocation = mydevice.Location;
+                }
+                mydevice.floor = mybeacon.beacon_floor;
+                //save record
+                AllRecords.Add(new Record {
                     record_time = DateTime.Now.TrimMilliseconds(),
                     rssi = myRssi,
-                    Device = mydevice,
-                    Beacon = mybeacon
+                    device_id = mydevice.device_id,
+                    beacon_id = mybeacon.beacon_id,
+                    record_location_x = mydevice.ToLocation.X,
+                    record_location_y = mydevice.ToLocation.Y
                 });
-                dbContext.SaveChanges();
-            }*/
-            //save record Also FAKES
-            /*var records = mydbContext.Set<Record>();
-            records.Add(new Record {
-                record_time = DateTime.Now.TrimMilliseconds(),
-                rssi = myRssi,
-                Device = mydevice,
-                Beacon = mybeacon,
-                record_location_x = mydevice.ToLocation.X,
-                record_location_y = mydevice.ToLocation.Y
-            });
-            mydbContext.SaveChanges();*/
-            //save record
-            AllRecords.Add(new Record {
-                record_time = DateTime.Now.TrimMilliseconds(),
-                rssi = myRssi,
-                device_id = mydevice.device_id,
-                beacon_id = mybeacon.beacon_id,
-                record_location_x = mydevice.ToLocation.X,
-                record_location_y = mydevice.ToLocation.Y
-            });
 
-            sfMap1.Refresh();
+                sfMap1.Refresh();
+            } catch { }
 
 
         }

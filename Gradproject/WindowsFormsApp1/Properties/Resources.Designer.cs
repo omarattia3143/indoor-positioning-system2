@@ -123,6 +123,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Msa_logo_3d {
+            get {
+                object obj = ResourceManager.GetObject("Msa_logo_3d", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap noman {
             get {
                 object obj = ResourceManager.GetObject("noman", resourceCulture);
@@ -246,6 +256,16 @@ namespace WindowsFormsApp1.Properties {
         internal static System.Drawing.Bitmap Systel_Logo {
             get {
                 object obj = ResourceManager.GetObject("Systel-Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UoG_New_Logo {
+            get {
+                object obj = ResourceManager.GetObject("UoG_New_Logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
