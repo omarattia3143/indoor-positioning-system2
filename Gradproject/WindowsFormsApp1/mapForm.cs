@@ -9,6 +9,7 @@ using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -38,7 +39,7 @@ namespace WindowsFormsApp1 {
         private Timer SimulatorTimer, LerpTimer, EverySecondTimer, SaveRecordsTimer;
         private static DatabaseEntities1 mydbContext;
         public int deviceInActiveLimit = 5;
-        public int SaveRecordsEvery = 5000;
+        public int SaveRecordsEvery = 500;
         public bool custmizedChanged = false;
         public bool boundaryChanged = false;
         //private float lerpVariable = 0;
@@ -94,7 +95,16 @@ namespace WindowsFormsApp1 {
                     db.SaveChanges();
                 }
             }*/
+            //NotificationText.Text += "lo;";
+            var path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddEllipse(0, 0, countNotification.Width, countNotification.Height);
+            Pen myPen = new Pen(Color.Red, 2);
+            //e.Graphics.DrawPath(myPen, path);
+            countNotification.Text = "0";
+            //countNotification.Visible = true;
+            this.countNotification.Region = new Region(path);
         }
+        
 
         public void initializeBoundary() {
             using (var dbContext = new DatabaseEntities1()) {
@@ -232,7 +242,14 @@ namespace WindowsFormsApp1 {
             notifyIcon1.BalloonTipText = notif;
 
             notifyIcon1.ShowBalloonTip(5000);
+            string temp = NotificationText.Text;
+            NotificationText.Text = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss",
+                                CultureInfo.InvariantCulture) + "\r\n"+notif+ "\r\n\r\n" + temp;
+            int x = Int32.Parse(countNotification.Text);
+            countNotification.Text = (x + 1) + "";
+            countNotification.Visible = true;
         }
+        
 
         private void initializeDevices() {
             for (int i = 0; i < BluetoothDevices.Count; i++) {
@@ -837,6 +854,8 @@ namespace WindowsFormsApp1 {
                 sideMenu.Width = 278;
                 panelAnimator.ShowSync(sideMenu);
                 logoAnimator.ShowSync(logo);
+            } else if (NotificationPanel.Parent.Controls.GetChildIndex(NotificationPanel) == 0) {
+                NotificationPanel.SendToBack();
             } else {
                 logoAnimator.Hide(logo);
                 sideMenu.Visible = false;
@@ -857,14 +876,22 @@ namespace WindowsFormsApp1 {
                 sideMenu.Width = 54;
                 panelAnimator.ShowSync(sideMenu);
             }*/
-            
-            notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
+            if (sideMenu.Width == 54) {
+                sideMenu.Visible = false;
+                sideMenu.Width = 278;
+                panelAnimator.ShowSync(sideMenu);
+                logoAnimator.ShowSync(logo);
+            }
+            NotificationPanel.BringToFront();
+            countNotification.Text = "0";
+            countNotification.Visible = false;
+            /*notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
             notifyIcon1.BalloonTipTitle = "Notify Icon Test Application";
             notifyIcon1.BalloonTipText = "You have just minimized the application." +
                                         Environment.NewLine +
                                         "Right-click on the icon for more options.";
 
-            notifyIcon1.ShowBalloonTip(5000);
+            notifyIcon1.ShowBalloonTip(5000);*/
         }
 
         private void search_image_Click(object sender, EventArgs e) {

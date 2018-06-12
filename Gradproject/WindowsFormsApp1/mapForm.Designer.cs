@@ -61,6 +61,9 @@
             this.panelAnimator = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.NotificationText = new System.Windows.Forms.RichTextBox();
+            this.controlPanel = new System.Windows.Forms.Panel();
+            this.countNotification = new System.Windows.Forms.Label();
             this.loginForm1 = new WindowsFormsApp1.loginForm();
             this.customizedView1 = new WindowsFormsApp1.CustomizedView();
             this.boundaryControl1 = new WindowsFormsApp1.boundaryControl();
@@ -71,11 +74,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.mapPanel.SuspendLayout();
             this.sideMenu.SuspendLayout();
+            this.NotificationPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.search_image)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NottificationButton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
+            this.controlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuColorTransition1
@@ -200,7 +205,7 @@
             this.mapPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mapPanel.Location = new System.Drawing.Point(292, 41);
             this.mapPanel.Name = "mapPanel";
-            this.mapPanel.Size = new System.Drawing.Size(680, 520);
+            this.mapPanel.Size = new System.Drawing.Size(680, 537);
             this.mapPanel.TabIndex = 2;
             // 
             // sfMap1
@@ -217,7 +222,7 @@
             this.sfMap1.Name = "sfMap1";
             this.sfMap1.PanSelectMode = EGIS.Controls.PanSelectMode.Pan;
             this.sfMap1.RenderQuality = EGIS.ShapeFileLib.RenderQuality.Auto;
-            this.sfMap1.Size = new System.Drawing.Size(677, 517);
+            this.sfMap1.Size = new System.Drawing.Size(677, 534);
             this.sfMap1.TabIndex = 2;
             this.sfMap1.UseMercatorProjection = false;
             this.sfMap1.ZoomLevel = 1D;
@@ -247,17 +252,10 @@
             // sideMenu
             // 
             this.sideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.sideMenu.Controls.Add(this.countNotification);
+            this.sideMenu.Controls.Add(this.controlPanel);
             this.sideMenu.Controls.Add(this.NotificationPanel);
-            this.sideMenu.Controls.Add(this.History);
             this.sideMenu.Controls.Add(this.RefreshButton);
-            this.sideMenu.Controls.Add(this.setBoundaries);
-            this.sideMenu.Controls.Add(this.adminTools);
-            this.sideMenu.Controls.Add(this.customize_view);
-            this.sideMenu.Controls.Add(this.bunifuImageButton1);
-            this.sideMenu.Controls.Add(this.floorDroplist);
-            this.sideMenu.Controls.Add(this.searchBox);
-            this.sideMenu.Controls.Add(this.search_image);
-            this.sideMenu.Controls.Add(this.mapWindow);
             this.sideMenu.Controls.Add(this.NottificationButton);
             this.sideMenu.Controls.Add(this.btnMenu);
             this.sideMenu.Controls.Add(this.logo);
@@ -266,7 +264,7 @@
             this.sideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.sideMenu.Location = new System.Drawing.Point(0, 41);
             this.sideMenu.Name = "sideMenu";
-            this.sideMenu.Size = new System.Drawing.Size(292, 520);
+            this.sideMenu.Size = new System.Drawing.Size(292, 537);
             this.sideMenu.TabIndex = 0;
             this.sideMenu.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -274,11 +272,12 @@
             // 
             this.NotificationPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.NotificationPanel.Controls.Add(this.NotificationText);
             this.panelAnimator.SetDecoration(this.NotificationPanel, BunifuAnimatorNS.DecorationType.None);
             this.logoAnimator.SetDecoration(this.NotificationPanel, BunifuAnimatorNS.DecorationType.None);
             this.NotificationPanel.Location = new System.Drawing.Point(0, 164);
             this.NotificationPanel.Name = "NotificationPanel";
-            this.NotificationPanel.Size = new System.Drawing.Size(292, 353);
+            this.NotificationPanel.Size = new System.Drawing.Size(292, 370);
             this.NotificationPanel.TabIndex = 12;
             // 
             // History
@@ -304,7 +303,7 @@
             this.History.IconVisible = true;
             this.History.IconZoom = 80D;
             this.History.IsTab = true;
-            this.History.Location = new System.Drawing.Point(3, 460);
+            this.History.Location = new System.Drawing.Point(3, 314);
             this.History.Name = "History";
             this.History.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.History.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
@@ -353,7 +352,7 @@
             this.setBoundaries.IconVisible = true;
             this.setBoundaries.IconZoom = 80D;
             this.setBoundaries.IsTab = true;
-            this.setBoundaries.Location = new System.Drawing.Point(3, 414);
+            this.setBoundaries.Location = new System.Drawing.Point(3, 260);
             this.setBoundaries.Name = "setBoundaries";
             this.setBoundaries.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.setBoundaries.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
@@ -390,7 +389,7 @@
             this.adminTools.IconVisible = true;
             this.adminTools.IconZoom = 80D;
             this.adminTools.IsTab = true;
-            this.adminTools.Location = new System.Drawing.Point(0, 360);
+            this.adminTools.Location = new System.Drawing.Point(3, 206);
             this.adminTools.Name = "adminTools";
             this.adminTools.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.adminTools.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
@@ -427,7 +426,7 @@
             this.customize_view.IconVisible = true;
             this.customize_view.IconZoom = 90D;
             this.customize_view.IsTab = true;
-            this.customize_view.Location = new System.Drawing.Point(0, 306);
+            this.customize_view.Location = new System.Drawing.Point(3, 152);
             this.customize_view.Name = "customize_view";
             this.customize_view.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.customize_view.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
@@ -449,7 +448,7 @@
             this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
             this.bunifuImageButton1.ImageActive = null;
             this.bunifuImageButton1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.bunifuImageButton1.Location = new System.Drawing.Point(12, 214);
+            this.bunifuImageButton1.Location = new System.Drawing.Point(15, 60);
             this.bunifuImageButton1.Name = "bunifuImageButton1";
             this.bunifuImageButton1.Size = new System.Drawing.Size(31, 32);
             this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -468,7 +467,7 @@
             this.floorDroplist.Font = new System.Drawing.Font("Century Gothic", 8.25F);
             this.floorDroplist.ForeColor = System.Drawing.Color.White;
             this.floorDroplist.Items = new string[0];
-            this.floorDroplist.Location = new System.Drawing.Point(57, 214);
+            this.floorDroplist.Location = new System.Drawing.Point(60, 60);
             this.floorDroplist.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.floorDroplist.Name = "floorDroplist";
             this.floorDroplist.NomalColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
@@ -493,7 +492,7 @@
             this.searchBox.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
             this.searchBox.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
             this.searchBox.LineThickness = 3;
-            this.searchBox.Location = new System.Drawing.Point(57, 171);
+            this.searchBox.Location = new System.Drawing.Point(60, 17);
             this.searchBox.Margin = new System.Windows.Forms.Padding(4);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(228, 33);
@@ -509,7 +508,7 @@
             this.search_image.Image = ((System.Drawing.Image)(resources.GetObject("search_image.Image")));
             this.search_image.ImageActive = null;
             this.search_image.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.search_image.Location = new System.Drawing.Point(12, 171);
+            this.search_image.Location = new System.Drawing.Point(15, 17);
             this.search_image.Name = "search_image";
             this.search_image.Size = new System.Drawing.Size(31, 32);
             this.search_image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -541,7 +540,7 @@
             this.mapWindow.IconVisible = true;
             this.mapWindow.IconZoom = 70D;
             this.mapWindow.IsTab = true;
-            this.mapWindow.Location = new System.Drawing.Point(3, 252);
+            this.mapWindow.Location = new System.Drawing.Point(6, 98);
             this.mapWindow.Name = "mapWindow";
             this.mapWindow.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.mapWindow.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(177)))), ((int)(((byte)(246)))));
@@ -638,6 +637,59 @@
             this.notifyIcon1.Text = "Indoor Positioning System";
             this.notifyIcon1.Visible = true;
             // 
+            // NotificationText
+            // 
+            this.NotificationText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.NotificationText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.panelAnimator.SetDecoration(this.NotificationText, BunifuAnimatorNS.DecorationType.None);
+            this.logoAnimator.SetDecoration(this.NotificationText, BunifuAnimatorNS.DecorationType.None);
+            this.NotificationText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.NotificationText.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NotificationText.ForeColor = System.Drawing.Color.White;
+            this.NotificationText.Location = new System.Drawing.Point(0, 0);
+            this.NotificationText.Name = "NotificationText";
+            this.NotificationText.ReadOnly = true;
+            this.NotificationText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.NotificationText.Size = new System.Drawing.Size(292, 370);
+            this.NotificationText.TabIndex = 0;
+            this.NotificationText.Text = "";
+            // 
+            // controlPanel
+            // 
+            this.controlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.controlPanel.Controls.Add(this.History);
+            this.controlPanel.Controls.Add(this.setBoundaries);
+            this.controlPanel.Controls.Add(this.adminTools);
+            this.controlPanel.Controls.Add(this.customize_view);
+            this.controlPanel.Controls.Add(this.bunifuImageButton1);
+            this.controlPanel.Controls.Add(this.floorDroplist);
+            this.controlPanel.Controls.Add(this.searchBox);
+            this.controlPanel.Controls.Add(this.search_image);
+            this.controlPanel.Controls.Add(this.mapWindow);
+            this.panelAnimator.SetDecoration(this.controlPanel, BunifuAnimatorNS.DecorationType.None);
+            this.logoAnimator.SetDecoration(this.controlPanel, BunifuAnimatorNS.DecorationType.None);
+            this.controlPanel.Location = new System.Drawing.Point(0, 161);
+            this.controlPanel.Name = "controlPanel";
+            this.controlPanel.Size = new System.Drawing.Size(292, 376);
+            this.controlPanel.TabIndex = 13;
+            // 
+            // countNotification
+            // 
+            this.countNotification.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.countNotification.BackColor = System.Drawing.Color.Red;
+            this.logoAnimator.SetDecoration(this.countNotification, BunifuAnimatorNS.DecorationType.None);
+            this.panelAnimator.SetDecoration(this.countNotification, BunifuAnimatorNS.DecorationType.None);
+            this.countNotification.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.countNotification.ForeColor = System.Drawing.Color.White;
+            this.countNotification.Location = new System.Drawing.Point(255, 94);
+            this.countNotification.Name = "countNotification";
+            this.countNotification.Size = new System.Drawing.Size(37, 25);
+            this.countNotification.TabIndex = 14;
+            this.countNotification.Text = "label1";
+            this.countNotification.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.countNotification.Visible = false;
+            // 
             // loginForm1
             // 
             this.loginForm1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
@@ -646,7 +698,7 @@
             this.loginForm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.loginForm1.Location = new System.Drawing.Point(0, 0);
             this.loginForm1.Name = "loginForm1";
-            this.loginForm1.Size = new System.Drawing.Size(680, 520);
+            this.loginForm1.Size = new System.Drawing.Size(680, 537);
             this.loginForm1.TabIndex = 1;
             this.loginForm1.Load += new System.EventHandler(this.loginForm1_Load);
             // 
@@ -660,7 +712,7 @@
             this.panelAnimator.SetDecoration(this.customizedView1, BunifuAnimatorNS.DecorationType.None);
             this.customizedView1.Location = new System.Drawing.Point(0, 0);
             this.customizedView1.Name = "customizedView1";
-            this.customizedView1.Size = new System.Drawing.Size(677, 517);
+            this.customizedView1.Size = new System.Drawing.Size(677, 534);
             this.customizedView1.TabIndex = 12;
             // 
             // boundaryControl1
@@ -673,7 +725,7 @@
             this.panelAnimator.SetDecoration(this.boundaryControl1, BunifuAnimatorNS.DecorationType.None);
             this.boundaryControl1.Location = new System.Drawing.Point(0, 1);
             this.boundaryControl1.Name = "boundaryControl1";
-            this.boundaryControl1.Size = new System.Drawing.Size(677, 517);
+            this.boundaryControl1.Size = new System.Drawing.Size(677, 534);
             this.boundaryControl1.TabIndex = 12;
             // 
             // mapForm
@@ -681,7 +733,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(46)))), ((int)(((byte)(59)))));
-            this.ClientSize = new System.Drawing.Size(972, 561);
+            this.ClientSize = new System.Drawing.Size(972, 578);
             this.Controls.Add(this.mapPanel);
             this.Controls.Add(this.sideMenu);
             this.Controls.Add(this.header);
@@ -699,11 +751,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.mapPanel.ResumeLayout(false);
             this.sideMenu.ResumeLayout(false);
+            this.NotificationPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.search_image)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NottificationButton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
+            this.controlPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -742,6 +796,9 @@
         private Bunifu.Framework.UI.BunifuImageButton NottificationButton;
         private System.Windows.Forms.Panel NotificationPanel;
         public System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.RichTextBox NotificationText;
+        private System.Windows.Forms.Panel controlPanel;
+        private System.Windows.Forms.Label countNotification;
     }
 }
 
