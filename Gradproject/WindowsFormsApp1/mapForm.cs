@@ -54,10 +54,11 @@ namespace WindowsFormsApp1 {
             sfMap1.FitToExtent(sfMap1[SelectedFloor * 3].GetActualExtent());
             sfMap1.Paint += SfMap1_Paint;
             sfMap1.MouseClick += SfMap1_MouseClick;
-            devicesAndBeacon();
+            customizedView1.devicesList.ItemCheck += DevicesList_ItemCheck;
+            customizedView1.groupList.ItemCheck += DevicesList_ItemCheck;
+            updateAll();
             AllRecords = new List<Record>();
             initializeDevices();
-            fillCustomizedView();
             initializeBoundary();
             //contacts.FirstOrDefault().FirstName = "Alex"; //edit 
             //Device temp = contacts[2];
@@ -103,8 +104,20 @@ namespace WindowsFormsApp1 {
             countNotification.Text = "0";
             //countNotification.Visible = true;
             this.countNotification.Region = new Region(path);
+            Console.WriteLine("Number is "+ HexToInt("C7"));
         }
-        
+
+        private int HexToInt(string _hexData) {
+            String temp = _hexData.Substring(0,1);
+            var i = Convert.ToInt16(temp,16);
+            if(i > 7) {
+                int x = Convert.ToInt16("FF" + _hexData, 16);
+                return x;
+            } else {
+                return Convert.ToInt16(_hexData, 16);
+            }
+        }
+
 
         public void initializeBoundary() {
             using (var dbContext = new DatabaseEntities1()) {
@@ -126,27 +139,31 @@ namespace WindowsFormsApp1 {
         private void boundary_EditButton_Click(object sender, EventArgs e) {
             boundaryChanged = true;
         }
-
+        
         public void fillCustomizedView() {
+            customizedView1.devicesList.Items.Clear();
+            customizedView1.groupList.Items.Clear();
             customizedView1.devicesList.DisplayMember = "device_name";
             for (int i = 0; i < BluetoothDevices.Count; i++) {
                 customizedView1.devicesList.Items.Add(BluetoothDevices[i]);
                 customizedView1.devicesList.SetItemChecked(i, true);
             }
-            customizedView1.devicesList.ItemCheck += DevicesList_ItemCheck;
+            // Groups
+            List<Group> myGroups;
+            using (var dbContext = new DatabaseEntities1()) {
+                myGroups = (from c in mydbContext.Groups select c).ToList(); //read data
+            }
+            customizedView1.AllGroups = myGroups;
+            customizedView1.AllDevices = BluetoothDevices;
+            customizedView1.groupList.DisplayMember = "group_name";
+            for (int i = 0; i < myGroups.Count; i++) {
+                customizedView1.groupList.Items.Add(myGroups[i]);
+                customizedView1.groupList.SetItemChecked(i, true);
+            }
         }
 
         private void DevicesList_ItemCheck(object sender, ItemCheckEventArgs e) {
             custmizedChanged = true;
-        }
-
-        public void devicesAndBeacon() {
-            mydbContext = new DatabaseEntities1();
-            using (var dbContext = new DatabaseEntities1()) {
-                BluetoothDevices = (from c in mydbContext.Devices select c).ToList(); //read data
-                BluetoothBeacons = (from c in mydbContext.Beacons select c).ToList(); //read data
-                AllBoundaries = (from c in mydbContext.Boundaries select c).ToList(); //read data
-            }
         }
 
         public void StartEverySecond() {
@@ -953,6 +970,16 @@ namespace WindowsFormsApp1 {
             }
         }
 
+        public void updateAll() {
+            mydbContext = new DatabaseEntities1();
+            using (var dbContext = new DatabaseEntities1()) {
+                BluetoothDevices = (from c in mydbContext.Devices select c).ToList(); //read data
+                BluetoothBeacons = (from c in mydbContext.Beacons select c).ToList(); //read data
+                AllBoundaries = (from c in mydbContext.Boundaries select c).ToList(); //read data
+            }
+            fillCustomizedView();
+        }
+
         private void updateBoundaries() {
             mydbContext = new DatabaseEntities1();
             using (var dbContext = new DatabaseEntities1()) {
@@ -972,6 +999,7 @@ namespace WindowsFormsApp1 {
             using (var dbContext = new DatabaseEntities1()) {
                 BluetoothDevices = (from c in mydbContext.Devices select c).ToList(); //read data
             }
+            fillCustomizedView();
         }
 
         private void updateCustomized() {
@@ -980,7 +1008,6 @@ namespace WindowsFormsApp1 {
             }
         }
         
-
         private void setBoundaries_Click(object sender, EventArgs e) {
             boundaryControl1.BringToFront();
         }
