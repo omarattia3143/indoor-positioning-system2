@@ -55,7 +55,7 @@ namespace WindowsFormsApp1 {
             sfMap1.Paint += SfMap1_Paint;
             sfMap1.MouseClick += SfMap1_MouseClick;
             customizedView1.devicesList.ItemCheck += DevicesList_ItemCheck;
-            customizedView1.groupList.ItemCheck += DevicesList_ItemCheck;
+            //customizedView1.groupList.ItemCheck += DevicesList_ItemCheck;
             updateAll();
             AllRecords = new List<Record>();
             initializeDevices();

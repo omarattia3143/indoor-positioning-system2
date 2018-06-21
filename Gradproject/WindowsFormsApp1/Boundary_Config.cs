@@ -13,6 +13,7 @@ namespace WindowsFormsApp1 {
         List<Beacon>[] mapBeacons;
         DatabaseEntities1 dbContext = new DatabaseEntities1(); //class derived from DbContext
         public List<Device> mydevices;
+        public List<Group> AllGroups;
         Boundary myBoundary;
         int floorcount = 0;
 
@@ -38,9 +39,15 @@ namespace WindowsFormsApp1 {
                 mapBeacons[i] = (from c in dbContext.Beacons where c.beacon_floor == i select c).ToList();
             }
             mydevices = (from c in dbContext.Devices select c).ToList();
+            AllGroups = (from c in dbContext.Groups select c).ToList();
+            groupsListBox.ItemCheck += GroupList_ItemCheck;
             devicesListBox.DisplayMember = "device_name";
             foreach (Device myd in mydevices) {
                 devicesListBox.Items.Add(myd);
+            }
+            groupsListBox.DisplayMember = "group_name";
+            foreach (Group myd in AllGroups) {
+                groupsListBox.Items.Add(myd);
             }
             initializeBoundary();
             //int z = 0;
@@ -192,7 +199,23 @@ namespace WindowsFormsApp1 {
             beacon_Config_map1.sfMap1.Refresh();
             beacon_Config_map1.sfMap1.FitToExtent(beacon_Config_map1.sfMap1[beacon_Config_map1.SelectedFloor * 3].GetActualExtent());
         }
-        
+
+        private void GroupList_ItemCheck(object sender, ItemCheckEventArgs e) {
+            //e.Index //Later
+            if (groupsListBox.GetItemChecked(e.Index)) {
+                for (int i = 0; i < mydevices.Count; i++) {
+                    if (mydevices[i].Group != null)
+                        if (mydevices[i].group_id == AllGroups[e.Index].group_id)
+                            devicesListBox.SetItemChecked(i, false);
+                }
+            } else {
+                for (int i = 0; i < mydevices.Count; i++) {
+                    if (mydevices[i].Group != null)
+                        if (mydevices[i].group_id == AllGroups[e.Index].group_id)
+                            devicesListBox.SetItemChecked(i, true);
+                }
+            }
+        }
 
         private void saveButton_Click(object sender, EventArgs e) {
             /*for (int i =0; i<mapBeacons.Length;i++) {

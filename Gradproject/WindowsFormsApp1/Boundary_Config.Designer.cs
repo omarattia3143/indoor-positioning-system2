@@ -50,8 +50,11 @@
             this.floorDropList = new Bunifu.Framework.UI.BunifuDropdown();
             this.label2 = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
-            this.bunifuDragControl2 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.beacon_Config_map1 = new WindowsFormsApp1.Beacon_Config_map();
+            this.bunifuDragControl2 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
+            this.groupsListBox = new System.Windows.Forms.CheckedListBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.image1)).BeginInit();
@@ -170,9 +173,12 @@
             this.panel2.Controls.Add(this.fromTime);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.toTime);
+            this.panel2.Controls.Add(this.groupsListBox);
             this.panel2.Controls.Add(this.devicesListBox);
             this.panel2.Controls.Add(this.zoomOut);
             this.panel2.Controls.Add(this.floorDropList);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.saveButton);
             this.panel2.Controls.Add(this.beacon_Config_map1);
@@ -271,9 +277,9 @@
             // 
             this.devicesListBox.CheckOnClick = true;
             this.devicesListBox.FormattingEnabled = true;
-            this.devicesListBox.Location = new System.Drawing.Point(228, 71);
+            this.devicesListBox.Location = new System.Drawing.Point(228, 91);
             this.devicesListBox.Name = "devicesListBox";
-            this.devicesListBox.Size = new System.Drawing.Size(242, 394);
+            this.devicesListBox.Size = new System.Drawing.Size(242, 229);
             this.devicesListBox.TabIndex = 9;
             // 
             // zoomOut
@@ -324,13 +330,6 @@
             this.saveButton.UseVisualStyleBackColor = true;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
-            // bunifuDragControl2
-            // 
-            this.bunifuDragControl2.Fixed = true;
-            this.bunifuDragControl2.Horizontal = true;
-            this.bunifuDragControl2.TargetControl = null;
-            this.bunifuDragControl2.Vertical = true;
-            // 
             // beacon_Config_map1
             // 
             this.beacon_Config_map1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -341,6 +340,44 @@
             this.beacon_Config_map1.Name = "beacon_Config_map1";
             this.beacon_Config_map1.Size = new System.Drawing.Size(438, 466);
             this.beacon_Config_map1.TabIndex = 0;
+            // 
+            // bunifuDragControl2
+            // 
+            this.bunifuDragControl2.Fixed = true;
+            this.bunifuDragControl2.Horizontal = true;
+            this.bunifuDragControl2.TargetControl = null;
+            this.bunifuDragControl2.Vertical = true;
+            // 
+            // groupsListBox
+            // 
+            this.groupsListBox.CheckOnClick = true;
+            this.groupsListBox.FormattingEnabled = true;
+            this.groupsListBox.Location = new System.Drawing.Point(228, 342);
+            this.groupsListBox.Name = "groupsListBox";
+            this.groupsListBox.Size = new System.Drawing.Size(242, 124);
+            this.groupsListBox.TabIndex = 9;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(320, 319);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 20);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Groups";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(320, 68);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 20);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Devices";
             // 
             // Boundary_Config
             // 
@@ -391,6 +428,9 @@
         private System.Windows.Forms.CheckBox enableCheckbox;
         private System.Windows.Forms.TextBox boundaryName;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckedListBox groupsListBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }
 
